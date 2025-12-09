@@ -1,0 +1,5642 @@
+{
+    "CSE-01": {
+        "Monday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-206"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-102(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-102(L)"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-007"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-007"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-201"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-201"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-201"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-201"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-103(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-103(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-103(L)"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "CC",
+                "room": "C25-A-206"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-206"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-317"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-B-317"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-201"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-201"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-008"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-008"
+            }
+        }
+    },
+    "CSE-02": {
+        "Monday": {
+            "8-9": {
+                "subject": "UHV",
+                "room": "C25-A-201"
+            },
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-201"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-201"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-007"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-102(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-102(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-010"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-010"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-207"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-301"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-301"
+            }
+        },
+        "Thursday": {
+            "8-9": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-207"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-207"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-003(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-003(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-003(L)"
+            }
+        },
+        "Friday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-009"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-009"
+            },
+            "1-2": {
+                "subject": "UHV",
+                "room": "C25-A-009"
+            }
+        }
+    },
+    "CSE-03": {
+        "Monday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-206"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-206"
+            },
+            "11-12": {
+                "subject": "HSE",
+                "room": "TBD"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-206"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-206"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-206"
+            }
+        },
+        "Wednesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-111"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-003(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-003(L)"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-008"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-008"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-208"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-A-208"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-B-201"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-B-201"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "UHV",
+                "room": "C25-A-207"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-207"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-003(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-003(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-003(L)"
+            }
+        }
+    },
+    "CSE-04": {
+        "Monday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-207"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-207"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-102(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-102(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-102(L)"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-207"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-207"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-011"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-011"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-208"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-A-208"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-016"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-016"
+            }
+        },
+        "Thursday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-006"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-003(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-003(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-009"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-009"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-208"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-208"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-B-208"
+            }
+        }
+    },
+    "CSE-05": {
+        "Monday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-208"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-208"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-208"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "9-10": {
+                "subject": "UHV",
+                "room": "C25-A-208"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-208"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-003(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-003(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-003(L)"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-209"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-307"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-307"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-209"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-209"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-010"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-010"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-007"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-102(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-102(L)"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-010"
+            },
+            "12-1": {
+                "subject": "UHV",
+                "room": "C25-A-010"
+            }
+        }
+    },
+    "CSE-06": {
+        "Monday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-207"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-103(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-103(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-106"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-B-106"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-209"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-209"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-209"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-209"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-B-303(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-B-303(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-B-303(L)"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "CC",
+                "room": "C25-A-210"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-210"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-011"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-011"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-209"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-209"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-011"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-011"
+            }
+        }
+    },
+    "CSE-07": {
+        "Monday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-209"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-209"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-209"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-209"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-008"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-103(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-103(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-106"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-106"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "CC",
+                "room": "C25-A-211"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-211"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-011"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-011"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "CC",
+                "room": "C25-A-211"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-211"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-B-003(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-B-003(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-B-003(L)"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-210"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-210"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-209"
+            }
+        }
+    },
+    "CSE-08": {
+        "Monday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-210"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-210"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-210"
+            },
+            "12-1": {
+                "subject": "UHV",
+                "room": "C25-A-210"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-210"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-210"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-210"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-210"
+            }
+        },
+        "Wednesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-113"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-102(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-102(L)"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-101"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-101"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-213"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-213"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-209"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-211"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-A-211"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-102(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-102(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-102(L)"
+            }
+        }
+    },
+    "CSE-09": {
+        "Monday": {
+            "8-9": {
+                "subject": "AD",
+                "room": "C25-A-104(L)"
+            },
+            "9-10": {
+                "subject": "AD(L)",
+                "room": "C25-A-104(L)"
+            },
+            "10-11": {
+                "subject": "AD(L)",
+                "room": "C25-A-104(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-108"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-211"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-211"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-108"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-108"
+            }
+        },
+        "Wednesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-213"
+            },
+            "9-10": {
+                "subject": "CC",
+                "room": "C25-A-213"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-213"
+            },
+            "11-12": {
+                "subject": "HSE",
+                "room": "TBD"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-301"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-301"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-210"
+            },
+            "12-1": {
+                "subject": "AI(L)",
+                "room": "C25-A-103(L)"
+            },
+            "1-2": {
+                "subject": "AI(L)",
+                "room": "C25-A-103(L)"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-213"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-213"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-101"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-101"
+            }
+        }
+    },
+    "CSE-10": {
+        "Monday": {
+            "9-10": {
+                "subject": "UHV",
+                "room": "C25-A-211"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-211"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-211"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-213"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-213"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-102(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-102(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-102(L)"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-301"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-301"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-106"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-106"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-306"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-306"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-101"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-101"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-008"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-103(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-103(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-106"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-106"
+            }
+        }
+    },
+    "CSE-11": {
+        "Monday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-209"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-112(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-112(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-011"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-011"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-301"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-301"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-109"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-109"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-306"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-A-306"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-112(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-112(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-112(L)"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "UHV",
+                "room": "C25-A-307"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-307"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-B-219"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-301"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-301"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-107"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-107"
+            }
+        }
+    },
+    "CSE-12": {
+        "Monday": {
+            "9-10": {
+                "subject": "UHV",
+                "room": "C25-B-110"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-110"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-B-110"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-009"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-104(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-104(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-110"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-110"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-307"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-307"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-107"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-107"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-308"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-308"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-304(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-304(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-304(L)"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-306"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-306"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-108"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-108"
+            }
+        }
+    },
+    "CSE-13": {
+        "Monday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-301"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-301"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-301"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-301"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "9-10": {
+                "subject": "CC",
+                "room": "C25-A-306"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-306"
+            }
+        },
+        "Wednesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-201"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-103(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-103(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-108"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-108"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-309"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-309"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-106"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-106"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-307"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-307"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-103(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-103(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-103(L)"
+            }
+        }
+    },
+    "CSE-14": {
+        "Monday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-306"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-A-306"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-103(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-103(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-103(L)"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-307"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-307"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-111"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-111"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-308"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-308"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-109"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-109"
+            }
+        },
+        "Thursday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-111"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-312(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-312(L)"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "UHV",
+                "room": "C25-A-308"
+            },
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-308"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-308"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-109"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-109"
+            }
+        }
+    },
+    "CSE-15": {
+        "Monday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-307"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-307"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-307"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-307"
+            }
+        },
+        "Tuesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-103(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-103(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-103(L)"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-309"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-A-309"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-110"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-110"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-310"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-310"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-107"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-107"
+            },
+            "1-2": {
+                "subject": "UHV",
+                "room": "C25-A-107"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-009"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-104(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-104(L)"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-B-301"
+            }
+        }
+    },
+    "CSE-16": {
+        "Monday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-210"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-202(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-202(L)"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-107"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-107"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "CC",
+                "room": "C25-A-309"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-309"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-309"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-309"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-202(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-202(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-202(L)"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-311"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-311"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-108"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-108"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-309"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-309"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-110"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-110"
+            }
+        }
+    },
+    "CSE-17": {
+        "Monday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-308"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-A-308"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-308"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "AI",
+                "room": "C25-A-010"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-112(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-112(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-009"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-009"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-311"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-311"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-111"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-111"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-313"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-313"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-112(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-112(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-112(L)"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "CC",
+                "room": "C25-A-310"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-310"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-111"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-111"
+            }
+        }
+    },
+    "CSE-18": {
+        "Monday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-309"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-309"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-309"
+            },
+            "12-1": {
+                "subject": "UHV",
+                "room": "C25-A-309"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-310"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-310"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-310"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-310"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-104(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-104(L)"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-113"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-113"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-B-019"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-019"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-109"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-109"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-311"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-311"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-104(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-104(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-104(L)"
+            }
+        }
+    },
+    "CSE-19": {
+        "Monday": {
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-109"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-109"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "UHV",
+                "room": "C25-A-311"
+            },
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-311"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-311"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-B-304(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-B-304(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-B-304(L)"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-313"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-313"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-201"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-201"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-101"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-101"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-B-307"
+            },
+            "12-1": {
+                "subject": "AI(L)",
+                "room": "C25-A-202(L)"
+            },
+            "1-2": {
+                "subject": "AI(L)",
+                "room": "C25-A-202(L)"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-313"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-313"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-113"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-113"
+            }
+        }
+    },
+    "CSE-20": {
+        "Monday": {
+            "9-10": {
+                "subject": "CC",
+                "room": "C25-A-310"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-310"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-310"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-310"
+            }
+        },
+        "Tuesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-B-004(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-B-004(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-B-004(L)"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "UHV",
+                "room": "C25-B-019"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-B-019"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-206"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-206"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-106"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-106"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-110"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-110"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-010"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-112(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-112(L)"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-201"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-201"
+            }
+        }
+    },
+    "CSE-21": {
+        "Monday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-213"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-204(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-204(L)"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-111"
+            },
+            "12-1": {
+                "subject": "UHV",
+                "room": "C25-A-111"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-019"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-019"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-207"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-207"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-203(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-203(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-203(L)"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-107"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-107"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-111"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-111"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-019"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-019"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-207"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-B-207"
+            }
+        }
+    },
+    "CSE-22": {
+        "Monday": {
+            "8-9": {
+                "subject": "CC",
+                "room": "C25-A-311"
+            },
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-311"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-A-311"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-011"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-202(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-202(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-208"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-208"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "CC",
+                "room": "C25-B-106"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-106"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-207"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-207"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-108"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-108"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-203(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-203(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-203(L)"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-101"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-101"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-207"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-207"
+            }
+        }
+    },
+    "CSE-23": {
+        "Monday": {
+            "8-9": {
+                "subject": "UHV",
+                "room": "C25-A-313"
+            },
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-313"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-313"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-101"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-101"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-101"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-101"
+            }
+        },
+        "Wednesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-206"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-112(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-112(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-208"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-208"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "CC",
+                "room": "C25-B-109"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-109"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-113"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-113"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-106"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-B-106"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-112(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-112(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-112(L)"
+            }
+        }
+    },
+    "CSE-24": {
+        "Monday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-019"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-019"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-104(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-104(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-104(L)"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-B-106"
+            },
+            "9-10": {
+                "subject": "CC",
+                "room": "C25-B-106"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-106"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "CC",
+                "room": "C25-B-107"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-107"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-209"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-209"
+            }
+        },
+        "Thursday": {
+            "8-9": {
+                "subject": "AI",
+                "room": "C25-A-008"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-103(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-103(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-201"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-201"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-107"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-107"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-208"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-208"
+            }
+        }
+    },
+    "CSE-25": {
+        "Monday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-101"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-101"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-113"
+            },
+            "12-1": {
+                "subject": "SPM",
+                "room": "C25-A-113"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-007"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-A-007"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-112(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-112(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-112(L)"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-108"
+            },
+            "10-11": {
+                "subject": "SPM",
+                "room": "C25-B-108"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-115"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-115"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-110"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-110"
+            },
+            "11-12": {
+                "subject": "SPM",
+                "room": "C25-A-206"
+            },
+            "12-1": {
+                "subject": "UHV",
+                "room": "C25-A-206"
+            },
+            "1-2": {
+                "subject": "AI",
+                "room": "C25-A-206"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-011"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-202(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-202(L)"
+            }
+        }
+    },
+    "CSE-26": {
+        "Monday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-301"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-212(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-212(L)"
+            },
+            "11-12": {
+                "subject": "SPM",
+                "room": "C25-A-201"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-201"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "SPM",
+                "room": "C25-B-108"
+            },
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-108"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-108"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-207"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-204(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-204(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-204(L)"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-B-119"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-119"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-207"
+            },
+            "12-1": {
+                "subject": "SPM",
+                "room": "C25-A-207"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-108"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-108"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-209"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-209"
+            }
+        }
+    },
+    "CSE-27": {
+        "Monday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-B-106"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-106"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-206"
+            },
+            "12-1": {
+                "subject": "SPM",
+                "room": "C25-A-206"
+            }
+        },
+        "Tuesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-208"
+            },
+            "12-1": {
+                "subject": "AI(L)",
+                "room": "C25-A-202(L)"
+            },
+            "1-2": {
+                "subject": "AI(L)",
+                "room": "C25-A-202(L)"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "SPM",
+                "room": "C25-B-110"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-110"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-211"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-211"
+            }
+        },
+        "Thursday": {
+            "8-9": {
+                "subject": "AD",
+                "room": "C25-A-104(L)"
+            },
+            "9-10": {
+                "subject": "AD(L)",
+                "room": "C25-A-104(L)"
+            },
+            "10-11": {
+                "subject": "AD(L)",
+                "room": "C25-A-104(L)"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-208"
+            },
+            "12-1": {
+                "subject": "SPM",
+                "room": "C25-A-208"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-109"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-109"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-210"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-210"
+            }
+        }
+    },
+    "CSE-28": {
+        "Monday": {
+            "8-9": {
+                "subject": "SPM",
+                "room": "C25-B-207"
+            },
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-207"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-207"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-207"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "SPM",
+                "room": "C25-B-110"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-110"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-107"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-107"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-202(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-202(L)"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-213"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-213"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "SPM",
+                "room": "C25-B-201"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-201"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-209"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-209"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-110"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-110"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-202(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-202(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-202(L)"
+            }
+        }
+    },
+    "CSE-29": {
+        "Monday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-112(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-112(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-112(L)"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-119"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-119"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-211"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-211"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-119"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-119"
+            },
+            "11-12": {
+                "subject": "SPM",
+                "room": "C25-B-310"
+            }
+        },
+        "Thursday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-010"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-112(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-112(L)"
+            },
+            "11-12": {
+                "subject": "SPM",
+                "room": "C25-A-210"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-210"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-119"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-119"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-211"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-211"
+            },
+            "1-2": {
+                "subject": "SPM",
+                "room": "C25-A-211"
+            }
+        }
+    },
+    "CSE-30": {
+        "Monday": {
+            "8-9": {
+                "subject": "AI",
+                "room": "C25-B-109"
+            },
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-109"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-109"
+            },
+            "11-12": {
+                "subject": "SPM",
+                "room": "C25-B-109"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-201"
+            },
+            "10-11": {
+                "subject": "SPM",
+                "room": "C25-B-201"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-203(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-203(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-203(L)"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "SPM",
+                "room": "C25-B-201"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-201"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-301"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-301"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-B-206"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-206"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-309"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-201"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-201"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-310"
+            },
+            "12-1": {
+                "subject": "AI(L)",
+                "room": "C25-A-203(L)"
+            },
+            "1-2": {
+                "subject": "AI(L)",
+                "room": "C25-A-203(L)"
+            }
+        }
+    },
+    "CSE-31": {
+        "Monday": {
+            "8-9": {
+                "subject": "SPM",
+                "room": "C25-A-306"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-302(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-302(L)"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-108"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "9-10": {
+                "subject": "UHV",
+                "room": "C25-B-206"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-206"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-210"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-212(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-212(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-212(L)"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-207"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-207"
+            },
+            "11-12": {
+                "subject": "SPM",
+                "room": "C25-A-211"
+            },
+            "12-1": {
+                "subject": "UHV",
+                "room": "C25-A-211"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-206"
+            },
+            "10-11": {
+                "subject": "SPM",
+                "room": "C25-B-206"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-213"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-213"
+            },
+            "1-2": {
+                "subject": "AI",
+                "room": "C25-A-213"
+            }
+        }
+    },
+    "CSE-32": {
+        "Monday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-213"
+            },
+            "10-11": {
+                "subject": "SPM",
+                "room": "C25-A-213"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-213"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-101"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-203(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-203(L)"
+            },
+            "11-12": {
+                "subject": "SPM",
+                "room": "C25-A-213"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-213"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "UHV",
+                "room": "C25-B-207"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-207"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-306"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-306"
+            }
+        },
+        "Thursday": {
+            "8-9": {
+                "subject": "AD",
+                "room": "C25-A-202(L)"
+            },
+            "9-10": {
+                "subject": "AD(L)",
+                "room": "C25-A-202(L)"
+            },
+            "10-11": {
+                "subject": "AD(L)",
+                "room": "C25-A-202(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-213"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-213"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-207"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-207"
+            },
+            "11-12": {
+                "subject": "SPM",
+                "room": "C25-A-301"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-301"
+            }
+        }
+    },
+    "CSE-33": {
+        "Monday": {
+            "9-10": {
+                "subject": "SPM",
+                "room": "C25-B-119"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-119"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-207"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-207"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-B-207"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-207"
+            },
+            "11-12": {
+                "subject": "SPM",
+                "room": "C25-B-219"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-014"
+            },
+            "12-1": {
+                "subject": "AI(L)",
+                "room": "C25-A-302(L)"
+            },
+            "1-2": {
+                "subject": "AI(L)",
+                "room": "C25-A-302(L)"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-208"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-208"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-301"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-301"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "AD",
+                "room": "C25-A-203(L)"
+            },
+            "9-10": {
+                "subject": "AD(L)",
+                "room": "C25-A-203(L)"
+            },
+            "10-11": {
+                "subject": "AD(L)",
+                "room": "C25-A-203(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-306"
+            },
+            "12-1": {
+                "subject": "SPM",
+                "room": "C25-A-306"
+            }
+        }
+    },
+    "CSE-34": {
+        "Monday": {
+            "8-9": {
+                "subject": "AD",
+                "room": "C25-A-303(L)"
+            },
+            "9-10": {
+                "subject": "AD(L)",
+                "room": "C25-A-303(L)"
+            },
+            "10-11": {
+                "subject": "AD(L)",
+                "room": "C25-A-303(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-107"
+            },
+            "12-1": {
+                "subject": "SPM",
+                "room": "C25-B-107"
+            },
+            "1-2": {
+                "subject": "AI",
+                "room": "C25-B-107"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "UHV",
+                "room": "C25-B-208"
+            },
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-208"
+            },
+            "10-11": {
+                "subject": "SPM",
+                "room": "C25-B-208"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "SPM",
+                "room": "C25-B-209"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-209"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-307"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-307"
+            }
+        },
+        "Thursday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-310"
+            },
+            "12-1": {
+                "subject": "AI(L)",
+                "room": "C25-A-204(L)"
+            },
+            "1-2": {
+                "subject": "AI(L)",
+                "room": "C25-A-204(L)"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-208"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-208"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-307"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-307"
+            }
+        }
+    },
+    "CSE-35": {
+        "Monday": {
+            "8-9": {
+                "subject": "AI",
+                "room": "C25-B-201"
+            },
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-201"
+            },
+            "10-11": {
+                "subject": "SPM",
+                "room": "C25-B-201"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-201"
+            }
+        },
+        "Tuesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-204(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-204(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-204(L)"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "UHV",
+                "room": "C25-B-210"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-210"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-308"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-308"
+            }
+        },
+        "Thursday": {
+            "8-9": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "9-10": {
+                "subject": "SPM",
+                "room": "C25-B-210"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-210"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-306"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-106"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-204(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-204(L)"
+            },
+            "11-12": {
+                "subject": "SPM",
+                "room": "C25-A-308"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-308"
+            }
+        }
+    },
+    "CSE-36": {
+        "Monday": {
+            "8-9": {
+                "subject": "SPM",
+                "room": "C25-A-308"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-304(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-304(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-209"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-209"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-210"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-210"
+            },
+            "11-12": {
+                "subject": "HSE",
+                "room": "TBD"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-219"
+            },
+            "10-11": {
+                "subject": "SPM",
+                "room": "C25-B-219"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-309"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-309"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-B-219"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-219"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-307"
+            },
+            "12-1": {
+                "subject": "SPM",
+                "room": "C25-A-307"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "AD",
+                "room": "C25-A-212(L)"
+            },
+            "9-10": {
+                "subject": "AD(L)",
+                "room": "C25-A-212(L)"
+            },
+            "10-11": {
+                "subject": "AD(L)",
+                "room": "C25-A-212(L)"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-309"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-309"
+            }
+        }
+    },
+    "CSE-37": {
+        "Monday": {
+            "8-9": {
+                "subject": "AI",
+                "room": "C25-B-206"
+            },
+            "9-10": {
+                "subject": "NLP",
+                "room": "C25-B-206"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-206"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-106"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-204(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-204(L)"
+            },
+            "11-12": {
+                "subject": "HSE",
+                "room": "TBD"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-301"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-301"
+            },
+            "11-12": {
+                "subject": "NLP",
+                "room": "C25-A-310"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-310"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-301"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-301"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-212(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-212(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-212(L)"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "9-10": {
+                "subject": "UHV",
+                "room": "C25-B-209"
+            },
+            "10-11": {
+                "subject": "NLP",
+                "room": "C25-B-209"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-310"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-310"
+            }
+        }
+    },
+    "CSE-38": {
+        "Monday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-107"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-107"
+            },
+            "11-12": {
+                "subject": "NLP",
+                "room": "C25-A-010"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-010"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "NLP",
+                "room": "C25-B-219"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-219"
+            },
+            "11-12": {
+                "subject": "HSE",
+                "room": "TBD"
+            }
+        },
+        "Wednesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-207"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-203(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-203(L)"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-311"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-311"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-B-306"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-306"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-308"
+            },
+            "12-1": {
+                "subject": "NLP",
+                "room": "C25-A-308"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-210"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-210"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-204(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-204(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-204(L)"
+            }
+        }
+    },
+    "CSE-39": {
+        "Monday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-208"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-208"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-202(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-202(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-202(L)"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-301"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-301"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-301"
+            },
+            "12-1": {
+                "subject": "NLP",
+                "room": "C25-A-301"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-310"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-A-310"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-313"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-A-313"
+            }
+        },
+        "Thursday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-101"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-203(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-203(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-309"
+            },
+            "12-1": {
+                "subject": "NLP",
+                "room": "C25-A-309"
+            }
+        },
+        "Friday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "NLP",
+                "room": "C25-A-311"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-311"
+            }
+        }
+    },
+    "CSE-40": {
+        "Monday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-B-209"
+            },
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-B-209"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-209"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "AD",
+                "room": "C25-A-212(L)"
+            },
+            "9-10": {
+                "subject": "AD(L)",
+                "room": "C25-A-212(L)"
+            },
+            "10-11": {
+                "subject": "AD(L)",
+                "room": "C25-A-212(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-306"
+            },
+            "12-1": {
+                "subject": "NLP",
+                "room": "C25-A-306"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "NLP",
+                "room": "C25-B-307"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-307"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-019"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-019"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-307"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-307"
+            },
+            "11-12": {
+                "subject": "NLP",
+                "room": "C25-A-310"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-310"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-301"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-301"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-014"
+            },
+            "12-1": {
+                "subject": "AI(L)",
+                "room": "C25-A-212(L)"
+            },
+            "1-2": {
+                "subject": "AI(L)",
+                "room": "C25-A-212(L)"
+            }
+        }
+    },
+    "CSE-41": {
+        "Monday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-210"
+            },
+            "10-11": {
+                "subject": "NLP",
+                "room": "C25-B-210"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-210"
+            },
+            "12-1": {
+                "subject": "AI(L)",
+                "room": "C25-A-203(L)"
+            },
+            "1-2": {
+                "subject": "AI(L)",
+                "room": "C25-A-203(L)"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-306"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-306"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-310"
+            }
+        },
+        "Wednesday": {
+            "8-9": {
+                "subject": "AD",
+                "room": "C25-A-204(L)"
+            },
+            "9-10": {
+                "subject": "AD(L)",
+                "room": "C25-A-204(L)"
+            },
+            "10-11": {
+                "subject": "AD(L)",
+                "room": "C25-A-204(L)"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-B-101"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-B-101"
+            }
+        },
+        "Thursday": {
+            "8-9": {
+                "subject": "HSE",
+                "room": "C25-B-308"
+            },
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-B-308"
+            },
+            "10-11": {
+                "subject": "NLP",
+                "room": "C25-B-308"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-014"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-306"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-306"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-313"
+            },
+            "12-1": {
+                "subject": "NLP",
+                "room": "C25-A-313"
+            }
+        }
+    },
+    "CSE-42": {
+        "Monday": {
+            "9-10": {
+                "subject": "NLP",
+                "room": "C25-B-219"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-219"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-219"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-B-219"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-108"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-302(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-302(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-307"
+            },
+            "12-1": {
+                "subject": "NLP",
+                "room": "C25-A-307"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-B-308"
+            },
+            "10-11": {
+                "subject": "NLP",
+                "room": "C25-B-308"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-106"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-106"
+            }
+        },
+        "Thursday": {
+            "8-9": {
+                "subject": "AD",
+                "room": "C25-A-204(L)"
+            },
+            "9-10": {
+                "subject": "AD(L)",
+                "room": "C25-A-204(L)"
+            },
+            "10-11": {
+                "subject": "AD(L)",
+                "room": "C25-A-204(L)"
+            },
+            "11-12": {
+                "subject": "HSE",
+                "room": "TBD"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "9-10": {
+                "subject": "UHV",
+                "room": "C25-B-307"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-307"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-015"
+            }
+        }
+    },
+    "CSE-43": {
+        "Monday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-B-301"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-301"
+            },
+            "11-12": {
+                "subject": "NLP",
+                "room": "C25-A-009"
+            },
+            "12-1": {
+                "subject": "UHV",
+                "room": "C25-A-009"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-307"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-307"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-313"
+            },
+            "12-1": {
+                "subject": "NLP",
+                "room": "C25-B-313"
+            }
+        },
+        "Wednesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-209"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-212(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-212(L)"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-B-107"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-107"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-309"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-309"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-311"
+            },
+            "12-1": {
+                "subject": "NLP",
+                "room": "C25-A-311"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "AD",
+                "room": "C25-A-302(L)"
+            },
+            "9-10": {
+                "subject": "AD(L)",
+                "room": "C25-A-302(L)"
+            },
+            "10-11": {
+                "subject": "AD(L)",
+                "room": "C25-A-302(L)"
+            },
+            "11-12": {
+                "subject": "HSE",
+                "room": "TBD"
+            }
+        }
+    },
+    "CSE-44": {
+        "Monday": {
+            "8-9": {
+                "subject": "AD",
+                "room": "C25-A-312(L)"
+            },
+            "9-10": {
+                "subject": "AD(L)",
+                "room": "C25-A-312(L)"
+            },
+            "10-11": {
+                "subject": "AD(L)",
+                "room": "C25-A-312(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-101"
+            },
+            "12-1": {
+                "subject": "NLP",
+                "room": "C25-A-101"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "NLP",
+                "room": "C25-B-308"
+            },
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-308"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-308"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-319"
+            }
+        },
+        "Wednesday": {
+            "8-9": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "9-10": {
+                "subject": "NLP",
+                "room": "C25-B-309"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-309"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-108"
+            },
+            "12-1": {
+                "subject": "AI(L)",
+                "room": "C25-A-102(L)"
+            },
+            "1-2": {
+                "subject": "AI(L)",
+                "room": "C25-A-102(L)"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-310"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-310"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-A-016"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-308"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-308"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-114"
+            }
+        }
+    },
+    "CSE-45": {
+        "Monday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-306"
+            },
+            "10-11": {
+                "subject": "NLP",
+                "room": "C25-B-306"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-306"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-B-306"
+            }
+        },
+        "Tuesday": {
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-008"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-212(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-212(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-212(L)"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "NLP",
+                "room": "C25-B-310"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-310"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-109"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-109"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-319"
+            },
+            "10-11": {
+                "subject": "NLP",
+                "room": "C25-B-319"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-A-313"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-A-313"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-109"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-303(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-303(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-019"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-B-019"
+            }
+        }
+    },
+    "CSE-46": {
+        "Monday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-310"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-B-003(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-B-003(L)"
+            },
+            "11-12": {
+                "subject": "CV",
+                "room": "C25-A-106"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-A-106"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-310"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-310"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-113"
+            },
+            "12-1": {
+                "subject": "CV",
+                "room": "C25-A-113"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-303(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-303(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-303(L)"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-014"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-014"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-019"
+            },
+            "12-1": {
+                "subject": "CV",
+                "room": "C25-B-019"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-309"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-309"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-101"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-B-101"
+            }
+        }
+    },
+    "CSE-47": {
+        "Monday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-307"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-B-307"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-B-307"
+            },
+            "12-1": {
+                "subject": "CV",
+                "room": "C25-B-307"
+            }
+        },
+        "Tuesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-015"
+            },
+            "12-1": {
+                "subject": "AI(L)",
+                "room": "C25-A-302(L)"
+            },
+            "1-2": {
+                "subject": "AI(L)",
+                "room": "C25-A-302(L)"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "UHV",
+                "room": "C25-A-014"
+            },
+            "10-11": {
+                "subject": "CV",
+                "room": "C25-A-014"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-110"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-B-110"
+            },
+            "1-2": {
+                "subject": "HSE",
+                "room": "TBD"
+            }
+        },
+        "Thursday": {
+            "8-9": {
+                "subject": "AD",
+                "room": "C25-A-212(L)"
+            },
+            "9-10": {
+                "subject": "AD(L)",
+                "room": "C25-A-212(L)"
+            },
+            "10-11": {
+                "subject": "AD(L)",
+                "room": "C25-A-212(L)"
+            },
+            "11-12": {
+                "subject": "CV",
+                "room": "C25-B-101"
+            },
+            "12-1": {
+                "subject": "AI",
+                "room": "C25-B-101"
+            },
+            "1-2": {
+                "subject": "ML",
+                "room": "C25-B-101"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-B-310"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-310"
+            }
+        }
+    },
+    "CSE-48": {
+        "Monday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-B-308"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-B-308"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-308"
+            },
+            "12-1": {
+                "subject": "CV",
+                "room": "C25-B-308"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-014"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-014"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-307"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-307"
+            }
+        },
+        "Wednesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-210"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-302(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-302(L)"
+            },
+            "11-12": {
+                "subject": "HSE",
+                "room": "TBD"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "AI",
+                "room": "C25-A-015"
+            },
+            "10-11": {
+                "subject": "CV",
+                "room": "C25-A-015"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-106"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-106"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "CV",
+                "room": "C25-B-319"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-319"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-A-302(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-A-302(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-A-302(L)"
+            }
+        }
+    },
+    "IT-01": {
+        "Monday": {
+            "9-10": {
+                "subject": "DA(L)",
+                "room": "C25-B-004(L)"
+            },
+            "10-11": {
+                "subject": "DA(L)",
+                "room": "C25-B-004(L)"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-B-301"
+            },
+            "12-1": {
+                "subject": "DSA",
+                "room": "C25-B-301"
+            },
+            "1-2": {
+                "subject": "ML",
+                "room": "C25-B-301"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-015"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-015"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-311"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-A-311"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "DSA",
+                "room": "C25-A-015"
+            },
+            "11-12": {
+                "subject": "AP",
+                "room": "C25-A-304(L)"
+            },
+            "12-1": {
+                "subject": "AP(L)",
+                "room": "C25-A-304(L)"
+            },
+            "1-2": {
+                "subject": "AP(L)",
+                "room": "C25-A-304(L)"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-016"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-A-016"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-107"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-B-107"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-014"
+            },
+            "10-11": {
+                "subject": "DSA",
+                "room": "C25-A-014"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-107"
+            },
+            "12-1": {
+                "subject": "ML",
+                "room": "C25-B-107"
+            }
+        }
+    },
+    "IT-02": {
+        "Monday": {
+            "9-10": {
+                "subject": "DSA",
+                "room": "C25-B-309"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-B-309"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-309"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-109"
+            },
+            "9-10": {
+                "subject": "DA(L)",
+                "room": "C25-A-303(L)"
+            },
+            "10-11": {
+                "subject": "DA(L)",
+                "room": "C25-A-303(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-215"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-B-215"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "DSA",
+                "room": "C25-A-016"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-016"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-119"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-119"
+            }
+        },
+        "Thursday": {
+            "8-9": {
+                "subject": "AP",
+                "room": "C25-A-302(L)"
+            },
+            "9-10": {
+                "subject": "AP(L)",
+                "room": "C25-A-302(L)"
+            },
+            "10-11": {
+                "subject": "AP(L)",
+                "room": "C25-A-302(L)"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-B-108"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-108"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "DSA",
+                "room": "C25-A-015"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-015"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-108"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-108"
+            }
+        }
+    },
+    "IT-03": {
+        "Monday": {
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-B-310"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-310"
+            },
+            "12-1": {
+                "subject": "DSA",
+                "room": "C25-B-310"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-016"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-016"
+            },
+            "11-12": {
+                "subject": "DSA",
+                "room": "C25-B-019"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-B-019"
+            }
+        },
+        "Wednesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-211"
+            },
+            "9-10": {
+                "subject": "DA(L)",
+                "room": "C25-A-303(L)"
+            },
+            "10-11": {
+                "subject": "DA(L)",
+                "room": "C25-A-303(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-201"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-201"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-114"
+            },
+            "10-11": {
+                "subject": "DSA",
+                "room": "C25-A-114"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-109"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-B-109"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-016"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-016"
+            },
+            "11-12": {
+                "subject": "AP",
+                "room": "C25-A-303(L)"
+            },
+            "12-1": {
+                "subject": "AP(L)",
+                "room": "C25-A-303(L)"
+            },
+            "1-2": {
+                "subject": "AP(L)",
+                "room": "C25-A-303(L)"
+            }
+        }
+    },
+    "IT-04": {
+        "Monday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AP",
+                "room": "C25-A-204(L)"
+            },
+            "12-1": {
+                "subject": "AP(L)",
+                "room": "C25-A-204(L)"
+            },
+            "1-2": {
+                "subject": "AP(L)",
+                "room": "C25-A-204(L)"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "SPM",
+                "room": "C25-A-114"
+            },
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-114"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-A-114"
+            },
+            "11-12": {
+                "subject": "DSA",
+                "room": "C25-A-016"
+            }
+        },
+        "Wednesday": {
+            "8-9": {
+                "subject": "UHV",
+                "room": "C25-A-114"
+            },
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-114"
+            },
+            "10-11": {
+                "subject": "SPM",
+                "room": "C25-A-114"
+            },
+            "11-12": {
+                "subject": "HSE",
+                "room": "TBD"
+            }
+        },
+        "Thursday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-109"
+            },
+            "9-10": {
+                "subject": "DA(L)",
+                "room": "C25-A-303(L)"
+            },
+            "10-11": {
+                "subject": "DA(L)",
+                "room": "C25-A-303(L)"
+            },
+            "11-12": {
+                "subject": "SPM",
+                "room": "C25-B-110"
+            },
+            "12-1": {
+                "subject": "DSA",
+                "room": "C25-B-110"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-114"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-114"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-109"
+            },
+            "12-1": {
+                "subject": "DSA",
+                "room": "C25-B-109"
+            }
+        }
+    },
+    "IT-05": {
+        "Monday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-014"
+            },
+            "10-11": {
+                "subject": "DSA",
+                "room": "C25-A-014"
+            },
+            "11-12": {
+                "subject": "SPM",
+                "room": "C25-A-110"
+            },
+            "12-1": {
+                "subject": "UHV",
+                "room": "C25-A-110"
+            }
+        },
+        "Tuesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AP",
+                "room": "C25-A-303(L)"
+            },
+            "12-1": {
+                "subject": "AP(L)",
+                "room": "C25-A-303(L)"
+            },
+            "1-2": {
+                "subject": "AP(L)",
+                "room": "C25-A-303(L)"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "DSA",
+                "room": "C25-A-115"
+            },
+            "10-11": {
+                "subject": "SPM",
+                "room": "C25-A-115"
+            },
+            "11-12": {
+                "subject": "ML",
+                "room": "C25-B-206"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-206"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-115"
+            },
+            "10-11": {
+                "subject": "ML",
+                "room": "C25-A-115"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-119"
+            },
+            "12-1": {
+                "subject": "SPM",
+                "room": "C25-B-119"
+            },
+            "1-2": {
+                "subject": "DSA",
+                "room": "C25-B-119"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-110"
+            },
+            "9-10": {
+                "subject": "DA(L)",
+                "room": "C25-A-304(L)"
+            },
+            "10-11": {
+                "subject": "DA(L)",
+                "room": "C25-A-304(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-322"
+            }
+        }
+    },
+    "CSCE-01": {
+        "Monday": {
+            "8-9": {
+                "subject": "WMC",
+                "room": "C12-WCN(Lab)"
+            },
+            "9-10": {
+                "subject": "WCN(L)",
+                "room": "C12-WCN(Lab)"
+            },
+            "10-11": {
+                "subject": "WCN(L)",
+                "room": "C12-WCN(Lab)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C12-A-17"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-116"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-A-116"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-B-101"
+            },
+            "12-1": {
+                "subject": "BC",
+                "room": "C25-B-101"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AP",
+                "room": "C25-A-312(L)"
+            },
+            "12-1": {
+                "subject": "AP(L)",
+                "room": "C25-A-312(L)"
+            },
+            "1-2": {
+                "subject": "AP(L)",
+                "room": "C25-A-312(L)"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "WMC",
+                "room": "C25-A-116"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-116"
+            },
+            "11-12": {
+                "subject": "BC",
+                "room": "C25-A-114"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "9-10": {
+                "subject": "CC",
+                "room": "C25-A-115"
+            },
+            "10-11": {
+                "subject": "BC",
+                "room": "C25-A-115"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-110"
+            },
+            "12-1": {
+                "subject": "WMC",
+                "room": "C25-B-110"
+            }
+        }
+    },
+    "CSCE-02": {
+        "Monday": {
+            "8-9": {
+                "subject": "UHV",
+                "room": "C25-A-015"
+            },
+            "9-10": {
+                "subject": "CC",
+                "room": "C25-A-015"
+            },
+            "10-11": {
+                "subject": "WMC",
+                "room": "C25-A-015"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "WMC",
+                "room": "C12-WCN(Lab)"
+            },
+            "9-10": {
+                "subject": "WCN(L)",
+                "room": "C12-WCN(Lab)"
+            },
+            "10-11": {
+                "subject": "WCN(L)",
+                "room": "C12-WCN(Lab)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C12-A-17"
+            },
+            "12-1": {
+                "subject": "BC",
+                "room": "C12-A-17"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-118"
+            },
+            "11-12": {
+                "subject": "BC",
+                "room": "C25-B-207"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-207"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-118"
+            },
+            "10-11": {
+                "subject": "WMC",
+                "room": "C25-A-118"
+            },
+            "11-12": {
+                "subject": "AP",
+                "room": "C25-A-303(L)"
+            },
+            "12-1": {
+                "subject": "AP(L)",
+                "room": "C25-A-303(L)"
+            },
+            "1-2": {
+                "subject": "AP(L)",
+                "room": "C25-A-303(L)"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-116"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-116"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-119"
+            },
+            "12-1": {
+                "subject": "BC",
+                "room": "C25-B-119"
+            }
+        }
+    },
+    "CSCE-03": {
+        "Monday": {
+            "9-10": {
+                "subject": "WMC",
+                "room": "C25-A-016"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-016"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-311"
+            },
+            "12-1": {
+                "subject": "ASD",
+                "room": "C25-A-311"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-118"
+            },
+            "10-11": {
+                "subject": "ASD",
+                "room": "C25-A-118"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-107"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-B-107"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "WMC",
+                "room": "C12-WCN(Lab)"
+            },
+            "12-1": {
+                "subject": "WCN(L)",
+                "room": "C12-WCN(Lab)"
+            },
+            "1-2": {
+                "subject": "WCN(L)",
+                "room": "C12-WCN(Lab)"
+            }
+        },
+        "Thursday": {
+            "8-9": {
+                "subject": "CC",
+                "room": "C25-A-113"
+            },
+            "9-10": {
+                "subject": "WMC",
+                "room": "C25-A-113"
+            },
+            "10-11": {
+                "subject": "HSE",
+                "room": "C25-A-113"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "AP",
+                "room": "C25-A-312(L)"
+            },
+            "9-10": {
+                "subject": "AP(L)",
+                "room": "C25-A-312(L)"
+            },
+            "10-11": {
+                "subject": "AP(L)",
+                "room": "C25-A-312(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-201"
+            },
+            "12-1": {
+                "subject": "ASD",
+                "room": "C25-B-201"
+            }
+        }
+    },
+    "CSSE-01": {
+        "Monday": {
+            "9-10": {
+                "subject": "AAM(L)",
+                "room": "C12-Micro_proc(Lab)"
+            },
+            "10-11": {
+                "subject": "AAM(L)",
+                "room": "C12-Micro_proc(Lab)"
+            },
+            "11-12": {
+                "subject": "DMDW",
+                "room": "C12-A-18"
+            },
+            "12-1": {
+                "subject": "CD",
+                "room": "C12-A-18"
+            },
+            "1-2": {
+                "subject": "AAM",
+                "room": "C12-A-18"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-111"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-A-111"
+            },
+            "11-12": {
+                "subject": "DMDW",
+                "room": "C25-B-316"
+            },
+            "12-1": {
+                "subject": "AAM",
+                "room": "C25-B-316"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AP",
+                "room": "C25-A-003(L)"
+            },
+            "12-1": {
+                "subject": "AP(L)",
+                "room": "C25-A-003(L)"
+            },
+            "1-2": {
+                "subject": "AP(L)",
+                "room": "C25-A-003(L)"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "CD",
+                "room": "C25-A-111"
+            },
+            "10-11": {
+                "subject": "AAM",
+                "room": "C25-A-111"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-315"
+            },
+            "12-1": {
+                "subject": "DMDW",
+                "room": "C25-B-315"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-111"
+            },
+            "10-11": {
+                "subject": "CD",
+                "room": "C25-A-111"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-206"
+            }
+        }
+    },
+    "CSSE-02": {
+        "Monday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AP",
+                "room": "C25-A-003(L)"
+            },
+            "12-1": {
+                "subject": "AP(L)",
+                "room": "C25-A-003(L)"
+            },
+            "1-2": {
+                "subject": "AP(L)",
+                "room": "C25-A-003(L)"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "AAM(L)",
+                "room": "C12-Micro_proc(Lab)"
+            },
+            "10-11": {
+                "subject": "AAM(L)",
+                "room": "C12-Micro_proc(Lab)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C12-A-18"
+            },
+            "12-1": {
+                "subject": "DMDW",
+                "room": "C12-A-18"
+            },
+            "1-2": {
+                "subject": "AAM",
+                "room": "C12-A-18"
+            }
+        },
+        "Wednesday": {
+            "9-10": {
+                "subject": "DMDW",
+                "room": "C25-A-113"
+            },
+            "10-11": {
+                "subject": "AAM",
+                "room": "C25-A-113"
+            },
+            "11-12": {
+                "subject": "CD",
+                "room": "C25-B-210"
+            },
+            "12-1": {
+                "subject": "HSE",
+                "room": "C25-B-210"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-113"
+            },
+            "10-11": {
+                "subject": "CD",
+                "room": "C25-A-113"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-015"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "AAM",
+                "room": "C25-A-113"
+            },
+            "10-11": {
+                "subject": "CD",
+                "room": "C25-A-113"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-017"
+            },
+            "12-1": {
+                "subject": "DMDW",
+                "room": "C25-B-017"
+            }
+        }
+    },
+    "CSSE-03": {
+        "Monday": {
+            "8-9": {
+                "subject": "ASD",
+                "room": "C25-A-113"
+            },
+            "9-10": {
+                "subject": "AAM",
+                "room": "C25-A-113"
+            },
+            "10-11": {
+                "subject": "CD",
+                "room": "C25-A-113"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-B-019"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-113"
+            },
+            "10-11": {
+                "subject": "CD",
+                "room": "C25-A-113"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-008"
+            },
+            "12-1": {
+                "subject": "ASD",
+                "room": "C25-A-008"
+            }
+        },
+        "Wednesday": {
+            "10-11": {
+                "subject": "HSE",
+                "room": "TBD"
+            },
+            "11-12": {
+                "subject": "AAM",
+                "room": "C12-Micro_proc(Lab)"
+            },
+            "12-1": {
+                "subject": "AAM(L)",
+                "room": "C12-Micro_proc(Lab)"
+            },
+            "1-2": {
+                "subject": "AAM(L)",
+                "room": "C12-Micro_proc(Lab)"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "HSE",
+                "room": "C25-A-201"
+            },
+            "10-11": {
+                "subject": "CD",
+                "room": "C25-A-201"
+            },
+            "11-12": {
+                "subject": "ASD",
+                "room": "C25-B-206"
+            }
+        },
+        "Friday": {
+            "8-9": {
+                "subject": "AP",
+                "room": "C25-A-003(L)"
+            },
+            "9-10": {
+                "subject": "AP(L)",
+                "room": "C25-A-003(L)"
+            },
+            "10-11": {
+                "subject": "AP(L)",
+                "room": "C25-A-003(L)"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-007"
+            },
+            "12-1": {
+                "subject": "AAM",
+                "room": "C25-A-007"
+            }
+        }
+    }
+}
