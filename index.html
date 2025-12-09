@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON File Viewer</title>
+    <title>KampusVibes DB</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>JSON Data Viewer</h1>
+        <div class="branding">
+            <h1>KampusVibes DB</h1>
+            <p class="subtitle">Klasses files</p>
+        </div>
     </header>
     <div class="container">
-        <div class="sidebar" id="fileList">
-            <!-- File items will be injected here -->
+        <div class="sidebar">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search files..." autocomplete="off">
+            </div>
+            <div id="fileList" class="file-list">
+                <!-- File items will be injected here -->
+            </div>
         </div>
         <main class="main-content">
             <div id="viewerHeader" class="viewer-header" style="display: none;">

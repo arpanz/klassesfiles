@@ -1,38 +1,71 @@
 let currentFile = null;
 let currentData = null;
+let allFiles = [];
 
 async function init() {
     const fileList = document.getElementById('fileList');
+    const searchInput = document.getElementById('searchInput');
     
     try {
         // Fetch the list of files from files.json
         const response = await fetch('files.json');
         if (!response.ok) throw new Error('Failed to load file list');
-        const files = await response.json();
+        allFiles = await response.json();
 
-        files.forEach(file => {
-            const div = document.createElement('div');
-            div.className = 'file-item';
-            div.innerHTML = `
-                <span class="file-name">${file}</span>
-                <div class="actions">
-                    <button class="btn-icon" onclick="event.stopPropagation(); downloadFile('${file}')" title="Download">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    </button>
-                </div>
-            `;
-            div.onclick = () => loadFile(file, div);
-            fileList.appendChild(div);
+        // Initial render
+        renderFiles(allFiles);
+
+        // Add search listener
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredFiles = allFiles.filter(file => 
+                file.toLowerCase().includes(searchTerm)
+            );
+            renderFiles(filteredFiles);
         });
+
     } catch (error) {
         console.error(error);
         fileList.innerHTML = `<div style="padding: 1rem; color: #ef4444;">Error loading file list: ${error.message}</div>`;
     }
 }
 
+function renderFiles(filesToRender) {
+    const fileList = document.getElementById('fileList');
+    fileList.innerHTML = ''; // Clear current list
+
+    if (filesToRender.length === 0) {
+        fileList.innerHTML = `<div style="padding: 1rem; color: #64748b; text-align: center;">No files found</div>`;
+        return;
+    }
+
+    filesToRender.forEach(file => {
+        const div = document.createElement('div');
+        div.className = 'file-item';
+        if (file === currentFile) {
+            div.classList.add('active');
+        }
+        
+        div.innerHTML = `
+            <span class="file-name">${file}</span>
+            <div class="actions">
+                <button class="btn-icon" onclick="event.stopPropagation(); downloadFile('${file}')" title="Download">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                </button>
+            </div>
+        `;
+        div.onclick = () => loadFile(file, div);
+        fileList.appendChild(div);
+    });
+}
+
 async function loadFile(filename, element) {
     // Update UI selection
+    // Note: We need to re-query because the list might have been re-rendered
     document.querySelectorAll('.file-item').forEach(el => el.classList.remove('active'));
+    
+    // If element is passed (from click), use it. 
+    // If not (e.g. programmatic), we might need to find it, but for now click is main entry.
     if(element) element.classList.add('active');
 
     try {
