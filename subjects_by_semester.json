@@ -1,0 +1,94 @@
+{
+    "4th Semester": {
+        "CSCE": [
+            "DBMS",
+            "DBMS(L)",
+            "DM",
+            "EECO",
+            "IS",
+            "OOPJ",
+            "OOPJ(L)",
+            "OS",
+            "OS(L)",
+            "VT(L)"
+        ],
+        "CSE": [
+            "COA",
+            "DBMS",
+            "DBMS(L)",
+            "DM",
+            "ED|IOC|OB",
+            "OOPJ",
+            "OOPJ(L)",
+            "OS",
+            "OS(L)",
+            "VT(L)"
+        ],
+        "CSSE": [
+            "DBMS",
+            "DBMS(L)",
+            "DM",
+            "EECO",
+            "IND4",
+            "OS",
+            "OS(L)",
+            "PSS",
+            "VT(L)"
+        ],
+        "IT": [
+            "DBMS",
+            "DBMS(L)",
+            "DM",
+            "EECO",
+            "IND4",
+            "ITC",
+            "OS",
+            "OS(L)",
+            "VT(L)"
+        ]
+    },
+    "6th Semester": {
+        "CSCE": [
+            "AP",
+            "AP(L)",
+            "ASD",
+            "BC",
+            "CC",
+            "UHV",
+            "WCN(L)",
+            "WMC"
+        ],
+        "CSE": [
+            "AD",
+            "AD(L)",
+            "AI",
+            "AI(L)",
+            "CC",
+            "CV",
+            "ML",
+            "NLP",
+            "SPM",
+            "UHV"
+        ],
+        "CSSE": [
+            "AAM",
+            "AAM(L)",
+            "AP",
+            "AP(L)",
+            "ASD",
+            "CD",
+            "DMDW",
+            "UHV"
+        ],
+        "IT": [
+            "AP",
+            "AP(L)",
+            "CC",
+            "DA(L)",
+            "DSA",
+            "ML",
+            "SPM",
+            "UHV"
+        ]
+    }
+}
