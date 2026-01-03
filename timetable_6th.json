@@ -457,6 +457,10 @@
             }
         },
         "Wednesday": {
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-009"
+            },
             "11-12": {
                 "subject": "AD",
                 "room": "C25-B-303(L)"
@@ -471,10 +475,6 @@
             }
         },
         "Thursday": {
-            "9-10": {
-                "subject": "CC",
-                "room": "C25-A-210"
-            },
             "10-11": {
                 "subject": "ML",
                 "room": "C25-A-210"
@@ -1513,6 +1513,10 @@
     },
     "CSE-19": {
         "Monday": {
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-109"
+            },
             "11-12": {
                 "subject": "UHV",
                 "room": "C25-A-109"
@@ -1549,10 +1553,6 @@
             }
         },
         "Wednesday": {
-            "8-9": {
-                "subject": "AI",
-                "room": "C25-A-313"
-            },
             "9-10": {
                 "subject": "ML",
                 "room": "C25-A-313"
