@@ -5483,10 +5483,6 @@
             }
         },
         "Tuesday": {
-            "9-10": {
-                "subject": "OOPJ",
-                "room": "C25-B-316"
-            },
             "10-11": {
                 "subject": "COA",
                 "room": "C25-B-316"
@@ -5531,8 +5527,12 @@
             }
         },
         "Thursday": {
-            "11-12": {
+            "10-11": {
                 "subject": "ED|IOC|OB",
+                "room": "C25-A-110"
+            },
+            "11-12": {
+                "subject": "OOPJ",
                 "room": "C25-B-220"
             },
             "12-1": {
