@@ -1,0 +1,67 @@
+name: Timetable Automation
+
+on:
+  workflow_dispatch:
+    inputs:
+      semester:
+        description: 'Semester (4 or 6)'
+        required: true
+      update_type:
+        description: 'Type (merge or replace)'
+        required: true
+        default: 'merge'
+      file_content:
+        description: 'Base64 Encoded File'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  process-timetable:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          # This ensures we are checking out the klassesfiles repo
+          # (Since this file lives there, this is the default behavior)
+          persist-credentials: true
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          pip install pandas openpyxl
+
+      - name: Decode and Save Input File
+        run: |
+          # Takes the Base64 string from inputs and saves it as a real file
+          echo "${{ inputs.file_content }}" | base64 -d > input_data.xlsx
+
+      - name: Run Processing Script
+        run: |
+          if [ "${{ inputs.semester }}" == "6" ]; then
+            python scripts/tt_script_6th.py input_data.xlsx ${{ inputs.update_type }}
+          else
+            python scripts/tt_script_4th.py input_data.xlsx ${{ inputs.update_type }}
+          fi
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "Timetable Bot"
+          git config user.email "bot@klasses.app"
+          
+          # Add all JSON files that might have changed
+          git add *.json
+          
+          # Commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Auto-update: Sem ${{ inputs.semester }} (${{ inputs.update_type }})"
+            git push
+          fi
