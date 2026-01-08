@@ -1,14 +1,11 @@
 import sys
 import json
-import re
 import pandas as pd
 from pathlib import Path
 
 # --- Configuration ---
 OUT_JSON = "timetable_4th.json"
-SRC_FILE = "timetable_input.xlsx"
-
-BLANK = {"", "X", "---", "nan"}
+BLANK = {"", "X", "---", "nan", "NaN"}
 
 day_map = {
     'MON': 'Monday', 'TUE': 'Tuesday', 'WED': 'Wednesday',
@@ -16,7 +13,6 @@ day_map = {
 }
 
 # 4th Sem Time Mapping
-# Format: (Time Slot, Room Column Name)
 time_to_room_map = [
     ('8-9',        'ROOM1'),
     ('9-10',       'ROOM2'),
@@ -33,27 +29,33 @@ time_to_room_map = [
 # --- Helper Functions ---
 
 def load_data(path: str) -> pd.DataFrame:
-    """Loads CSV or Excel file into a Pandas DataFrame."""
-    p = Path(path)
-    if p.suffix in ['.xls', '.xlsx']:
-        return pd.read_excel(p)
-    return pd.read_csv(p)
+    """Robust loader that tries Excel first, then CSV, regardless of extension."""
+    try:
+        # Try reading as Excel (default expectation)
+        return pd.read_excel(path)
+    except Exception:
+        # If that fails (e.g. it's actually a CSV disguised as .xlsx), try CSV
+        print("Excel read failed, trying CSV...")
+        return pd.read_csv(path)
 
 def build_json(df: pd.DataFrame) -> dict:
-    """Converts the DataFrame into the target JSON structure."""
     timetable = {}
 
     for _, row in df.iterrows():
-        section  = str(row.get('SECTION', '')).strip()
-        day_code = str(row.get('DAY', '')).strip().upper()
+        # FIX: Check for 'SECTION' OR 'Section' (Case insensitive safety)
+        section = str(row.get('SECTION') or row.get('Section') or '').strip()
+        
+        # FIX: Check for 'DAY' OR 'Day'
+        day_raw = str(row.get('DAY') or row.get('Day') or '').strip().upper()
 
-        if not section or not day_code:
+        if not section or not day_raw:
             continue
 
+        # Handle "MON(0)" -> "MON"
+        day_code = day_raw.split('(')[0].strip()
         day_full = day_map.get(day_code, day_code)
         
         day_dict = timetable.setdefault(section, {}).setdefault(day_full, {})
-
         last_room = None
 
         for slot, room_col in time_to_room_map:
@@ -77,7 +79,7 @@ def build_json(df: pd.DataFrame) -> dict:
 
             day_dict[slot] = entry
 
-    # Strip empty entries
+    # Clean empty entries
     clean_timetable = {
         sec: {d: s for d, s in days.items() if s}
         for sec, days in timetable.items()
@@ -88,36 +90,41 @@ def build_json(df: pd.DataFrame) -> dict:
 # --- Main Logic ---
 
 def main():
-    # 1. Handle Input File
     if len(sys.argv) > 1:
-        input_csv = sys.argv[1]
+        input_file = sys.argv[1]
     else:
-        input_csv = SRC_FILE
-
-    # 2. Process NEW Data (No PE3 map for 4th sem)
-    df = load_data(input_csv) #
-    new_data = build_json(df) #
-
-    # 3. SMART MERGE LOGIC
-    output_path = Path(OUT_JSON)
-    final_data = {}
+        print("Error: No input file provided.")
+        return
 
     mode = sys.argv[2] if len(sys.argv) > 2 else "merge"
+
+    print(f"Loading data from {input_file}...")
+    df = load_data(input_file)
+    new_data = build_json(df)
+    
+    print(f"Parsed {len(new_data)} sections from input file.")
+
+    output_path = Path(OUT_JSON)
+    final_data = {}
 
     if mode == "merge" and output_path.exists():
         try:
             with open(output_path, 'r', encoding='utf-8') as f:
                 existing_data = json.load(f)
+            
+            print(f"MERGE MODE: Found {len(existing_data)} existing sections.")
             existing_data.update(new_data)
             final_data = existing_data
-            print(f"Merged. Total sections: {len(final_data)}")
-        except:
+            print(f"Successfully merged. Total sections: {len(final_data)}")
+        except Exception as e:
+            print(f"Error reading existing file ({e}). Starting fresh.")
             final_data = new_data
     else:
+        print("REPLACE MODE: Overwriting/Creating new file.")
         final_data = new_data
 
-    # 4. Save
     output_path.write_text(json.dumps(final_data, indent=4), encoding='utf-8')
+    print(f"Saved to {OUT_JSON}")
 
 if __name__ == "__main__":
     main()
