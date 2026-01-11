@@ -46,8 +46,34 @@ def load_pe3_mapping(json_path: str):
         return {}
 
 def resolve_elective(subject_code, section, pe3_map):
-    if subject_code == "PE-3":
-        return pe3_map.get(section, subject_code)
+    # Normalize inputs for better matching
+    subj_norm = subject_code.upper().replace(" ", "")
+
+    # Helper to find elective from map using various key formats
+    elective = None
+    # Try exact match, no spaces, no hyphens
+    keys_to_try = [
+        section, 
+        section.replace(" ", ""), 
+        section.replace("-", ""),
+        section.replace(" ", "").replace("-", "")
+    ]
+    
+    for key in keys_to_try:
+        if key in pe3_map:
+            elective = pe3_map[key]
+            break
+    
+    # Case 1: Explicit PE-3 placeholder
+    if subj_norm in ["PE-3", "PE-III", "PE3", "PEIII"]:
+        return elective if elective else subject_code
+
+    # Case 2: Merged pipe-separated subjects (e.g. "CC|SPM|NLP|CV")
+    if "|" in subject_code:
+        options = [s.strip().upper() for s in subject_code.split("|")]
+        if elective and elective.upper() in options:
+            return elective
+            
     return subject_code
 
 def build_json(df: pd.DataFrame, pe3_map: dict) -> dict:
