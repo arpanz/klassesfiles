@@ -4466,7 +4466,8 @@
     "CSE-37": {
         "Monday": {
             "10-11": {
-                "subject": "DM"
+                "subject": "DM",
+                "room": "C25-B-122"
             },
             "11-12": {
                 "subject": "ED|IOC|OB",
@@ -4479,6 +4480,14 @@
             "1-2": {
                 "subject": "DBMS",
                 "room": "C25-B-122"
+            },
+            "4-5": {
+                "subject": "OOPJ(L)",
+                "room": "C25-A-304(L)"
+            },
+            "5-6": {
+                "subject": "OOPJ(L)",
+                "room": "C25-A-304(L)"
             }
         },
         "Tuesday": {
@@ -4496,15 +4505,15 @@
             },
             "11-12": {
                 "subject": "COA",
-                "room": "C25-B-216"
+                "room": "C25-B-301"
             },
             "12-1": {
                 "subject": "OS(L)",
-                "room": "C25-B-301"
+                "room": "C25-B-214(L)"
             },
             "1-2": {
                 "subject": "OS(L)",
-                "room": "C25-B-301"
+                "room": "C25-B-214(L)"
             }
         },
         "Wednesday": {
@@ -4518,7 +4527,7 @@
             },
             "11-12": {
                 "subject": "OOPJ",
-                "room": "C25-B-118(L)"
+                "room": "C25-B-313"
             },
             "12-1": {
                 "subject": "ED|IOC|OB",
@@ -4531,7 +4540,8 @@
         },
         "Thursday": {
             "10-11": {
-                "subject": "OOPJ"
+                "subject": "OOPJ",
+                "room": "C25-B-222"
             },
             "11-12": {
                 "subject": "DM",
@@ -4544,11 +4554,20 @@
             "1-2": {
                 "subject": "ED|IOC|OB",
                 "room": "C25-B-222"
+            },
+            "4-5": {
+                "subject": "OS",
+                "room": "C25-A-310"
+            },
+            "5-6": {
+                "subject": "COA",
+                "room": "C25-A-310"
             }
         },
         "Friday": {
             "10-11": {
-                "subject": "OOPJ"
+                "subject": "OOPJ",
+                "room": "C25-A-006"
             },
             "11-12": {
                 "subject": "COA",
@@ -4557,6 +4576,14 @@
             "12-1": {
                 "subject": "DM",
                 "room": "C25-A-006"
+            },
+            "3-4": {
+                "subject": "VT(L)",
+                "room": "C25-B-318(L)"
+            },
+            "4-5": {
+                "subject": "VT(L)",
+                "room": "C25-B-318(L)"
             }
         }
     },
