@@ -6,7 +6,7 @@ from pathlib import Path
 # --- Configuration ---
 OUT_JSON = "timetable_6th.json"
 PE3_DATA = "section_pe3_data.json"
-BLANK = {"", "X", "---", "nan", "NaN"}
+BLANK = {"", "X", "---", "nan", "NaN", "HSE"}
 
 day_map = {
     'MON': 'Monday', 'TUE': 'Tuesday', 'WED': 'Wednesday',
@@ -85,10 +85,7 @@ def build_json(df: pd.DataFrame, pe3_map: dict) -> dict:
                 last_room = room
             
             if room in BLANK:
-                if subject == "HSE":
-                    use_room = "TBD"
-                else:
-                    use_room = last_room if last_room else None
+                use_room = last_room if last_room else None
             else:
                 use_room = room
 
