@@ -3958,7 +3958,7 @@
                 "room": "C25-B-308"
             },
             "12-1": {
-                "subject": "CC|SPM|NLP|CV",
+                "subject": "CV",
                 "room": "C25-B-308"
             },
             "1-2": {
@@ -3973,7 +3973,7 @@
             },
             "10-11": {
                 "subject": "AI",
-                "room": "C25-B-307"
+                "room": "C25-A-014"
             },
             "11-12": {
                 "subject": "UHV",
@@ -4000,8 +4000,8 @@
                 "room": "C25-A-015"
             },
             "10-11": {
-                "subject": "CC|SPM|NLP|CV",
-                "room": "C25-B-106"
+                "subject": "CV",
+                "room": "C25-A-015"
             },
             "11-12": {
                 "subject": "UHV",
@@ -4010,12 +4010,12 @@
         },
         "Friday": {
             "9-10": {
-                "subject": "CC|SPM|NLP|CV",
+                "subject": "CV",
                 "room": "C25-B-319"
             },
             "10-11": {
                 "subject": "ML",
-                "room": "C25-A-302(L)"
+                "room": "C25-B-319"
             },
             "11-12": {
                 "subject": "AD",
