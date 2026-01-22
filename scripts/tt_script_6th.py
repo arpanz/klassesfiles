@@ -5,7 +5,7 @@ from pathlib import Path
 
 # --- Configuration ---
 OUT_JSON = "timetable_6th.json"
-PE3_DATA = "section_pe3_data.json"
+PE3_DATA = Path(__file__).parent / "section_pe3_data.json"
 BLANK = {"", "X", "---", "nan", "NaN", "HSE"}
 
 day_map = {
@@ -14,17 +14,9 @@ day_map = {
 }
 
 # 6th Sem Time Mapping
-time_to_room_map = [
-    ('8-9',        'ROOM1'),
-    ('9-10',       'ROOM2'),
-    ('10-11',      'ROOM3'),
-    ('11-12',      'ROOM4'),
-    ('12-1',       'ROOM5'),
-    ('1-2',        'ROOM6'),
-    ('2-3',        'ROOM7'),
-    ('3-4',        'ROOM8'),
-    ('4-5',        'ROOM9'),
-    ('5-6',        'ROOM10'),
+TIME_SLOTS = [
+    '8-9', '9-10', '10-11', '11-12', '12-1', '1-2', '2-3', 
+    '3.00-4.00', '4.00-5.00', '5.00-6.00'
 ]
 
 # --- Helper Functions ---
@@ -78,6 +70,17 @@ def resolve_elective(subject_code, section, pe3_map):
 
 def build_json(df: pd.DataFrame, pe3_map: dict) -> dict:
     timetable = {}
+    
+    # Dynamically build time_to_room_map based on column order
+    time_to_room_map = []
+    current_room_col = None
+    
+    for col in df.columns:
+        col_str = str(col).strip()
+        if "ROOM" in col_str.upper():
+            current_room_col = col_str
+        elif col_str in TIME_SLOTS and current_room_col:
+            time_to_room_map.append((col_str, current_room_col))
 
     for _, row in df.iterrows():
         # FIX: Check for 'SECTION' OR 'Section'
