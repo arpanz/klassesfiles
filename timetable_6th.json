@@ -170,11 +170,11 @@
     "CSE-03": {
         "Monday": {
             "9-10": {
-                "subject": "AI",
+                "subject": "ML",
                 "room": "C25-A-206"
             },
             "10-11": {
-                "subject": "ML",
+                "subject": "AI",
                 "room": "C25-A-206"
             }
         },
@@ -206,7 +206,7 @@
                 "room": "C25-A-003(L)"
             },
             "11-12": {
-                "subject": "CC",
+                "subject": "CC|SPM|NLP|CV",
                 "room": "C25-A-008"
             }
         },
@@ -224,7 +224,7 @@
                 "room": "C25-B-201"
             },
             "12-1": {
-                "subject": "CC",
+                "subject": "CC|SPM|NLP|CV",
                 "room": "C25-B-201"
             }
         },
@@ -234,20 +234,20 @@
                 "room": "C25-A-207"
             },
             "10-11": {
-                "subject": "CC",
+                "subject": "CC|SPM|NLP|CV",
                 "room": "C25-A-207"
             },
             "11-12": {
                 "subject": "AD",
-                "room": "C25-A-003(L)"
+                "room": "C25-B-102(L)"
             },
             "12-1": {
                 "subject": "AD(L)",
-                "room": "C25-A-003(L)"
+                "room": "C25-B-102(L)"
             },
             "1-2": {
                 "subject": "AD(L)",
-                "room": "C25-A-003(L)"
+                "room": "C25-B-102(L)"
             }
         }
     },
