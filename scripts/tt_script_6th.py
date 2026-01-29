@@ -1,11 +1,12 @@
 import sys
 import json
+import re
 import pandas as pd
 from pathlib import Path
 
 # --- Configuration ---
 OUT_JSON = "timetable_6th.json"
-PE3_DATA = Path(__file__).parent / "section_pe3_data.json"
+PE3_DATA = "section_pe3_data.json"
 BLANK = {"", "X", "---", "nan", "NaN", "HSE"}
 
 day_map = {
@@ -32,10 +33,19 @@ def load_data(path: str) -> pd.DataFrame:
 def load_pe3_mapping(json_path: str):
     try:
         text = Path(json_path).read_text(encoding='utf-8')
-        return json.loads(text)
+        data = json.loads(text)
+        # Normalize keys so they match the normalized sections from the Excel/CSV
+        return {normalize_section(k): v for k, v in data.items()}
     except FileNotFoundError:
         print(f"Warning: {json_path} not found.")
         return {}
+
+def normalize_section(section: str) -> str:
+    """Converts labels like 'cse-1' to 'cse-01' by padding single digit numbers."""
+    if not section:
+        return section
+    # Matches a single digit not preceded or followed by another digit
+    return re.sub(r'(?<!\d)(\d)(?!\d)', r'0\1', section)
 
 def resolve_elective(subject_code, section, pe3_map):
     # Normalize inputs for better matching
@@ -84,7 +94,8 @@ def build_json(df: pd.DataFrame, pe3_map: dict) -> dict:
 
     for _, row in df.iterrows():
         # FIX: Check for 'SECTION' OR 'Section'
-        section = str(row.get('SECTION') or row.get('Section') or '').strip()
+        section_raw = str(row.get('SECTION') or row.get('Section') or '').strip()
+        section = normalize_section(section_raw)
         
         # FIX: Check for 'DAY' OR 'Day'
         day_raw = str(row.get('DAY') or row.get('Day') or '').strip().upper()
