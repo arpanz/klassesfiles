@@ -6,7 +6,7 @@ from pathlib import Path
 
 # --- Configuration ---
 OUT_JSON = "timetable_6th.json"
-PE3_DATA = "section_pe3_data.json"
+PE3_DATA = Path(__file__).parent / "section_pe3_data.json"
 BLANK = {"", "X", "---", "nan", "NaN", "HSE"}
 
 day_map = {
