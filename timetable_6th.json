@@ -4930,5 +4930,89 @@
                 "room": "C25-A-007"
             }
         }
+    },
+    "CSE-3": {
+        "Monday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-206"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-206"
+            }
+        },
+        "Tuesday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-206"
+            },
+            "10-11": {
+                "subject": "AI",
+                "room": "C25-A-206"
+            },
+            "11-12": {
+                "subject": "UHV",
+                "room": "C25-A-206"
+            }
+        },
+        "Wednesday": {
+            "8-9": {
+                "subject": "ML",
+                "room": "C25-A-111"
+            },
+            "9-10": {
+                "subject": "AI(L)",
+                "room": "C25-A-003(L)"
+            },
+            "10-11": {
+                "subject": "AI(L)",
+                "room": "C25-A-003(L)"
+            },
+            "11-12": {
+                "subject": "CC",
+                "room": "C25-A-008"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "ML",
+                "room": "C25-A-208"
+            },
+            "10-11": {
+                "subject": "UHV",
+                "room": "C25-A-208"
+            },
+            "11-12": {
+                "subject": "AI",
+                "room": "C25-B-201"
+            },
+            "12-1": {
+                "subject": "CC",
+                "room": "C25-B-201"
+            }
+        },
+        "Friday": {
+            "9-10": {
+                "subject": "UHV",
+                "room": "C25-A-207"
+            },
+            "10-11": {
+                "subject": "CC",
+                "room": "C25-A-207"
+            },
+            "11-12": {
+                "subject": "AD",
+                "room": "C25-B-102(L)"
+            },
+            "12-1": {
+                "subject": "AD(L)",
+                "room": "C25-B-102(L)"
+            },
+            "1-2": {
+                "subject": "AD(L)",
+                "room": "C25-B-102(L)"
+            }
+        }
     }
 }
