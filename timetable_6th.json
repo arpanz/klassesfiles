@@ -206,7 +206,7 @@
                 "room": "C25-A-003(L)"
             },
             "11-12": {
-                "subject": "CC|SPM|NLP|CV",
+                "subject": "CC",
                 "room": "C25-A-008"
             }
         },
@@ -224,7 +224,7 @@
                 "room": "C25-B-201"
             },
             "12-1": {
-                "subject": "CC|SPM|NLP|CV",
+                "subject": "CC",
                 "room": "C25-B-201"
             }
         },
@@ -234,7 +234,7 @@
                 "room": "C25-A-207"
             },
             "10-11": {
-                "subject": "CC|SPM|NLP|CV",
+                "subject": "CC",
                 "room": "C25-A-207"
             },
             "11-12": {
