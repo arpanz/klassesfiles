@@ -7,15 +7,20 @@ on:
         description: 'Admission year (e.g. 2023)'
         required: true
       semester:
-        description: 'Semester number (e.g. 6)'
+        description: 'Semester number (e.g. 6) — required for timetable, optional for roll'
+        required: false
+        default: ''
+      file_type:
+        description: 'timetable or roll'
         required: true
+        default: 'timetable'
       update_type:
         description: 'merge or replace'
         required: true
         default: 'merge'
       pe3:
-        description: 'true if section-assigned elective resolution needed'
-        required: true
+        description: 'true if section-assigned elective resolution needed (timetable only)'
+        required: false
         default: 'false'
       file_content:
         description: 'Base64 Encoded File'
@@ -25,7 +30,7 @@ permissions:
   contents: write
 
 jobs:
-  process-timetable:
+  process-file:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -39,12 +44,12 @@ jobs:
       - name: Install dependencies
         run: pip install pandas openpyxl xlrd
 
-
       - name: Decode input file
         run: echo "${{ inputs.file_content }}" | base64 -d > input_data.xlsx
 
-      - name: Run parser and validate
-        id: parse
+      - name: Run timetable parser
+        if: inputs.file_type == 'timetable'
+        id: parse_tt
         run: |
           PE3_FLAG=""
           if [ "${{ inputs.pe3 }}" = "true" ]; then PE3_FLAG="--pe3"; fi
@@ -55,12 +60,22 @@ jobs:
             $PE3_FLAG 2>&1 | tee parse.log
           exit ${PIPESTATUS[0]}
 
+      - name: Run roll number parser
+        if: inputs.file_type == 'roll'
+        id: parse_roll
+        run: |
+          python scripts/rollno_parser.py input_data.xlsx \
+            --batch ${{ inputs.batch }} \
+            --mode ${{ inputs.update_type }} \
+            2>&1 | tee parse.log
+          exit ${PIPESTATUS[0]}
+
       - name: Bump manifest version
         if: success()
         run: |
           python scripts/bump_manifest.py \
             --batch ${{ inputs.batch }} \
-            --file-type timetable 2>&1 | tee -a parse.log
+            --file-type ${{ inputs.file_type }} 2>&1 | tee -a parse.log
 
       - name: Commit and push
         if: success()
@@ -71,18 +86,17 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Auto-update: batch ${{ inputs.batch }} sem ${{ inputs.semester }} (${{ inputs.update_type }})"
+            git commit -m "Auto-update: batch ${{ inputs.batch }} ${{ inputs.file_type }} (${{ inputs.update_type }})"
             git push
           fi
-
 
       - name: Notify Telegram (success)
         if: success()
         run: |
-          SUMMARY=$(grep -E 'WROTE::|VALIDATION_OK::|BUMPED::' parse.log | tr '\n' ' ' || echo "done")
+          SUMMARY=$(grep -E 'WROTE::|BUMPED::' parse.log | tr '\n' ' ' || echo "done")
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
             -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
-            -d text="✅ Timetable updated%0ABatch: ${{ inputs.batch }} | Sem: ${{ inputs.semester }} | Mode: ${{ inputs.update_type }}%0A$SUMMARY"
+            -d text="✅ ${{ inputs.file_type }} updated%0ABatch: ${{ inputs.batch }} | Mode: ${{ inputs.update_type }}%0A$SUMMARY"
 
       - name: Notify Telegram (failure)
         if: failure()
@@ -90,4 +104,4 @@ jobs:
           REASON=$(grep 'VALIDATION_FAILED::' parse.log || tail -n 5 parse.log || echo "unknown error")
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
             -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
-            -d text="⚠️ Upload REJECTED%0ABatch: ${{ inputs.batch }} | Sem: ${{ inputs.semester }}%0AReason: $REASON"
+            -d text="⚠️ ${{ inputs.file_type }} upload REJECTED%0ABatch: ${{ inputs.batch }}%0AReason: $REASON"
