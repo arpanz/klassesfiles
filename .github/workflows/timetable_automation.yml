@@ -3,13 +3,20 @@ name: Timetable Automation
 on:
   workflow_dispatch:
     inputs:
+      batch:
+        description: 'Admission year (e.g. 2023)'
+        required: true
       semester:
-        description: 'Semester (4 or 6)'
+        description: 'Semester number (e.g. 6)'
         required: true
       update_type:
-        description: 'Type (merge or replace)'
+        description: 'merge or replace'
         required: true
         default: 'merge'
+      pe3:
+        description: 'true if section-assigned elective resolution needed'
+        required: true
+        default: 'false'
       file_content:
         description: 'Base64 Encoded File'
         required: true
@@ -21,47 +28,66 @@ jobs:
   process-timetable:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
-          # This ensures we are checking out the klassesfiles repo
-          # (Since this file lives there, this is the default behavior)
           persist-credentials: true
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.11'
 
-      - name: Install Dependencies
-        run: |
-          pip install pandas openpyxl xlrd
+      - name: Install dependencies
+        run: pip install pandas openpyxl xlrd
 
-      - name: Decode and Save Input File
-        run: |
-          # Takes the Base64 string from inputs and saves it as a real file
-          echo "${{ inputs.file_content }}" | base64 -d > input_data.xlsx
 
-      - name: Run Processing Script
-        run: |
-          if [ "${{ inputs.semester }}" == "6" ]; then
-            python scripts/tt_script_6th.py input_data.xlsx ${{ inputs.update_type }}
-          else
-            python scripts/tt_script_4th.py input_data.xlsx ${{ inputs.update_type }}
-          fi
+      - name: Decode input file
+        run: echo "${{ inputs.file_content }}" | base64 -d > input_data.xlsx
 
-      - name: Commit and Push Changes
+      - name: Run parser and validate
+        id: parse
         run: |
-          git config user.name "Timetable Bot"
+          PE3_FLAG=""
+          if [ "${{ inputs.pe3 }}" = "true" ]; then PE3_FLAG="--pe3"; fi
+          python scripts/tt_parser.py input_data.xlsx \
+            --batch ${{ inputs.batch }} \
+            --semester ${{ inputs.semester }} \
+            --mode ${{ inputs.update_type }} \
+            $PE3_FLAG 2>&1 | tee parse.log
+          exit ${PIPESTATUS[0]}
+
+      - name: Bump manifest version
+        if: success()
+        run: |
+          python scripts/bump_manifest.py \
+            --batch ${{ inputs.batch }} \
+            --file-type timetable 2>&1 | tee -a parse.log
+
+      - name: Commit and push
+        if: success()
+        run: |
+          git config user.name  "Timetable Bot"
           git config user.email "bot@klasses.app"
-          
-          # Add all JSON files that might have changed
           git add *.json
-          
-          # Commit if there are changes
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Auto-update: Sem ${{ inputs.semester }} (${{ inputs.update_type }})"
+            git commit -m "Auto-update: batch ${{ inputs.batch }} sem ${{ inputs.semester }} (${{ inputs.update_type }})"
             git push
           fi
+
+
+      - name: Notify Telegram (success)
+        if: success()
+        run: |
+          SUMMARY=$(grep -E 'WROTE::|VALIDATION_OK::|BUMPED::' parse.log | tr '\n' ' ' || echo "done")
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d text="✅ Timetable updated%0ABatch: ${{ inputs.batch }} | Sem: ${{ inputs.semester }} | Mode: ${{ inputs.update_type }}%0A$SUMMARY"
+
+      - name: Notify Telegram (failure)
+        if: failure()
+        run: |
+          REASON=$(grep 'VALIDATION_FAILED::' parse.log || tail -n 5 parse.log || echo "unknown error")
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d text="⚠️ Upload REJECTED%0ABatch: ${{ inputs.batch }} | Sem: ${{ inputs.semester }}%0AReason: $REASON"

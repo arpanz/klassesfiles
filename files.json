@@ -1,7 +1,5 @@
 [
-    "6thsem_roll.json",
+    "manifest.json",
     "ecam.json",
-    "rollno_4th.json",
-    "timetable_4th.json",
-    "timetable_6th.json"
+    "subjects_by_semester.json"
 ]
