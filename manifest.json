@@ -1,6 +1,6 @@
 {
-  "manifestVersion": 7,
-  "updatedAt": "2026-06-17T11:20:12.331852Z",
+  "manifestVersion": 8,
+  "updatedAt": "2026-06-17T00:00:00Z",
   "cohorts": [
     {
       "batch": 2023,
@@ -29,6 +29,21 @@
       },
       "roll": {
         "name": "rollno_2024.json",
+        "version": 1
+      }
+    },
+    {
+      "batch": 2025,
+      "rollPrefix": "25",
+      "semester": 3,
+      "label": "3rd Sem",
+      "pe3": false,
+      "timetable": {
+        "name": "timetable_2025_s3.json",
+        "version": 1
+      },
+      "roll": {
+        "name": "rollno_2025.json",
         "version": 1
       }
     }
