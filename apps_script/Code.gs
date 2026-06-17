@@ -214,8 +214,42 @@ function processIncomingTimetables() {
           return;
         }
 
-        // ── Dispatch ──
-        const base64File = Utilities.base64Encode(att.getBytes());
+        // ── Compress + dispatch ──
+        // University files arrive as legacy .xls (~128 KB), but GitHub caps
+        // workflow_dispatch inputs at 65,535 chars — a raw .xls is ~170 KB once
+        // base64-encoded, so the dispatch fails with HTTP 422 before the Action
+        // even runs. We gzip the bytes first (built-in Utilities.gzip; needs no
+        // extra services or re-auth): ~128 KB → ~30 KB → ~41 KB base64. The Action
+        // auto-detects the gzip header and decompresses before parsing.
+        // Students keep emailing .xls; the compression happens here, invisibly.
+        const gzipped   = Utilities.gzip(att.copyBlob());
+        const base64File = Utilities.base64Encode(gzipped.getBytes());
+
+        // Safety guard: never attempt a dispatch we know GitHub will reject (422).
+        if (base64File.length > 60000) {
+          tgCard_('✗', 'File Too Large to Dispatch', [
+            ['Cohort', cohort.label + ' (Batch ' + cohort.batch + ')'],
+            ['From', sender],
+            ['File', fname],
+            ['Encoded size', base64File.length + ' chars (GitHub limit 65,535)'],
+            ['Time', when],
+          ], [
+            { text: '🚫 Block sender', data: 'block:' + email },
+          ]);
+          GmailApp.sendEmail(email, 'Timetable Upload — File Too Large', '', {
+            htmlBody: buildEmailHtml_({
+              status: 'error',
+              title: 'This File Was Too Large to Process',
+              message: 'We received your file but it was too large to process even after ' +
+                       'compression. Please contact KampusVibes (askkampusvibes@gmail.com) ' +
+                       'and we will sort it out.',
+              rows: [['File', fname], ['Received At', when]],
+            }),
+            name: 'KampusVibes',
+          });
+          return;
+        }
+
         const code = triggerAction(cohort, base64File);
 
         if (code === 204) {
