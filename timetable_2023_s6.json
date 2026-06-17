@@ -3486,84 +3486,124 @@
     "CSE-42": {
         "Monday": {
             "9-10": {
-                "subject": "NLP",
-                "room": "C25-B-219"
+                "subject": "ED|IOC|OB",
+                "room": "C25-B-217"
             },
             "10-11": {
-                "subject": "AI",
-                "room": "C25-B-219"
+                "subject": "OOPJ",
+                "room": "C25-B-217"
             },
             "11-12": {
-                "subject": "UHV",
-                "room": "C25-B-219"
+                "subject": "DBMS",
+                "room": "C25-B-217"
             },
             "12-1": {
-                "subject": "ML",
-                "room": "C25-B-219"
+                "subject": "COA",
+                "room": "C25-B-217"
             }
         },
         "Tuesday": {
             "8-9": {
-                "subject": "NLP",
-                "room": "C25-A-108"
+                "subject": "DBMS",
+                "room": "C25-A-301"
             },
             "9-10": {
-                "subject": "AI(L)",
-                "room": "C25-A-302(L)"
+                "subject": "OS(L)",
+                "room": "C25-B-214(L)"
             },
             "10-11": {
-                "subject": "AI(L)",
-                "room": "C25-A-302(L)"
+                "subject": "OS(L)",
+                "room": "C25-B-214(L)"
             },
             "11-12": {
-                "subject": "UHV",
-                "room": "C25-A-307"
+                "subject": "COA",
+                "room": "C25-A-014"
             },
             "12-1": {
-                "subject": "ML",
-                "room": "C25-A-307"
+                "subject": "OOPJ",
+                "room": "C25-A-014"
+            },
+            "1-2": {
+                "subject": "DM",
+                "room": "C25-A-014"
             }
         },
         "Wednesday": {
-            "9-10": {
-                "subject": "AI",
-                "room": "C25-B-308"
-            },
             "10-11": {
-                "subject": "NLP",
-                "room": "C25-B-308"
+                "subject": "OS",
+                "room": "C25-B-313"
             },
             "11-12": {
-                "subject": "ML",
-                "room": "C25-B-106"
+                "subject": "ED|IOC|OB",
+                "room": "C25-B-018(L)"
+            },
+            "12-1": {
+                "subject": "VT(L)",
+                "room": "C25-B-018(L)"
+            },
+            "1-2": {
+                "subject": "VT(L)",
+                "room": "C25-B-018(L)"
+            },
+            "4.00-5.00": {
+                "subject": "COA",
+                "room": "C25-A-109"
+            },
+            "5.00-6.00": {
+                "subject": "DM",
+                "room": "C25-A-109"
             }
         },
         "Thursday": {
-            "8-9": {
-                "subject": "AD",
-                "room": "C25-A-204(L)"
-            },
-            "9-10": {
-                "subject": "AD(L)",
-                "room": "C25-A-204(L)"
-            },
             "10-11": {
-                "subject": "AD(L)",
-                "room": "C25-A-204(L)"
+                "subject": "DBMS",
+                "room": "C25-B-316"
+            },
+            "11-12": {
+                "subject": "DM",
+                "room": "C25-B-316"
+            },
+            "12-1": {
+                "subject": "ED|IOC|OB",
+                "room": "C25-B-316"
+            },
+            "3.00-4.00": {
+                "subject": "OS",
+                "room": "C25-A-211"
+            },
+            "4.00-5.00": {
+                "subject": "OOPJ(L)",
+                "room": "C25-A-304(L)"
+            },
+            "5.00-6.00": {
+                "subject": "OOPJ(L)",
+                "room": "C25-A-304(L)"
             }
         },
         "Friday": {
             "8-9": {
-                "subject": "ML",
-                "room": "C25-B-307"
+                "subject": "DM",
+                "room": "C25-B-217"
             },
             "9-10": {
-                "subject": "UHV",
-                "room": "C25-B-307"
+                "subject": "OS",
+                "room": "C25-B-217"
             },
             "10-11": {
-                "subject": "AI",
-                "room": "C25-B-307"
+                "subject": "OOPJ",
+                "room": "C25-B-217"
+            },
+            "11-12": {
+                "subject": "COA",
+                "room": "C25-B-308"
+            },
+            "12-1": {
+                "subject": "DBMS(L)",
+                "room": "C25-A-304(L)"
+            },
+            "1-2": {
+                "subject": "DBMS(L)",
+                "room": "C25-A-304(L)"
             }
         }
     },
