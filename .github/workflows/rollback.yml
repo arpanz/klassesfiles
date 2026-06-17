@@ -1,0 +1,87 @@
+name: Rollback Data File
+
+# Restores a data file to a previous committed version and bumps the manifest
+# so every app picks up the rollback. Trigger from the GitHub mobile site:
+# Actions → "Rollback Data File" → Run workflow → fill the inputs.
+#
+# NOTE: a plain git revert would LOWER the manifest version, so clients (which
+# only update on a HIGHER version) would never see the rollback. That's why this
+# restores the old file content AND bumps the manifest forward.
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch:
+        description: 'Admission year (e.g. 2023) — used to bump the manifest'
+        required: true
+      file_type:
+        description: 'timetable or roll'
+        required: true
+        default: 'timetable'
+      file_name:
+        description: 'Exact JSON file to roll back, e.g. timetable_2023_s6.json'
+        required: true
+      commits_back:
+        description: 'How many commits back to restore (default 1 = undo last change)'
+        required: false
+        default: '1'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: timetable-publish
+  cancel-in-progress: false
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # need history for HEAD~N
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Restore previous version of the file
+        run: |
+          git checkout HEAD~${{ inputs.commits_back }} -- "${{ inputs.file_name }}"
+          echo "Restored ${{ inputs.file_name }} to ${{ inputs.commits_back }} commit(s) back."
+
+      - name: Bump manifest so clients pick up the rollback
+        run: |
+          python scripts/bump_manifest.py \
+            --batch ${{ inputs.batch }} \
+            --file-type ${{ inputs.file_type }}
+
+      - name: Commit and push
+        id: push
+        run: |
+          git config user.name  "Timetable Bot"
+          git config user.email "bot@klasses.app"
+          git add "${{ inputs.file_name }}" manifest.json
+          if git diff --staged --quiet; then
+            echo "Nothing to roll back (file already matches that version)."
+            echo "RESULT=noop" >> "$GITHUB_ENV"
+          else
+            git commit -m "Rollback ${{ inputs.file_name }} (${{ inputs.commits_back }} commit(s) back)"
+            git push
+            echo "RESULT=done" >> "$GITHUB_ENV"
+          fi
+
+      - name: Notify Telegram
+        if: always()
+        run: |
+          if [ "${RESULT:-fail}" = "done" ]; then
+            MSG="↩️ Rolled back ${{ inputs.file_name }} (${{ inputs.commits_back }} commit(s) back). Apps will refresh shortly."
+          elif [ "${RESULT:-fail}" = "noop" ]; then
+            MSG="ℹ️ Rollback skipped — ${{ inputs.file_name }} already matches that version."
+          else
+            MSG="⚠️ Rollback FAILED for ${{ inputs.file_name }}. Check the Actions log."
+          fi
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            --data-urlencode "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+            --data-urlencode "text=$MSG"
