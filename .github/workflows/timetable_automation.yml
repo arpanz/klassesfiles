@@ -28,6 +28,11 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
+
+concurrency:
+  group: timetable-publish
+  cancel-in-progress: false
 
 jobs:
   process-file:
@@ -70,38 +75,69 @@ jobs:
             2>&1 | tee parse.log
           exit ${PIPESTATUS[0]}
 
-      - name: Bump manifest version
+      - name: Publish (auto for SMALL, hold via PR for BIG)
         if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          git config user.name  "Timetable Bot"
+          git config user.email "bot@klasses.app"
+
+          # Only consider JSON data files (ignore parse.log / changes.txt / change_level.txt).
+          if [ -z "$(git status --porcelain -- '*.json')" ]; then
+            echo "No data changes — nothing to publish."
+            echo "PUBLISH_RESULT=none" >> "$GITHUB_ENV"
+            exit 0
+          fi
+
+          # Data changed → bump the manifest version now (not on identical re-uploads).
           python scripts/bump_manifest.py \
             --batch ${{ inputs.batch }} \
             --file-type ${{ inputs.file_type }} 2>&1 | tee -a parse.log
 
-      - name: Commit and push
-        if: success()
-        run: |
-          git config user.name  "Timetable Bot"
-          git config user.email "bot@klasses.app"
-          git add *.json
-          if git diff --staged --quiet; then
-            echo "No changes to commit."
+          # Roll uploads have no change_level → treat as SMALL (you upload those yourself).
+          LEVEL="SMALL"
+          if [ -f change_level.txt ]; then LEVEL=$(cat change_level.txt); fi
+
+          if [ "$LEVEL" = "BIG" ]; then
+            BR="held-${{ inputs.batch }}-${{ github.run_number }}"
+            git checkout -b "$BR"
+            git add *.json
+            git commit -m "HELD: batch ${{ inputs.batch }} ${{ inputs.file_type }} (${{ inputs.update_type }}) — needs approval"
+            git push origin "$BR"
+            PR_URL=$(gh pr create --base master --head "$BR" \
+              --title "Review timetable update — batch ${{ inputs.batch }} (${{ inputs.file_type }})" \
+              --body "Automated update flagged as a **BIG change** and held for approval.$(printf '\n\n')Review the diff below, then **merge to publish** or **close to discard**.$(printf '\n\n')\`\`\`$(printf '\n')$(cat changes.txt)$(printf '\n')\`\`\`")
+            echo "PUBLISH_RESULT=held"  >> "$GITHUB_ENV"
+            echo "PR_URL=$PR_URL"       >> "$GITHUB_ENV"
           else
+            git add *.json
             git commit -m "Auto-update: batch ${{ inputs.batch }} ${{ inputs.file_type }} (${{ inputs.update_type }})"
             git push
+            echo "PUBLISH_RESULT=published" >> "$GITHUB_ENV"
           fi
 
       - name: Notify Telegram (success)
         if: success()
         run: |
-          if [ -f changes.txt ]; then
-            CHANGES=$(cat changes.txt)
-          else
-            CHANGES=$(grep -E 'WROTE::|BUMPED::' parse.log | tr '\n' ' ' || echo "done")
-          fi
-          BODY="✅ ${{ inputs.file_type }} updated — Batch ${{ inputs.batch }} (${{ inputs.update_type }})
+          RESULT="${PUBLISH_RESULT:-published}"
+          if [ -f changes.txt ]; then CHANGES=$(cat changes.txt); else CHANGES=$(grep -E 'WROTE::|BUMPED::' parse.log | tr '\n' ' ' || echo "done"); fi
+
+          if [ "$RESULT" = "none" ]; then
+            BODY="ℹ️ ${{ inputs.file_type }} upload — no changes detected (Batch ${{ inputs.batch }}). Nothing published."
+          elif [ "$RESULT" = "held" ]; then
+            BODY="⏸️ HELD FOR APPROVAL — Batch ${{ inputs.batch }} (${{ inputs.file_type }})
+          A big change was detected and is NOT live yet.
+          Review & merge to publish (or close to discard):
+          ${PR_URL}
           ━━━━━━━━━━━━━━━━━━
           $CHANGES"
-          # Telegram hard-caps at 4096 chars; keep well under it.
+          else
+            BODY="✅ ${{ inputs.file_type }} PUBLISHED — Batch ${{ inputs.batch }} (${{ inputs.update_type }})
+          ━━━━━━━━━━━━━━━━━━
+          $CHANGES"
+          fi
+
           BODY=$(printf '%s' "$BODY" | head -c 3800)
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
             --data-urlencode "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \

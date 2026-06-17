@@ -148,6 +148,33 @@ def build_json(df: pd.DataFrame, pe3_map: dict, pe3: bool) -> dict:
 
 
 # ------------------------------ diff ------------------------------
+# Thresholds for flagging a "BIG" (held-for-approval) change. Tune freely.
+MAX_NEW_SECTIONS = 2      # more than this many brand-new sections → BIG
+MAX_TOUCHED_SECTIONS = 5  # more than this many added+modified sections → BIG
+
+
+def classify_change(old: dict, new: dict):
+    """
+    Decide whether a change is SMALL (auto-publish) or BIG (hold for approval).
+    Returns (level, reasons) where level is 'SMALL' or 'BIG'.
+    """
+    old_secs, new_secs = set(old), set(new)
+    added = new_secs - old_secs
+    removed = old_secs - new_secs
+    modified = {s for s in (old_secs & new_secs) if old.get(s) != new.get(s)}
+    touched = len(added) + len(modified)
+
+    reasons = []
+    if removed:
+        reasons.append(f"{len(removed)} section(s) removed")
+    if len(added) > MAX_NEW_SECTIONS:
+        reasons.append(f"{len(added)} new sections")
+    if touched > MAX_TOUCHED_SECTIONS:
+        reasons.append(f"{touched} sections changed")
+
+    return ("BIG" if reasons else "SMALL"), reasons
+
+
 def _fmt_entry(e):
     """Render a slot entry like 'AI(L) @ C25-A-102' for the diff."""
     if not e:
@@ -247,11 +274,20 @@ def main():
         print("REPLACE MODE: overwriting/creating file.")
         final = new_data
 
-    # Compute the human-readable diff and write it for the Action to forward.
+    # Compute the human-readable diff and classify it (SMALL vs BIG).
     changes = compute_changes(old_disk, final)
-    (ROOT / "changes.txt").write_text("\n".join(changes), encoding='utf-8')
+    level, reasons = classify_change(old_disk, final)
+    (ROOT / "change_level.txt").write_text(level, encoding='utf-8')
+
+    header = []
+    if level == "BIG":
+        header = ["FLAGGED AS BIG CHANGE: " + "; ".join(reasons), ""]
+    (ROOT / "changes.txt").write_text(
+        "\n".join(header + changes), encoding='utf-8'
+    )
+    print("CHANGE_LEVEL::" + level)
     print("CHANGES_BEGIN")
-    for line in changes:
+    for line in (header + changes):
         print(line)
     print("CHANGES_END")
 
