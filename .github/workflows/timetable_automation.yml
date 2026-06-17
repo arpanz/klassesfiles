@@ -93,10 +93,19 @@ jobs:
       - name: Notify Telegram (success)
         if: success()
         run: |
-          SUMMARY=$(grep -E 'WROTE::|BUMPED::' parse.log | tr '\n' ' ' || echo "done")
+          if [ -f changes.txt ]; then
+            CHANGES=$(cat changes.txt)
+          else
+            CHANGES=$(grep -E 'WROTE::|BUMPED::' parse.log | tr '\n' ' ' || echo "done")
+          fi
+          BODY="✅ ${{ inputs.file_type }} updated — Batch ${{ inputs.batch }} (${{ inputs.update_type }})
+          ━━━━━━━━━━━━━━━━━━
+          $CHANGES"
+          # Telegram hard-caps at 4096 chars; keep well under it.
+          BODY=$(printf '%s' "$BODY" | head -c 3800)
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
-            -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
-            -d text="✅ ${{ inputs.file_type }} updated%0ABatch: ${{ inputs.batch }} | Mode: ${{ inputs.update_type }}%0A$SUMMARY"
+            --data-urlencode "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+            --data-urlencode "text=$BODY"
 
       - name: Notify Telegram (failure)
         if: failure()
