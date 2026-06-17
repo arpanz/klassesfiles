@@ -126,6 +126,34 @@ def build_json(xl: pd.ExcelFile) -> dict:
     return result
 
 
+def compute_roll_changes(old: dict, new: dict, max_detail: int = 15) -> list:
+    """Human-readable summary of roll-mapping changes for the held-PR / Telegram."""
+    old_k, new_k = set(old), set(new)
+    added = sorted(new_k - old_k)
+    removed = sorted(old_k - new_k)
+    changed = sorted(k for k in (old_k & new_k) if old[k] != new[k])
+
+    summary = []
+    if added:
+        summary.append(f"Rolls added: {len(added)}")
+    if removed:
+        summary.append(f"Rolls removed: {len(removed)}")
+    if changed:
+        summary.append(f"Rolls reassigned: {len(changed)}")
+    if not summary:
+        summary.append("No changes (data identical).")
+
+    detail = []
+    for k in changed[:max_detail]:
+        detail.append(f"~ {k}: {old[k]} -> {new[k]}")
+    for k in added[:max(0, max_detail - len(detail))]:
+        detail.append(f"+ {k}: {new[k]}")
+    total = len(changed) + len(added)
+    if total > max_detail:
+        detail.append(f"...and {total - max_detail} more")
+    return summary + detail
+
+
 def main():
     ap = argparse.ArgumentParser(description="Roll number parser.")
     ap.add_argument("input_file")
@@ -153,19 +181,32 @@ def main():
         print("VALIDATION_FAILED::No roll entries parsed — file may be empty or wrongly formatted.")
         sys.exit(2)
 
-    if args.mode == "merge" and out_path.exists():
+    # Load the current on-disk version (for both merge and the diff report).
+    old_disk = {}
+    if out_path.exists():
         try:
-            existing = json.loads(out_path.read_text(encoding="utf-8"))
-            print(f"MERGE MODE: {len(existing)} existing entries.")
-            existing.update(new_data)
-            final = existing
-            print(f"Merged. Total: {len(final)}")
+            old_disk = json.loads(out_path.read_text(encoding="utf-8"))
         except Exception as e:
-            print(f"Error reading existing file ({e}). Writing fresh.")
-            final = new_data
+            print(f"Warning: could not read existing file for diff ({e}).")
+            old_disk = {}
+
+    if args.mode == "merge" and old_disk:
+        print(f"MERGE MODE: {len(old_disk)} existing entries.")
+        final = dict(old_disk)
+        final.update(new_data)
+        print(f"Merged. Total: {len(final)}")
     else:
         print("REPLACE MODE: overwriting/creating file.")
         final = new_data
+
+    # Roll uploads are ALWAYS held for approval (force BIG), and we write a diff
+    # so the held PR / Telegram shows exactly which students were affected.
+    changes = compute_roll_changes(old_disk, final)
+    (ROOT / "change_level.txt").write_text("BIG", encoding="utf-8")
+    (ROOT / "changes.txt").write_text(
+        "\n".join(["ROLL NUMBER UPDATE (held for approval)", ""] + changes),
+        encoding="utf-8",
+    )
 
     out_path.write_text(json.dumps(final, indent=4), encoding="utf-8")
     print(f"WROTE::{out_name}::{len(final)}")

@@ -19,6 +19,10 @@ SECTION_RE = re.compile(r'^[A-Z]+-\d{2}$')
 # so keep this at 1; bump per-cohort if you want stricter "full file" checks.
 MIN_SECTIONS = 1
 
+# Elective placeholders that MUST have been resolved by tt_parser before writing.
+# If any survive, the section was missing from section_pe3_data.json → data error.
+UNRESOLVED_PLACEHOLDERS = {"PE-3", "PE-III", "PE3", "PEIII", "PE-4", "PE-IV", "PE4", "PEIV"}
+
 
 def validate(data, args):
     errors = []
@@ -41,6 +45,15 @@ def validate(data, args):
             for slot, info in slots.items():
                 if not isinstance(info, dict) or not info.get("subject"):
                     errors.append(f"{section}/{day}/{slot}: empty/invalid subject.")
+                    continue
+                subj = info["subject"]
+                norm = subj.upper().replace(" ", "")
+                # Unresolved elective: leftover PE-3 placeholder or pipe-options.
+                if norm in UNRESOLVED_PLACEHOLDERS or "|" in subj:
+                    errors.append(
+                        f"{section}/{day}/{slot}: unresolved elective '{subj}' "
+                        f"— section likely missing from section_pe3_data.json."
+                    )
 
     if errors:
         # First 10 reasons keep the Telegram message readable.
