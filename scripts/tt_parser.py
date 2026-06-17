@@ -18,6 +18,7 @@ Usage:
     python scripts/tt_parser.py input.xlsx --batch 2023 --semester 6 --mode merge --pe3
 """
 import sys
+import copy
 import json
 import re
 import argparse
@@ -147,22 +148,79 @@ def build_json(df: pd.DataFrame, pe3_map: dict, pe3: bool) -> dict:
     }
 
 
+# ------------------------------ merge ------------------------------
+def deep_merge(old: dict, new: dict) -> dict:
+    """
+    Merge `new` into `old` at section -> day -> slot granularity.
+
+    A top-level ``dict.update`` would replace a whole section, so a partial
+    upload (e.g. a sheet containing only Monday for CSE-01) would WIPE that
+    section's other days. This merges down to the individual slot, so only the
+    slots actually present in `new` are overwritten; every existing day/slot the
+    upload doesn't mention is preserved.
+    """
+    final = copy.deepcopy(old)
+    for sec, days in new.items():
+        sec_dict = final.setdefault(sec, {})
+        for day, slots in days.items():
+            day_dict = sec_dict.setdefault(day, {})
+            for slot, entry in slots.items():
+                day_dict[slot] = entry
+    return final
+
+
 # ------------------------------ diff ------------------------------
 # Thresholds for flagging a "BIG" (held-for-approval) change. Tune freely.
-MAX_NEW_SECTIONS = 2      # more than this many brand-new sections → BIG
-MAX_TOUCHED_SECTIONS = 5  # more than this many added+modified sections → BIG
+MAX_NEW_SECTIONS = 2       # more than this many brand-new sections → BIG
+MAX_TOUCHED_SECTIONS = 5   # more than this many added+modified sections → BIG
+MAX_OVERWRITTEN_SLOTS = 8  # more than this many EXISTING slots rewritten → BIG
+
+
+def _slot_diff_stats(old: dict, new: dict):
+    """
+    Count slot-level changes between two timetables, looking only at sections
+    that exist in BOTH (so whole-section adds/removes are handled separately).
+
+    Returns (new_slots, overwritten_slots, removed_slots):
+      new_slots         - slot present in `new` but not `old`   (filling a gap)
+      overwritten_slots - slot present in both, different value (existing data changed)
+      removed_slots     - slot present in `old` but not `new`   (data deleted)
+    """
+    new_slots = overwritten = removed = 0
+    for sec in set(old) & set(new):
+        o_sec, n_sec = old.get(sec, {}), new.get(sec, {})
+        for day in set(o_sec) | set(n_sec):
+            o_day, n_day = o_sec.get(day, {}), n_sec.get(day, {})
+            for slot in set(o_day) | set(n_day):
+                o, n = o_day.get(slot), n_day.get(slot)
+                if o == n:
+                    continue
+                if o is None:
+                    new_slots += 1
+                elif n is None:
+                    removed += 1
+                else:
+                    overwritten += 1
+    return new_slots, overwritten, removed
 
 
 def classify_change(old: dict, new: dict):
     """
     Decide whether a change is SMALL (auto-publish) or BIG (hold for approval).
     Returns (level, reasons) where level is 'SMALL' or 'BIG'.
+
+    Section-level rules catch structural changes (sections added/removed). The
+    slot-level rules catch the merge-mode blind spot: a wrong-but-valid file can
+    rewrite or delete the *contents* of a few existing sections without removing
+    any section, so it would never trip the section-count rules. Counting the
+    actual overwritten/removed slots holds those for approval too.
     """
     old_secs, new_secs = set(old), set(new)
     added = new_secs - old_secs
     removed = old_secs - new_secs
     modified = {s for s in (old_secs & new_secs) if old.get(s) != new.get(s)}
     touched = len(added) + len(modified)
+    new_slots, overwritten_slots, removed_slots = _slot_diff_stats(old, new)
 
     reasons = []
     if removed:
@@ -171,6 +229,10 @@ def classify_change(old: dict, new: dict):
         reasons.append(f"{len(added)} new sections")
     if touched > MAX_TOUCHED_SECTIONS:
         reasons.append(f"{touched} sections changed")
+    if overwritten_slots > MAX_OVERWRITTEN_SLOTS:
+        reasons.append(f"{overwritten_slots} existing slots overwritten")
+    if removed_slots:
+        reasons.append(f"{removed_slots} existing slot(s) deleted")
 
     return ("BIG" if reasons else "SMALL"), reasons
 
@@ -267,8 +329,7 @@ def main():
 
     if args.mode == "merge" and old_disk:
         print(f"MERGE MODE: found {len(old_disk)} existing sections.")
-        final = dict(old_disk)
-        final.update(new_data)
+        final = deep_merge(old_disk, new_data)
         print(f"Merged. Total sections: {len(final)}")
     else:
         print("REPLACE MODE: overwriting/creating file.")
