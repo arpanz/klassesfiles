@@ -147,6 +147,65 @@ def build_json(df: pd.DataFrame, pe3_map: dict, pe3: bool) -> dict:
     }
 
 
+# ------------------------------ diff ------------------------------
+def _fmt_entry(e):
+    """Render a slot entry like 'AI(L) @ C25-A-102' for the diff."""
+    if not e:
+        return "(none)"
+    subj = e.get("subject", "?")
+    room = e.get("room")
+    return f"{subj} @ {room}" if room else subj
+
+
+def compute_changes(old: dict, new: dict, max_detail: int = 20) -> list:
+    """Human-readable, capped list of what changed between old and new."""
+    old_secs, new_secs = set(old), set(new)
+    added = sorted(new_secs - old_secs)
+    removed = sorted(old_secs - new_secs)
+
+    detail = []
+    total_slot_changes = 0
+    modified_sections = set()
+
+    for sec in sorted(old_secs & new_secs):
+        o_sec, n_sec = old.get(sec, {}), new.get(sec, {})
+        for day in sorted(set(o_sec) | set(n_sec)):
+            o_day, n_day = o_sec.get(day, {}), n_sec.get(day, {})
+            for slot in sorted(set(o_day) | set(n_day)):
+                o, n = o_day.get(slot), n_day.get(slot)
+                if o == n:
+                    continue
+                modified_sections.add(sec)
+                total_slot_changes += 1
+                if len(detail) < max_detail:
+                    if o is None:
+                        detail.append(f"+ {sec} {day} {slot}: {_fmt_entry(n)}")
+                    elif n is None:
+                        detail.append(f"- {sec} {day} {slot}: removed")
+                    else:
+                        detail.append(
+                            f"~ {sec} {day} {slot}: {_fmt_entry(o)} -> {_fmt_entry(n)}"
+                        )
+
+    summary = []
+    if added:
+        summary.append(f"Sections added ({len(added)}): {', '.join(added)}")
+    if removed:
+        summary.append(f"Sections removed ({len(removed)}): {', '.join(removed)}")
+    if modified_sections:
+        summary.append(
+            f"Sections modified ({len(modified_sections)}): "
+            f"{', '.join(sorted(modified_sections))}"
+        )
+    if not summary:
+        summary.append("No content changes (data identical).")
+
+    out = summary + detail
+    if total_slot_changes > max_detail:
+        out.append(f"...and {total_slot_changes - max_detail} more slot changes")
+    return out
+
+
 # ------------------------------ main ------------------------------
 def main():
     ap = argparse.ArgumentParser(description="Generalized timetable parser.")
@@ -170,19 +229,31 @@ def main():
     # ---- validation gate (aborts on failure) ----
     validate(new_data, args)
 
-    if args.mode == "merge" and out_path.exists():
+    # Load the current on-disk version (for both merge and the diff report).
+    old_disk = {}
+    if out_path.exists():
         try:
-            existing = json.loads(out_path.read_text(encoding='utf-8'))
-            print(f"MERGE MODE: found {len(existing)} existing sections.")
-            existing.update(new_data)
-            final = existing
-            print(f"Merged. Total sections: {len(final)}")
+            old_disk = json.loads(out_path.read_text(encoding='utf-8'))
         except Exception as e:
-            print(f"Error reading existing file ({e}). Writing fresh.")
-            final = new_data
+            print(f"Warning: could not read existing file for diff ({e}).")
+            old_disk = {}
+
+    if args.mode == "merge" and old_disk:
+        print(f"MERGE MODE: found {len(old_disk)} existing sections.")
+        final = dict(old_disk)
+        final.update(new_data)
+        print(f"Merged. Total sections: {len(final)}")
     else:
         print("REPLACE MODE: overwriting/creating file.")
         final = new_data
+
+    # Compute the human-readable diff and write it for the Action to forward.
+    changes = compute_changes(old_disk, final)
+    (ROOT / "changes.txt").write_text("\n".join(changes), encoding='utf-8')
+    print("CHANGES_BEGIN")
+    for line in changes:
+        print(line)
+    print("CHANGES_END")
 
     out_path.write_text(json.dumps(final, indent=4), encoding='utf-8')
     # stdout contract parsed by the GitHub Action for the Telegram summary:
