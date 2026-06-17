@@ -42,6 +42,9 @@ def validate(data, args):
             if not isinstance(slots, dict):
                 errors.append(f"{section}/{day}: malformed slot data.")
                 continue
+            if not slots:
+                errors.append(f"{section}/{day}: day has no slots.")
+                continue
             for slot, info in slots.items():
                 if not isinstance(info, dict) or not info.get("subject"):
                     errors.append(f"{section}/{day}/{slot}: empty/invalid subject.")
