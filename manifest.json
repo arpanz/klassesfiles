@@ -1,6 +1,6 @@
 {
-  "manifestVersion": 1,
-  "updatedAt": "2026-06-16T00:00:00Z",
+  "manifestVersion": 2,
+  "updatedAt": "2026-06-17T08:20:06.389999Z",
   "cohorts": [
     {
       "batch": 2023,
@@ -10,7 +10,7 @@
       "pe3": true,
       "timetable": {
         "name": "timetable_2023_s6.json",
-        "version": 1
+        "version": 2
       },
       "roll": {
         "name": "rollno_2023.json",
