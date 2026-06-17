@@ -110,6 +110,7 @@ jobs:
               --body "Automated update flagged as a **BIG change** and held for approval.$(printf '\n\n')Review the diff below, then **merge to publish** or **close to discard**.$(printf '\n\n')\`\`\`$(printf '\n')$(cat changes.txt)$(printf '\n')\`\`\`")
             echo "PUBLISH_RESULT=held"  >> "$GITHUB_ENV"
             echo "PR_URL=$PR_URL"       >> "$GITHUB_ENV"
+            echo "PR_NUM=$(printf '%s' "$PR_URL" | grep -oE '[0-9]+$')" >> "$GITHUB_ENV"
           else
             git add *.json
             git commit -m "Auto-update: batch ${{ inputs.batch }} ${{ inputs.file_type }} (${{ inputs.update_type }})"
@@ -122,26 +123,35 @@ jobs:
         run: |
           RESULT="${PUBLISH_RESULT:-published}"
           if [ -f changes.txt ]; then CHANGES=$(cat changes.txt); else CHANGES=$(grep -E 'WROTE::|BUMPED::' parse.log | tr '\n' ' ' || echo "done"); fi
+          if [ "${{ inputs.file_type }}" = "roll" ]; then FILE="rollno_${{ inputs.batch }}.json"; else FILE="timetable_${{ inputs.batch }}_s${{ inputs.semester }}.json"; fi
 
+          KEYBOARD=""
           if [ "$RESULT" = "none" ]; then
             BODY="ℹ️ ${{ inputs.file_type }} upload — no changes detected (Batch ${{ inputs.batch }}). Nothing published."
           elif [ "$RESULT" = "held" ]; then
             BODY="⏸️ HELD FOR APPROVAL — Batch ${{ inputs.batch }} (${{ inputs.file_type }})
-          A big change was detected and is NOT live yet.
-          Review & merge to publish (or close to discard):
-          ${PR_URL}
+          Not live yet. Approve to publish, or reject to discard.
           ━━━━━━━━━━━━━━━━━━
           $CHANGES"
+            KEYBOARD="{\"inline_keyboard\":[[{\"text\":\"✅ Approve & Publish\",\"callback_data\":\"apprv:${PR_NUM}\"},{\"text\":\"❌ Reject\",\"callback_data\":\"rejct:${PR_NUM}\"}]]}"
           else
             BODY="✅ ${{ inputs.file_type }} PUBLISHED — Batch ${{ inputs.batch }} (${{ inputs.update_type }})
           ━━━━━━━━━━━━━━━━━━
           $CHANGES"
+            KEYBOARD="{\"inline_keyboard\":[[{\"text\":\"↩️ Undo this update\",\"callback_data\":\"rbk:${{ inputs.batch }}:${{ inputs.file_type }}:${FILE}\"}]]}"
           fi
 
           BODY=$(printf '%s' "$BODY" | head -c 3800)
-          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
-            --data-urlencode "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
-            --data-urlencode "text=$BODY"
+          if [ -n "$KEYBOARD" ]; then
+            curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+              --data-urlencode "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+              --data-urlencode "text=$BODY" \
+              --data-urlencode "reply_markup=$KEYBOARD"
+          else
+            curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+              --data-urlencode "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+              --data-urlencode "text=$BODY"
+          fi
 
       - name: Notify Telegram (failure)
         if: failure()
