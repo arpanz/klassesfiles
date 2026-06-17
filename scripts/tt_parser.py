@@ -37,11 +37,17 @@ day_map = {
     'THU': 'Thursday', 'FRI': 'Friday', 'SAT': 'Saturday',
 }
 
-# Superset of all time-slot header variants seen across sems (4th used 3-4/4-5/5-6,
-# 6th used 3.00-4.00 style). Harmless to include all; only matching columns are used.
+# Superset of all time-slot header variants seen across sems. Harmless to include all;
+# only columns whose header exactly matches an entry here are parsed.
+#   4th sem used:  3-4 / 4-5 / 5-6
+#   6th sem used:  3.00-4.00 / 4.00-5.00 / 5.00-6.00
+#   3rd sem used:  3.15-4.15 / 4.15-5.15 / 5.15-6.15
+# Add new variants here whenever a new semester sheet uses a different time format.
 TIME_SLOTS = [
     '8-9', '9-10', '10-11', '11-12', '12-1', '1-2', '2-3',
-    '3.00-4.00', '4.00-5.00', '5.00-6.00', '3-4', '4-5', '5-6',
+    '3.00-4.00', '4.00-5.00', '5.00-6.00',
+    '3-4',       '4-5',       '5-6',
+    '3.15-4.15', '4.15-5.15', '5.15-6.15',
 ]
 
 
@@ -109,6 +115,11 @@ def build_json(df: pd.DataFrame, pe3_map: dict, pe3: bool) -> dict:
         day_raw = str(row.get('DAY') or row.get('Day') or '').strip().upper()
 
         if not section or not day_raw:
+            continue
+
+        # Skip repeated header rows that some Excel exports embed in the data
+        # (e.g. a row where the section cell literally says "Section").
+        if section_raw.lower() in ('section', 'day', 'nan'):
             continue
 
         day_code = day_raw.split('(')[0].strip()
