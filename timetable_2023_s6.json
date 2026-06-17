@@ -4117,85 +4117,109 @@
     },
     "IT-01": {
         "Monday": {
-            "9-10": {
-                "subject": "DA(L)",
-                "room": "C25-B-004(L)"
-            },
-            "10-11": {
-                "subject": "DA(L)",
-                "room": "C25-B-004(L)"
-            },
             "11-12": {
-                "subject": "CC",
-                "room": "C25-B-301"
+                "subject": "ITC",
+                "room": "C25-B-313"
             },
             "12-1": {
-                "subject": "DSA",
-                "room": "C25-B-301"
+                "subject": "DM",
+                "room": "C25-B-313"
             },
-            "1-2": {
-                "subject": "ML",
-                "room": "C25-B-301"
+            "3.00-4.00": {
+                "subject": "EECO",
+                "room": "C25-B-101"
+            },
+            "4.00-5.00": {
+                "subject": "OS(L)",
+                "room": "C25-B-004(L)"
+            },
+            "5.00-6.00": {
+                "subject": "OS(L)",
+                "room": "C25-B-004(L)"
             }
         },
         "Tuesday": {
+            "8-9": {
+                "subject": "DM",
+                "room": "C25-A-208"
+            },
+            "9-10": {
+                "subject": "VT(L)",
+                "room": "C25-B-118(L)"
+            },
             "10-11": {
-                "subject": "ML",
-                "room": "C25-A-015"
+                "subject": "VT(L)",
+                "room": "C25-B-118(L)"
             },
             "11-12": {
-                "subject": "UHV",
-                "room": "C25-A-311"
+                "subject": "IND4",
+                "room": "C25-B-108"
             },
             "12-1": {
-                "subject": "CC",
-                "room": "C25-A-311"
+                "subject": "ITC",
+                "room": "C25-B-108"
+            },
+            "1-2": {
+                "subject": "DBMS",
+                "room": "C25-B-108"
             }
         },
         "Wednesday": {
             "10-11": {
-                "subject": "DSA",
-                "room": "C25-A-015"
+                "subject": "DM",
+                "room": "C25-B-208"
             },
             "11-12": {
-                "subject": "AP",
-                "room": "C25-A-304(L)"
+                "subject": "DBMS",
+                "room": "C25-B-208"
             },
             "12-1": {
-                "subject": "AP(L)",
-                "room": "C25-A-304(L)"
+                "subject": "EECO",
+                "room": "C25-B-208"
             },
             "1-2": {
-                "subject": "AP(L)",
-                "room": "C25-A-304(L)"
+                "subject": "OS",
+                "room": "C25-B-208"
             }
         },
         "Thursday": {
             "10-11": {
-                "subject": "UHV",
-                "room": "C25-A-016"
+                "subject": "ITC",
+                "room": "C25-A-214"
             },
             "11-12": {
-                "subject": "ML",
-                "room": "C25-B-107"
+                "subject": "EECO",
+                "room": "C25-A-214"
             },
             "12-1": {
-                "subject": "CC",
-                "room": "C25-B-107"
+                "subject": "OS",
+                "room": "C25-A-214"
+            },
+            "3.00-4.00": {
+                "subject": "IND4",
+                "room": "C25-B-106"
+            },
+            "4.00-5.00": {
+                "subject": "DM",
+                "room": "C25-B-106"
+            },
+            "5.00-6.00": {
+                "subject": "DBMS",
+                "room": "C25-B-106"
             }
         },
         "Friday": {
-            "10-11": {
-                "subject": "DSA",
-                "room": "C25-A-014"
+            "3.00-4.00": {
+                "subject": "OS",
+                "room": "C25-A-207"
             },
-            "11-12": {
-                "subject": "UHV",
-                "room": "C25-B-107"
+            "4.00-5.00": {
+                "subject": "DBMS(L)",
+                "room": "C25-B-114(L)"
             },
-            "12-1": {
-                "subject": "ML",
-                "room": "C25-B-107"
+            "5.00-6.00": {
+                "subject": "DBMS(L)",
+                "room": "C25-B-114(L)"
             }
         }
     },
