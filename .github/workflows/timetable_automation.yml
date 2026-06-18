@@ -50,7 +50,20 @@ jobs:
         run: pip install pandas openpyxl xlrd
 
       - name: Decode input file
-        run: echo "${{ inputs.file_content }}" | base64 -d > input_data.xlsx
+        run: |
+          echo "${{ inputs.file_content }}" | base64 -d > input_raw
+          # The sender (Apps Script) gzip-compresses the payload to stay under
+          # GitHub's 65,535-char workflow_dispatch input limit. Auto-detect gzip
+          # and decompress; otherwise use the bytes as-is (e.g. raw uploads from
+          # the admin app that don't compress).
+          if gzip -t input_raw 2>/dev/null; then
+            echo "Payload is gzip-compressed — decompressing."
+            gunzip -c input_raw > input_data.xlsx
+          else
+            echo "Payload is not compressed — using as-is."
+            mv input_raw input_data.xlsx
+          fi
+          rm -f input_raw
 
       - name: Run timetable parser
         if: inputs.file_type == 'timetable'
