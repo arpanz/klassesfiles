@@ -1,0 +1,15 @@
+# Netlify configuration for klassesfiles.
+#
+# This site is a static host (manifest.json, timetable_*.json, etc.) served from
+# the repo root, plus serverless Functions for the Telegram control plane.
+#
+# IMPORTANT: publish is the repo root ("."), matching how the site already serves
+# manifest.json at https://klassesfiles.netlify.app/manifest.json. There is no
+# build step — static files are published as-is and functions are bundled.
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
