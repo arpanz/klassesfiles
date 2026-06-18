@@ -11,7 +11,7 @@ on:
         required: false
         default: ''
       file_type:
-        description: 'timetable or roll'
+        description: 'timetable, roll, or electives'
         required: true
         default: 'timetable'
       update_type:
@@ -78,6 +78,17 @@ jobs:
             $PE3_FLAG 2>&1 | tee parse.log
           exit ${PIPESTATUS[0]}
 
+      - name: Run electives parser
+        if: inputs.file_type == 'electives'
+        id: parse_electives
+        run: |
+          python scripts/tt_parser.py input_data.xlsx \
+            --batch ${{ inputs.batch }} \
+            --semester ${{ inputs.semester }} \
+            --mode ${{ inputs.update_type }} \
+            --file-type electives 2>&1 | tee parse.log
+          exit ${PIPESTATUS[0]}
+
       - name: Run roll number parser
         if: inputs.file_type == 'roll'
         id: parse_roll
@@ -136,7 +147,13 @@ jobs:
         run: |
           RESULT="${PUBLISH_RESULT:-published}"
           if [ -f changes.txt ]; then CHANGES=$(cat changes.txt); else CHANGES=$(grep -E 'WROTE::|BUMPED::' parse.log | tr '\n' ' ' || echo "done"); fi
-          if [ "${{ inputs.file_type }}" = "roll" ]; then FILE="rollno_${{ inputs.batch }}.json"; else FILE="timetable_${{ inputs.batch }}_s${{ inputs.semester }}.json"; fi
+          if [ "${{ inputs.file_type }}" = "roll" ]; then
+            FILE="rollno_${{ inputs.batch }}.json"
+          elif [ "${{ inputs.file_type }}" = "electives" ]; then
+            FILE="electives_${{ inputs.batch }}_s${{ inputs.semester }}.json"
+          else
+            FILE="timetable_${{ inputs.batch }}_s${{ inputs.semester }}.json"
+          fi
 
           KEYBOARD=""
           if [ "$RESULT" = "none" ]; then

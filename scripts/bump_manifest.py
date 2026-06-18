@@ -38,8 +38,18 @@ def main():
 
     node = cohort.get(args.file_type)
     if node is None:
-        print(f"BUMP_FAILED::cohort {args.batch} has no '{args.file_type}' file")
-        sys.exit(3)
+        if args.file_type == 'electives':
+            # First elective upload for this cohort — create the node and flip
+            # hasElectives so the app starts fetching and merging the file.
+            cohort['electives'] = {
+                'name': f"electives_{args.batch}_s{cohort['semester']}.json",
+                'version': 0,
+            }
+            cohort['hasElectives'] = True
+            node = cohort['electives']
+        else:
+            print(f"BUMP_FAILED::cohort {args.batch} has no '{args.file_type}' file")
+            sys.exit(3)
 
     node["version"] = int(node.get("version", 0)) + 1
     m["manifestVersion"] = int(m.get("manifestVersion", 0)) + 1
