@@ -4,7 +4,6 @@ Tests for tt_parser.py — covers:
   • classify_change (fix #7: slot-level BIG/SMALL detection)
   • _slot_diff_stats (internal, but critical)
   • normalize_section
-  • resolve_elective (PE-3 resolution)
   • compute_changes (human-readable diff shape)
 """
 import sys, os
@@ -12,7 +11,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'scripts'))
 
 from tt_parser import (
     deep_merge, classify_change, _slot_diff_stats,
-    normalize_section, resolve_elective, compute_changes,
+    normalize_section, compute_changes,
     MAX_NEW_SECTIONS, MAX_TOUCHED_SECTIONS, MAX_OVERWRITTEN_SLOTS,
 )
 
@@ -38,10 +37,10 @@ PASS = FAIL = 0
 def check(label, got, expected):
     global PASS, FAIL
     if got == expected:
-        print(f"  ✓  {label}")
+        print(f"  [PASS]  {label}")
         PASS += 1
     else:
-        print(f"  ✗  {label}")
+        print(f"  [FAIL]  {label}")
         print(f"       got:      {got!r}")
         print(f"       expected: {expected!r}")
         FAIL += 1
@@ -49,28 +48,28 @@ def check(label, got, expected):
 def check_is(label, cond):
     global PASS, FAIL
     if cond:
-        print(f"  ✓  {label}")
+        print(f"  [PASS]  {label}")
         PASS += 1
     else:
-        print(f"  ✗  {label}")
+        print(f"  [FAIL]  {label}")
         FAIL += 1
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # 1. normalize_section
 # ═══════════════════════════════════════════════════════════════════════════════
-print("\n── normalize_section ──────────────────────────────────────────────────")
-check("cse-1  → cse-01",  normalize_section("cse-1"),   "cse-01")
-check("cse-01 → cse-01",  normalize_section("cse-01"),  "cse-01")
-check("it-3   → it-03",   normalize_section("it-3"),    "it-03")
-check("csse-1 → csse-01", normalize_section("csse-1"),  "csse-01")
-check("empty  → ''",      normalize_section(""),        "")
+print("\n== normalize_section ==================================================")
+check("cse-1  -> CSE-01",  normalize_section("cse-1"),   "CSE-01")
+check("cse-01 -> CSE-01",  normalize_section("cse-01"),  "CSE-01")
+check("it-3   -> IT-03",   normalize_section("it-3"),    "IT-03")
+check("csse-1 -> CSSE-01", normalize_section("csse-1"),  "CSSE-01")
+check("empty  -> ''",      normalize_section(""),        "")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # 2. deep_merge  (fix #6)
 # ═══════════════════════════════════════════════════════════════════════════════
-print("\n── deep_merge ──────────────────────────────────────────────────────────")
+print("\n== deep_merge ==========================================================")
 
 # 2a. Partial upload must NOT wipe untouched days
 old = make_tt({"CSE-01": {
@@ -123,7 +122,7 @@ check("original not mutated by deep_merge",
 # ═══════════════════════════════════════════════════════════════════════════════
 # 3. _slot_diff_stats
 # ═══════════════════════════════════════════════════════════════════════════════
-print("\n── _slot_diff_stats ────────────────────────────────────────────────────")
+print("\n== _slot_diff_stats ====================================================")
 
 base = make_tt({"CSE-01": {"Monday": {"8-9": ("ML",), "9-10": ("AI",)}}})
 
@@ -156,105 +155,84 @@ check("new section added: slot stats still 0", (ns, ow, rm), (0, 0, 0))
 # ═══════════════════════════════════════════════════════════════════════════════
 # 4. classify_change  (fix #7)
 # ═══════════════════════════════════════════════════════════════════════════════
-print("\n── classify_change ─────────────────────────────────────────────────────")
+print("\n== classify_change =====================================================")
 
 def lvl(old, new):
     level, reasons = classify_change(old, new)
     return level, reasons
 
-# 4a. Identical → SMALL
+# 4a. Identical -> SMALL
 tt = make_tt({"CSE-01": {"Monday": {"8-9": ("ML",)}}})
 l, r = lvl(tt, tt)
-check("identical timetable → SMALL", l, "SMALL")
+check("identical timetable -> SMALL", l, "SMALL")
 
-# 4b. Single slot edit → SMALL
+# 4b. Single slot edit -> SMALL
 old6 = make_tt({"CSE-01": {"Monday": {"8-9": ("ML",), "9-10": ("AI",)}}})
 new6 = make_tt({"CSE-01": {"Monday": {"8-9": ("DS",), "9-10": ("AI",)}}})
 l, _ = lvl(old6, deep_merge(old6, new6))
-check("single slot edit → SMALL", l, "SMALL")
+check("single slot edit -> SMALL", l, "SMALL")
 
-# 4c. MAX_OVERWRITTEN_SLOTS + 1 → BIG
+# 4c. MAX_OVERWRITTEN_SLOTS + 1 -> BIG
 many_slots_old = make_tt({"CSE-01": {"Monday": {f"{h}-{h+1}": (f"S{h}",) for h in range(8, 8 + MAX_OVERWRITTEN_SLOTS + 1)}}})
 many_slots_new = make_tt({"CSE-01": {"Monday": {f"{h}-{h+1}": ("WRONG",) for h in range(8, 8 + MAX_OVERWRITTEN_SLOTS + 1)}}})
 l, r = lvl(many_slots_old, deep_merge(many_slots_old, many_slots_new))
-check(f">{MAX_OVERWRITTEN_SLOTS} slots overwritten → BIG", l, "BIG")
+check(f">{MAX_OVERWRITTEN_SLOTS} slots overwritten -> BIG", l, "BIG")
 check_is("reason mentions overwritten slots", any("overwritten" in x for x in r))
 
-# 4d. Exactly MAX_OVERWRITTEN_SLOTS → SMALL (boundary)
+# 4d. Exactly MAX_OVERWRITTEN_SLOTS -> SMALL (boundary)
 boundary_old = make_tt({"CSE-01": {"Monday": {f"{h}-{h+1}": (f"S{h}",) for h in range(8, 8 + MAX_OVERWRITTEN_SLOTS)}}})
 boundary_new = make_tt({"CSE-01": {"Monday": {f"{h}-{h+1}": ("WRONG",) for h in range(8, 8 + MAX_OVERWRITTEN_SLOTS)}}})
 l, _ = lvl(boundary_old, deep_merge(boundary_old, boundary_new))
-check(f"exactly {MAX_OVERWRITTEN_SLOTS} slots overwritten → SMALL (at boundary)", l, "SMALL")
+check(f"exactly {MAX_OVERWRITTEN_SLOTS} slots overwritten -> SMALL (at boundary)", l, "SMALL")
 
-# 4e. Any existing slot deleted → BIG
+# 4e. Any existing slot deleted -> BIG
 old_del = make_tt({"CSE-01": {"Monday": {"8-9": ("ML",), "9-10": ("AI",)}}})
 new_del = make_tt({"CSE-01": {"Monday": {"8-9": ("ML",)}}})   # 9-10 gone
 l, r = lvl(old_del, new_del)
-check("1 deleted slot → BIG", l, "BIG")
+check("1 deleted slot -> BIG", l, "BIG")
 check_is("reason mentions deleted slot", any("deleted" in x for x in r))
 
-# 4f. Section removed → BIG
+# 4f. Section removed -> BIG
 old_rm = make_tt({"CSE-01": {"Monday": {"8-9": ("ML",)}}, "IT-01": {"Monday": {"8-9": ("OS",)}}})
 new_rm = make_tt({"CSE-01": {"Monday": {"8-9": ("ML",)}}})
 l, r = lvl(old_rm, new_rm)
-check("section removed → BIG", l, "BIG")
+check("section removed -> BIG", l, "BIG")
 check_is("reason mentions removed section", any("removed" in x for x in r))
 
-# 4g. > MAX_NEW_SECTIONS new sections → BIG
+# 4g. > MAX_NEW_SECTIONS new sections -> BIG
 old_ns = make_tt({"CSE-01": {"Monday": {"8-9": ("ML",)}}})
 adds = {"CSE-01": {"Monday": {"8-9": ("ML",)}}}
 for i in range(MAX_NEW_SECTIONS + 1):
     adds[f"NEW-{i:02d}"] = {"Monday": {"8-9": ("X",)}}
 new_ns = make_tt(adds)
 l, r = lvl(old_ns, new_ns)
-check(f">{MAX_NEW_SECTIONS} new sections → BIG", l, "BIG")
+check(f">{MAX_NEW_SECTIONS} new sections -> BIG", l, "BIG")
 check_is("reason mentions new sections", any("new section" in x for x in r))
 
-# 4h. Exactly MAX_NEW_SECTIONS new sections → SMALL (boundary)
+# 4h. Exactly MAX_NEW_SECTIONS new sections -> SMALL (boundary)
 adds2 = {"CSE-01": {"Monday": {"8-9": ("ML",)}}}
 for i in range(MAX_NEW_SECTIONS):
     adds2[f"NEW-{i:02d}"] = {"Monday": {"8-9": ("X",)}}
 l, _ = lvl(old_ns, make_tt(adds2))
-check(f"exactly {MAX_NEW_SECTIONS} new sections → SMALL (boundary)", l, "SMALL")
+check(f"exactly {MAX_NEW_SECTIONS} new sections -> SMALL (boundary)", l, "SMALL")
 
-# 4i. > MAX_TOUCHED_SECTIONS sections changed → BIG
+# 4i. > MAX_TOUCHED_SECTIONS sections changed -> BIG
 many_secs = {f"S-{i:02d}": {"Monday": {"8-9": ("OLD",)}} for i in range(MAX_TOUCHED_SECTIONS + 1)}
 old_mt = make_tt(many_secs)
 new_mt_dict = {k: {"Monday": {"8-9": ("NEW",)}} for k in many_secs}
 l, r = lvl(old_mt, make_tt(new_mt_dict))
-check(f">{MAX_TOUCHED_SECTIONS} sections touched → BIG", l, "BIG")
+check(f">{MAX_TOUCHED_SECTIONS} sections touched -> BIG", l, "BIG")
 
 # 4j. Fresh file (no old) always SMALL (first upload)
 l, _ = lvl({}, make_tt({"CSE-01": {"Monday": {"8-9": ("ML",)}}}))
-check("first upload (empty old) → SMALL", l, "SMALL")
+check("first upload (empty old) -> SMALL", l, "SMALL")
 
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# 5. resolve_elective (PE-3)
-# ═══════════════════════════════════════════════════════════════════════════════
-print("\n── resolve_elective ────────────────────────────────────────────────────")
-pe3_map = {"CSE-01": "SPM", "IT-01": "BC"}
-
-check("PE-3 placeholder → resolved subject",
-      resolve_elective("PE-3", "CSE-01", pe3_map), "SPM")
-check("PE-III placeholder → resolved",
-      resolve_elective("PE-III", "CSE-01", pe3_map), "SPM")
-check("pipe-separated → pick assigned",
-      resolve_elective("CC|SPM|NLP|CV", "CSE-01", pe3_map), "SPM")
-check("pipe-separated, pick different",
-      resolve_elective("BC|SPM|NLP", "IT-01", pe3_map), "BC")
-check("normal subject unchanged",
-      resolve_elective("MATH", "CSE-01", pe3_map), "MATH")
-check("PE-3 with no map entry → returns original",
-      resolve_elective("PE-3", "CSSE-01", pe3_map), "PE-3")
-check("pipe subject with no map entry → returns original",
-      resolve_elective("A|B|C", "CSSE-01", pe3_map), "A|B|C")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # 6. compute_changes (diff output)
 # ═══════════════════════════════════════════════════════════════════════════════
-print("\n── compute_changes ─────────────────────────────────────────────────────")
+print("\n== compute_changes =====================================================")
 old_c = make_tt({"CSE-01": {"Monday": {"8-9": ("ML",), "9-10": ("AI",)}}})
 new_c = make_tt({"CSE-01": {"Monday": {"8-9": ("DS",)}}})
 
@@ -271,8 +249,8 @@ check_is("no-change yields 'No content changes'",
 # ═══════════════════════════════════════════════════════════════════════════════
 # Summary
 # ═══════════════════════════════════════════════════════════════════════════════
-print(f"\n{'═'*60}")
+print(f"\n{'='*60}")
 print(f"  Results: {PASS} passed, {FAIL} failed")
-print(f"{'═'*60}")
+print(f"{'='*60}")
 if FAIL:
     sys.exit(1)

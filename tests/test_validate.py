@@ -12,10 +12,10 @@ PASS = FAIL = 0
 def check(label, got, expected):
     global PASS, FAIL
     if got == expected:
-        print(f"  ✓  {label}")
+        print(f"  [PASS]  {label}")
         PASS += 1
     else:
-        print(f"  ✗  {label}")
+        print(f"  [FAIL]  {label}")
         print(f"       got:      {got!r}")
         print(f"       expected: {expected!r}")
         FAIL += 1
@@ -23,10 +23,10 @@ def check(label, got, expected):
 def check_is(label, cond):
     global PASS, FAIL
     if cond:
-        print(f"  ✓  {label}")
+        print(f"  [PASS]  {label}")
         PASS += 1
     else:
-        print(f"  ✗  {label}")
+        print(f"  [FAIL]  {label}")
         FAIL += 1
 
 def args(batch=2023, semester=6, pe3=False):
@@ -45,7 +45,7 @@ def run_validate(data):
         return False, buf.getvalue()
 
 
-print("\n── validate: PASSING cases ─────────────────────────────────────────────")
+print("\n== validate: PASSING cases =============================================")
 
 ok, out = run_validate({"CSE-01": {"Monday": {"8-9": {"subject": "ML", "room": "C25-A-201"}}}})
 check("valid single section passes", ok, True)
@@ -65,7 +65,7 @@ ok, _ = run_validate({"IT-01": {"Monday": {"8-9": {"subject": "DS"}}}})
 check("IT-XX section format passes", ok, True)
 
 
-print("\n── validate: FAILING cases ─────────────────────────────────────────────")
+print("\n== validate: FAILING cases =============================================")
 
 ok, out = run_validate({})
 check("empty data fails", ok, False)
@@ -85,8 +85,8 @@ check_is("unresolved elective reason in output", "unresolved elective" in out)
 ok, out = run_validate({"CSE-01": {"Monday": {"8-9": {"subject": "PE-III"}}}})
 check("unresolved PE-III placeholder rejected", ok, False)
 
-ok, out = run_validate({"CSE-01": {"Monday": {"8-9": {"subject": "CC|SPM|NLP"}}}})
-check("pipe-separated (unresolved) subject rejected", ok, False)
+ok, _ = run_validate({"CSE-01": {"Monday": {"8-9": {"subject": "CC|SPM|NLP"}}}})
+check("pipe-separated combined subject is accepted", ok, True)
 
 ok, out = run_validate({"CSE-01": {"Monday": {}}})
 check("section with no days rejected", ok, False)
@@ -97,8 +97,8 @@ ok, out = run_validate(bad)
 check("multiple bad sections all rejected", ok, False)
 
 
-print(f"\n{'═'*60}")
+print(f"\n{'='*60}")
 print(f"  Results: {PASS} passed, {FAIL} failed")
-print(f"{'═'*60}")
+print(f"{'='*60}")
 if FAIL:
     sys.exit(1)

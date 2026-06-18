@@ -97,35 +97,7 @@ def normalize_section(section: str) -> str:
     return f"{prefix.upper()}-{int(num):02d}"
 
 
-def load_pe3_mapping():
-    try:
-        data = json.loads(PE3_DATA.read_text(encoding='utf-8'))
-        return {normalize_section(k): v for k, v in data.items()}
-    except FileNotFoundError:
-        print(f"Warning: {PE3_DATA} not found; PE-3 resolution disabled.")
-        return {}
-
-
-def resolve_elective(subject_code, section, pe3_map):
-    subj_norm = subject_code.upper().replace(" ", "")
-    elective = None
-    for key in [section, section.replace(" ", ""), section.replace("-", ""),
-                section.replace(" ", "").replace("-", "")]:
-        if key in pe3_map:
-            elective = pe3_map[key]
-            break
-    # Explicit PE-3 placeholder
-    if subj_norm in ["PE-3", "PE-III", "PE3", "PEIII"]:
-        return elective if elective else subject_code
-    # Merged pipe-separated options, e.g. "CC|SPM|NLP|CV"
-    if "|" in subject_code:
-        options = [s.strip().upper() for s in subject_code.split("|")]
-        if elective and elective.upper() in options:
-            return elective
-    return subject_code
-
-
-def build_json(df: pd.DataFrame, pe3_map: dict, pe3: bool) -> dict:
+def build_json(df: pd.DataFrame) -> dict:
     timetable = {}
 
     # Dynamically pair each time-slot column with the most recent ROOM* column.
@@ -193,9 +165,6 @@ def build_json(df: pd.DataFrame, pe3_map: dict, pe3: bool) -> dict:
 
             if subject in BLANK:
                 continue
-
-            if pe3:
-                subject = resolve_elective(subject, section, pe3_map)
 
             if room not in BLANK:
                 last_room = room
@@ -368,7 +337,7 @@ def main():
     ap.add_argument("--semester", type=int, required=True, help="Semester number, e.g. 6")
     ap.add_argument("--mode", default="merge", choices=["merge", "replace"])
     ap.add_argument("--pe3", action="store_true",
-                    help="Run section-assigned (PE-3) elective resolution.")
+                    help="Deprecated (ignored). Previously ran section-assigned (PE-3) elective resolution.")
     ap.add_argument("--file-type", default="timetable", choices=["timetable", "electives"],
                     help="Type of timetable file (timetable or electives).")
     args = ap.parse_args()
@@ -379,8 +348,7 @@ def main():
 
     print(f"Loading data from {args.input_file}...")
     df = load_data(args.input_file)
-    pe3_map = load_pe3_mapping() if args.pe3 else {}
-    new_data = build_json(df, pe3_map, args.pe3)
+    new_data = build_json(df)
     print(f"Parsed {len(new_data)} sections from input file.")
 
     # ---- validation gate (aborts on failure) ----
