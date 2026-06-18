@@ -52,13 +52,31 @@ TIME_SLOTS = [
 
 
 # ----------------------------- helpers -----------------------------
+def clean_header_rows(df: pd.DataFrame) -> pd.DataFrame:
+    """Automatically promotes the first row containing 'day' and 'section' keywords to columns if needed."""
+    has_day = any('day' in str(c).lower() for c in df.columns)
+    has_section = any('section' in str(c).lower() for c in df.columns)
+    
+    if not (has_day and has_section):
+        for idx, row in df.head(10).iterrows():
+            row_vals = [str(val).strip().lower() for val in row.values]
+            found_day = any('day' in val for val in row_vals)
+            found_section = any('section' in val for val in row_vals)
+            if found_day and found_section:
+                df.columns = [str(val).strip() for val in row.values]
+                df = df.iloc[idx + 1:].reset_index(drop=True)
+                break
+    return df
+
+
 def load_data(path: str) -> pd.DataFrame:
     """Try Excel first, fall back to CSV regardless of extension."""
     try:
-        return pd.read_excel(path)
+        df = pd.read_excel(path)
     except Exception:
         print("Excel read failed, trying CSV...")
-        return pd.read_csv(path)
+        df = pd.read_csv(path)
+    return clean_header_rows(df)
 
 
 SECTION_REGEX = re.compile(r"^([A-Z]+)(?:-?)(\d+)$", re.I)

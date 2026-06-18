@@ -73,8 +73,28 @@ def normalize_section(section: str) -> str:
 
 def parse_sheet(df: pd.DataFrame) -> dict:
     """Return {roll_str: section_str} from a sheet."""
-    roll_col = find_roll_col(df)
-    sec_col = find_section_col(df)
+    try:
+        roll_col = find_roll_col(df)
+        sec_col = find_section_col(df)
+    except ValueError as e:
+        print("Warning: Columns could not be resolved by header name. Falling back to index-based column mapping.")
+        result = {}
+        if len(df.columns) >= 2:
+            first_roll = str(df.columns[0]).strip().replace(".0", "")
+            first_sec = normalize_section(str(df.columns[1]).strip())
+            if first_roll and first_roll.lower() != "nan" and first_sec and first_sec.lower() != "nan":
+                result[first_roll] = first_sec
+                
+            for _, row in df.iterrows():
+                roll = str(row.iloc[0]).strip().replace(".0", "")
+                section = normalize_section(str(row.iloc[1]).strip())
+                if not roll or roll.lower() == "nan":
+                    continue
+                if not section or section.lower() == "nan":
+                    continue
+                result[roll] = section
+        return result
+
     result = {}
     for _, row in df.iterrows():
         roll = str(row[roll_col]).strip().replace(".0", "")  # handle float ints

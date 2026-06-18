@@ -12,8 +12,8 @@ wrong-shape files never reach the live JSON. Extend `KNOWN_SUBJECTS` per cohort 
 import sys
 import re
 
-# Sections look like CSE-01, CSCE-01, IT-01, CSSE-01 (letters, hyphen, two digits).
-SECTION_RE = re.compile(r'^[A-Z]+-\d{2}$')
+# Sections look like CSE-01, CSCE-01, IT-01, CSSE-01 or elective sections like HPC_CS-01.
+SECTION_RE = re.compile(r'^[A-Z_]+-\d{2}$')
 
 # Minimum sections expected in a real upload. A single-section revision is allowed,
 # so keep this at 1; bump per-cohort if you want stricter "full file" checks.
