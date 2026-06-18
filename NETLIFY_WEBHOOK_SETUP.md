@@ -23,7 +23,7 @@ Site → **Site configuration → Environment variables** → add:
 |---|---|
 | `TELEGRAM_TOKEN` | your bot token |
 | `GITHUB_TOKEN` | fine-grained PAT for `klassesfiles` (Contents + Pull requests + Actions, R/W) |
-| `MY_TELEGRAM_USER_ID` | your numeric Telegram id (e.g. `847736921`) |
+| `MY_TELEGRAM_USER_ID` | your numeric Telegram id (get it from @userinfobot) |
 | `BLOCKLIST_READ_KEY` | any long random string (shared with Apps Script) |
 | `TELEGRAM_WEBHOOK_SECRET` | *(optional)* any random string for extra webhook auth |
 
