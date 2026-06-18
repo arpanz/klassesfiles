@@ -315,9 +315,17 @@ def main():
     ap.add_argument("--mode", default="merge", choices=["merge", "replace"])
     ap.add_argument("--pe3", action="store_true",
                     help="Run section-assigned (PE-3) elective resolution.")
+    ap.add_argument("--electives", action="store_true",
+                    help="Parse as an E1/E2 elective schedule file. "
+                         "Uses relaxed section-key validation (e.g. AI_IT-01) "
+                         "and outputs to electives_{batch}_s{semester}.json.")
     args = ap.parse_args()
 
-    out_name = f"timetable_{args.batch}_s{args.semester}.json"
+    # Electives mode overrides the output filename and skips PE-3 resolution.
+    if args.electives:
+        out_name = f"electives_{args.batch}_s{args.semester}.json"
+    else:
+        out_name = f"timetable_{args.batch}_s{args.semester}.json"
     out_path = ROOT / out_name
 
     print(f"Loading data from {args.input_file}...")
@@ -327,7 +335,7 @@ def main():
     print(f"Parsed {len(new_data)} sections from input file.")
 
     # ---- validation gate (aborts on failure) ----
-    validate(new_data, args)
+    validate(new_data, args, elective_mode=args.electives)
 
     # Load the current on-disk version (for both merge and the diff report).
     old_disk = {}
