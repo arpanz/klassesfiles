@@ -121,47 +121,6 @@ function triggerAction(cohort, base64File) {
   return res.getResponseCode();
 }
 
-// ─── SPREADSHEET CONVERSION (shrink before dispatch) ──────────────────────────
-// Converts any spreadsheet attachment (xls / xlsx / csv) to a compact .xlsx using
-// Google Drive's conversion engine, returning the raw bytes.
-//
-// Why: the university sends legacy binary .xls files (~128 KB), which become ~170 KB
-// when base64-encoded — over GitHub's 65,535-char workflow_dispatch input limit, so
-// the dispatch 422s before the Action runs. Re-saving as modern .xlsx keeps the same
-// data at ~34 KB (~46 KB base64), comfortably under the limit. The parser reads .xlsx
-// natively (the Action writes the payload to input_data.xlsx).
-//
-// SETUP: enable the advanced "Drive API" service in the Apps Script editor
-//   (Services ➕ → Drive API). No extra OAuth config needed beyond re-authorizing.
-function convertToXlsx_(attachment) {
-  let tempFile = null;
-  try {
-    // Upload the attachment and let Drive convert it into a Google Sheet.
-    tempFile = Drive.Files.insert(
-      { title: 'kv_tmp_' + Date.now(), mimeType: MimeType.GOOGLE_SHEETS },
-      attachment.copyBlob(),
-      { convert: true }
-    );
-    // Export the converted Sheet back as a compact .xlsx.
-    const url = 'https://docs.google.com/spreadsheets/d/' + tempFile.id +
-                '/export?format=xlsx';
-    const resp = UrlFetchApp.fetch(url, {
-      headers: { Authorization: 'Bearer ' + ScriptApp.getOAuthToken() },
-      muteHttpExceptions: true,
-    });
-    if (resp.getResponseCode() !== 200) {
-      throw new Error('Drive xlsx export HTTP ' + resp.getResponseCode());
-    }
-    return resp.getBlob().getBytes();
-  } finally {
-    // Always clean up the temporary Drive file (best-effort).
-    if (tempFile && tempFile.id) {
-      try { Drive.Files.remove(tempFile.id); }
-      catch (cleanupErr) { Logger.log('Drive cleanup failed: ' + cleanupErr); }
-    }
-  }
-}
-
 // ─── MAIN ─────────────────────────────────────────────────────────────────────
 function processIncomingTimetables() {
   let cohorts;
@@ -255,23 +214,18 @@ function processIncomingTimetables() {
           return;
         }
 
-        // ── Shrink + dispatch ──
-        // University files arrive as legacy .xls (often ~128 KB), but GitHub caps
-        // workflow_dispatch inputs at 65,535 chars. A 128 KB .xls is ~170 KB once
-        // base64-encoded → the dispatch fails with HTTP 422 before the Action even
-        // runs. So we convert the attachment to a compact .xlsx via Google Drive
-        // (same data, ~34 KB → ~46 KB base64) before sending. Students keep
-        // emailing .xls; the shrinking happens here, invisibly.
-        let payloadBytes;
-        try {
-          payloadBytes = convertToXlsx_(att);   // compact .xlsx bytes
-        } catch (convErr) {
-          Logger.log('Conversion failed, falling back to raw bytes: ' + convErr);
-          payloadBytes = att.getBytes();         // may be too large; guard below catches it
-        }
-        const base64File = Utilities.base64Encode(payloadBytes);
+        // ── Compress + dispatch ──
+        // University files arrive as legacy .xls (~128 KB), but GitHub caps
+        // workflow_dispatch inputs at 65,535 chars — a raw .xls is ~170 KB once
+        // base64-encoded, so the dispatch fails with HTTP 422 before the Action
+        // even runs. We gzip the bytes first (built-in Utilities.gzip; needs no
+        // extra services or re-auth): ~128 KB → ~30 KB → ~41 KB base64. The Action
+        // auto-detects the gzip header and decompresses before parsing.
+        // Students keep emailing .xls; the compression happens here, invisibly.
+        const gzipped   = Utilities.gzip(att.copyBlob());
+        const base64File = Utilities.base64Encode(gzipped.getBytes());
 
-        // Hard guard: never attempt a dispatch we know GitHub will reject (422).
+        // Safety guard: never attempt a dispatch we know GitHub will reject (422).
         if (base64File.length > 60000) {
           tgCard_('✗', 'File Too Large to Dispatch', [
             ['Cohort', cohort.label + ' (Batch ' + cohort.batch + ')'],
