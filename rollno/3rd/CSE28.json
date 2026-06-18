@@ -1,0 +1,126 @@
+{
+    "CSE-28": {
+        "Monday": {
+            "10-11": {
+                "subject": "COA",
+                "room": "C25-B-108"
+            },
+            "11-12": {
+                "subject": "OS",
+                "room": "C25-B-206"
+            },
+            "12-1": {
+                "subject": "DM",
+                "room": "C25-B-206"
+            },
+            "1-2": {
+                "subject": "OOPJ",
+                "room": "C25-B-206"
+            },
+            "4.00-5.00": {
+                "subject": "DBMS(L)",
+                "room": "C25-B-214(L)"
+            },
+            "5.00-6.00": {
+                "subject": "DBMS(L)",
+                "room": "C25-B-214(L)"
+            }
+        },
+        "Tuesday": {
+            "8-9": {
+                "subject": "DBMS",
+                "room": "C25-B-113"
+            },
+            "9-10": {
+                "subject": "COA",
+                "room": "C25-B-113"
+            },
+            "10-11": {
+                "subject": "DM",
+                "room": "C25-B-113"
+            },
+            "11-12": {
+                "subject": "OOPJ",
+                "room": "C25-A-007"
+            },
+            "12-1": {
+                "subject": "ED|IOC|OB",
+                "room": "C25-A-007"
+            }
+        },
+        "Wednesday": {
+            "8-9": {
+                "subject": "DBMS",
+                "room": "C25-A-309"
+            },
+            "9-10": {
+                "subject": "OS(L)",
+                "room": "C25-B-114(L)"
+            },
+            "10-11": {
+                "subject": "OS(L)",
+                "room": "C25-B-114(L)"
+            },
+            "11-12": {
+                "subject": "COA",
+                "room": "C25-B-213"
+            },
+            "12-1": {
+                "subject": "DM",
+                "room": "C25-B-213"
+            }
+        },
+        "Thursday": {
+            "9-10": {
+                "subject": "DM",
+                "room": "C25-B-213"
+            },
+            "10-11": {
+                "subject": "OOPJ",
+                "room": "C25-B-213"
+            },
+            "11-12": {
+                "subject": "OS",
+                "room": "C25-B-213"
+            },
+            "12-1": {
+                "subject": "ED|IOC|OB",
+                "room": "C25-B-213"
+            },
+            "3.00-4.00": {
+                "subject": "VT(L)",
+                "room": "C25-A-212(L)"
+            },
+            "4.00-5.00": {
+                "subject": "VT(L)",
+                "room": "C25-A-212(L)"
+            }
+        },
+        "Friday": {
+            "10-11": {
+                "subject": "COA",
+                "room": "C25-B-020"
+            },
+            "11-12": {
+                "subject": "OS",
+                "room": "C25-B-020"
+            },
+            "12-1": {
+                "subject": "ED|IOC|OB",
+                "room": "C25-B-020"
+            },
+            "3.00-4.00": {
+                "subject": "DBMS",
+                "room": "C25-A-011"
+            },
+            "4.00-5.00": {
+                "subject": "OOPJ(L)",
+                "room": "C25-A-112(L)"
+            },
+            "5.00-6.00": {
+                "subject": "OOPJ(L)",
+                "room": "C25-A-112(L)"
+            }
+        }
+    }
+}

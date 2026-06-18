@@ -23,6 +23,7 @@ Usage:
 """
 import sys
 import json
+import re
 import argparse
 import pandas as pd
 from pathlib import Path
@@ -52,6 +53,24 @@ def find_section_col(df: pd.DataFrame) -> str:
     raise ValueError(f"No 'Section' column found. Columns: {list(df.columns)}")
 
 
+SECTION_REGEX = re.compile(r"^([A-Z]+)(?:-?)(\d+)$", re.I)
+
+
+def normalize_section(section: str) -> str:
+    """Normalize and pad section numbers: 'cse-1' -> 'CSE-01', 'IT02' -> 'IT-02', 'AI_IT-1' -> 'AI_IT-01'."""
+    if not section:
+        return section
+    section = section.strip()
+    if "_" in section:
+        parts = section.split("_", 1)
+        return f"{parts[0].upper()}_{normalize_section(parts[1])}"
+    m = SECTION_REGEX.match(section.replace(" ", ""))
+    if not m:
+        return section.upper()
+    prefix, num = m.groups()
+    return f"{prefix.upper()}-{int(num):02d}"
+
+
 def parse_sheet(df: pd.DataFrame) -> dict:
     """Return {roll_str: section_str} from a sheet."""
     roll_col = find_roll_col(df)
@@ -59,7 +78,7 @@ def parse_sheet(df: pd.DataFrame) -> dict:
     result = {}
     for _, row in df.iterrows():
         roll = str(row[roll_col]).strip().replace(".0", "")  # handle float ints
-        section = str(row[sec_col]).strip()
+        section = normalize_section(str(row[sec_col]).strip())
         if not roll or roll.lower() == "nan":
             continue
         if not section or section.lower() == "nan":

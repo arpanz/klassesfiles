@@ -61,11 +61,22 @@ def load_data(path: str) -> pd.DataFrame:
         return pd.read_csv(path)
 
 
+SECTION_REGEX = re.compile(r"^([A-Z]+)(?:-?)(\d+)$", re.I)
+
+
 def normalize_section(section: str) -> str:
-    """Pad single-digit section numbers: 'cse-1' -> 'cse-01'."""
+    """Normalize and pad section numbers: 'cse-1' -> 'CSE-01', 'IT02' -> 'IT-02', 'AI_IT-1' -> 'AI_IT-01'."""
     if not section:
         return section
-    return re.sub(r'(?<!\d)(\d)(?!\d)', r'0\1', section)
+    section = section.strip()
+    if "_" in section:
+        parts = section.split("_", 1)
+        return f"{parts[0].upper()}_{normalize_section(parts[1])}"
+    m = SECTION_REGEX.match(section.replace(" ", ""))
+    if not m:
+        return section.upper()
+    prefix, num = m.groups()
+    return f"{prefix.upper()}-{int(num):02d}"
 
 
 def load_pe3_mapping():
@@ -109,10 +120,35 @@ def build_json(df: pd.DataFrame, pe3_map: dict, pe3: bool) -> dict:
         elif col_str in TIME_SLOTS and current_room_col:
             time_to_room_map.append((col_str, current_room_col))
 
+    # Find the section and day columns case-insensitively with fallback
+    section_col = None
+    day_col = None
+    for col in df.columns:
+        c_low = str(col).strip().lower()
+        if c_low == 'section' or c_low == 'branch' or 'section(' in c_low:
+            section_col = col
+            break
+    if not section_col:
+        for col in df.columns:
+            if 'section' in str(col).lower():
+                section_col = col
+                break
+
+    for col in df.columns:
+        c_low = str(col).strip().lower()
+        if c_low == 'day':
+            day_col = col
+            break
+    if not day_col:
+        for col in df.columns:
+            if 'day' in str(col).lower():
+                day_col = col
+                break
+
     for _, row in df.iterrows():
-        section_raw = str(row.get('SECTION') or row.get('Section') or '').strip()
+        section_raw = str(row[section_col]).strip() if section_col else str(row.get('SECTION') or row.get('Section') or '').strip()
         section = normalize_section(section_raw)
-        day_raw = str(row.get('DAY') or row.get('Day') or '').strip().upper()
+        day_raw = str(row[day_col]).strip().upper() if day_col else str(row.get('DAY') or row.get('Day') or '').strip().upper()
 
         if not section or not day_raw:
             continue

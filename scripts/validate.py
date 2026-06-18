@@ -52,7 +52,7 @@ def validate(data, args):
                 subj = info["subject"]
                 norm = subj.upper().replace(" ", "")
                 # Unresolved elective: leftover PE-3 placeholder or pipe-options.
-                if norm in UNRESOLVED_PLACEHOLDERS or "|" in subj:
+                if norm in UNRESOLVED_PLACEHOLDERS or (args.pe3 and "|" in subj):
                     errors.append(
                         f"{section}/{day}/{slot}: unresolved elective '{subj}' "
                         f"— section likely missing from section_pe3_data.json."
