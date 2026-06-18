@@ -369,9 +369,12 @@ def main():
     ap.add_argument("--mode", default="merge", choices=["merge", "replace"])
     ap.add_argument("--pe3", action="store_true",
                     help="Run section-assigned (PE-3) elective resolution.")
+    ap.add_argument("--file-type", default="timetable", choices=["timetable", "electives"],
+                    help="Type of timetable file (timetable or electives).")
     args = ap.parse_args()
 
-    out_name = f"timetable_{args.batch}_s{args.semester}.json"
+    prefix = "timetable" if args.file_type == "timetable" else "electives"
+    out_name = f"{prefix}_{args.batch}_s{args.semester}.json"
     out_path = ROOT / out_name
 
     print(f"Loading data from {args.input_file}...")
