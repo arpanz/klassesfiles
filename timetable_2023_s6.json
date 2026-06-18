@@ -6078,38 +6078,41 @@
     "CSE-48": {
         "Monday": {
             "10-11": {
-                "subject": "DS",
-                "room": "C25-B-017"
+                "subject": "ML",
+                "room": "C25-B-308"
             },
             "11-12": {
-                "subject": "STW",
-                "room": "C25-B-113"
+                "subject": "UHV",
+                "room": "C25-B-308"
             },
             "12-1": {
-                "subject": "DSD",
-                "room": "C25-B-113"
+                "subject": "CV",
+                "room": "C25-B-308"
             },
             "1-2": {
-                "subject": "IND4",
-                "room": "C25-B-113"
+                "subject": "AI",
+                "room": "C25-B-308"
             },
             "9-10": {
                 "subject": "PS",
                 "room": "C25-B-017"
+            },
+            "8-9": {
+                "subject": "AI"
             }
         },
         "Tuesday": {
             "9-10": {
-                "subject": "AFL",
-                "room": "C25-A-310"
+                "subject": "ML",
+                "room": "C25-A-014"
             },
             "10-11": {
-                "subject": "DS",
-                "room": "C25-A-310"
+                "subject": "AI",
+                "room": "C25-A-014"
             },
             "11-12": {
-                "subject": "DSD",
-                "room": "C25-A-310"
+                "subject": "UHV",
+                "room": "C25-B-307"
             },
             "12-1": {
                 "subject": "STW",
@@ -6160,8 +6163,8 @@
                 "room": "C25-A-015"
             },
             "11-12": {
-                "subject": "AFL",
-                "room": "C25-B-016"
+                "subject": "UHV",
+                "room": "C25-B-106"
             },
             "12-1": {
                 "subject": "IND4",
@@ -6178,24 +6181,24 @@
         },
         "Friday": {
             "9-10": {
-                "subject": "DS",
-                "room": "C25-B-013"
+                "subject": "CV",
+                "room": "C25-B-319"
             },
             "10-11": {
-                "subject": "AFL",
-                "room": "C25-B-013"
+                "subject": "ML",
+                "room": "C25-B-319"
             },
             "11-12": {
-                "subject": "DSD",
-                "room": "C25-B-122"
+                "subject": "AD",
+                "room": "C25-A-302(L)"
             },
             "12-1": {
-                "subject": "DSD(L)",
-                "room": "C25-B-118(L)"
+                "subject": "AD(L)",
+                "room": "C25-A-302(L)"
             },
             "1-2": {
-                "subject": "DSD(L)",
-                "room": "C25-B-118(L)"
+                "subject": "AD(L)",
+                "room": "C25-A-302(L)"
             }
         }
     },
