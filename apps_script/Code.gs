@@ -296,8 +296,9 @@ function processIncomingTimetables() {
           const html = buildEmailHtml_({
             status: 'success',
             title: 'Thank You!',
-            message: 'Your ' + cohort.label + ' timetable has been received and is being ' +
-                     'processed. It will go live in the app in about a minute.',
+            message: 'Your ' + cohort.label + ' timetable has been received and is ' +
+                     'being processed. Once reviewed and verified, it\'ll appear in the ' +
+                     'app automatically — no further action needed from you.',
             rows: [
               ['Cohort', cohort.label + ' (Batch ' + cohort.batch + ')'],
               ['Semester', 'Semester ' + cohort.semester],
@@ -345,7 +346,10 @@ function buildEmailHtml_(opts) {
   const accentEnd   = '#00D4AA';   // Teal
   const badgeColor  = isSuccess ? '#10B981' : '#EF4444';
   const badgeText   = isSuccess ? 'RECEIVED ✓' : 'ACTION NEEDED';
-  const emoji       = isSuccess ? '🎉' : '⚠️';
+  // Pure CSS icon — avoids raw emoji which render as ? in many email clients.
+  const iconBg      = isSuccess ? '#D1FAE5' : '#FEE2E2';
+  const iconColor   = isSuccess ? '#059669' : '#DC2626';
+  const iconText    = isSuccess ? '&#10003;' : '&#33;';   // ✓ or !
 
   const rowsHtml = (opts.rows || []).map(function (r, i) {
     const bg = i % 2 === 0 ? '#F9FAFB' : '#FFFFFF';
@@ -381,7 +385,12 @@ function buildEmailHtml_(opts) {
         '<div style="margin-top:6px;font-size:13px;color:rgba(255,255,255,0.85);">Timetable Service</div>' +
       '</td></tr>' +
       '<tr><td style="padding:36px 32px 8px;text-align:center;">' +
-        '<div style="font-size:46px;line-height:1;margin-bottom:10px;">' + emoji + '</div>' +
+        '<div style="font-size:46px;line-height:1;margin-bottom:10px;">' +
+          '<span style="display:inline-flex;align-items:center;justify-content:center;' +
+          'width:72px;height:72px;border-radius:50%;background:' + iconBg + ';' +
+          'color:' + iconColor + ';font-size:36px;font-weight:700;">' +
+          iconText + '</span>' +
+        '</div>' +
         '<span style="display:inline-block;background:' + badgeColor + '1A;color:' + badgeColor + ';' +
             'font-size:12px;font-weight:700;letter-spacing:0.5px;padding:6px 14px;border-radius:999px;">' +
             badgeText + '</span>' +
