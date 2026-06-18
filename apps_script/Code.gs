@@ -415,6 +415,20 @@ function debugCheck() {
 function doPost(e) {
   try {
     const update = JSON.parse(e.postData.contents);
+
+    // Idempotency guard: Telegram re-delivers an update if it doesn't get a
+    // quick 200 (Apps Script is slow-ish), which would run the same command
+    // twice and reply multiple times. Skip any update_id we've already handled.
+    const uid = update && update.update_id;
+    if (uid != null) {
+      const cache = CacheService.getScriptCache();
+      const key = 'upd_' + uid;
+      if (cache.get(key)) {
+        return ContentService.createTextOutput('ok');  // duplicate — already handled
+      }
+      cache.put(key, '1', 600);  // remember for 10 minutes
+    }
+
     if (update.callback_query) handleCallback_(update.callback_query);
     else if (update.message && update.message.text) handleCommand_(update.message);
   } catch (err) {

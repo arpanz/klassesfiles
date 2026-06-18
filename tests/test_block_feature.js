@@ -19,6 +19,7 @@ const path = require('path');
 
 let _scriptProps = {};
 let _tgCalls = [];   // recorded outgoing Telegram API calls
+let _cache = {};     // mock CacheService store
 
 function parsePayload(opts) {
   // opts.payload is an object (Apps Script style) for our stubs.
@@ -48,6 +49,12 @@ function makeStubs() {
     GmailApp: { sendEmail: () => {}, search: () => [] },
     Logger: { log: () => {} },
     ContentService: { createTextOutput: (s) => ({ output: s }) },
+    CacheService: {
+      getScriptCache: () => ({
+        get: (k) => _cache[k] ?? null,
+        put: (k, v) => { _cache[k] = v; },
+      }),
+    },
   };
 }
 
@@ -61,6 +68,7 @@ const patchedSrc = rawSrc
 function freshCtx() {
   _scriptProps = {};
   _tgCalls = [];
+  _cache = {};
   const ctx = vm.createContext({ ...makeStubs(), Buffer, console });
   vm.runInContext(patchedSrc, ctx);
   return ctx;
@@ -249,6 +257,34 @@ console.log('\n── corrupt blocklist property must not break commands ──�
   try { C._saveBlocklist(undefined); } catch (e) { threw = true; }
   ok('_saveBlocklist(undefined) does not write a bad value', !threw);
   ok('_saveBlocklist(undefined) stores "[]"', _scriptProps['blocklist'] === '[]');
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════════
+console.log('\n── doPost de-duplicates retried updates (no double replies) ──────');
+{
+  const C = freshCtx();
+  const makeUpdate = (uid, text) => ({
+    postData: { contents: JSON.stringify({
+      update_id: uid,
+      message: { from: { id: ADMIN_ID }, chat: { id: ADMIN_ID }, text },
+    }) },
+  });
+
+  // First delivery of update 1000 → handled (one reply)
+  C.doPost(makeUpdate(1000, '/blocked'));
+  const repliesAfterFirst = _tgCalls.filter(c => c.url.includes('sendMessage')).length;
+  ok('first delivery produces exactly one reply', repliesAfterFirst === 1);
+
+  // Telegram retries the SAME update_id → must be ignored (still one reply total)
+  C.doPost(makeUpdate(1000, '/blocked'));
+  const repliesAfterRetry = _tgCalls.filter(c => c.url.includes('sendMessage')).length;
+  ok('retry of same update_id produces NO extra reply', repliesAfterRetry === 1);
+
+  // A genuinely new update_id is still processed
+  C.doPost(makeUpdate(1001, '/blocked'));
+  const repliesAfterNew = _tgCalls.filter(c => c.url.includes('sendMessage')).length;
+  ok('a new update_id is processed normally', repliesAfterNew === 2);
 }
 
 
