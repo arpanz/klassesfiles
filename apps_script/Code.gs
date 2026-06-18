@@ -1,13 +1,19 @@
 // ═══════════════════════════════════════════════════════════════════════════
-// KampusVibes — Gmail → Pipeline → Telegram control  (Google Apps Script)
+// KampusVibes — Gmail → Pipeline  (Google Apps Script)
 // ───────────────────────────────────────────────────────────────────────────
-// Deploy two ways from one project:
-//   • Time trigger (every ~15 min) → processIncomingTimetables   (inbound)
-//   • Web App (Telegram webhook)   → doPost                       (control)
+// This script does ONE job now: the inbound email flow.
+//   • Time trigger (every ~15 min) → processIncomingTimetables
 //
-// SECURITY: do NOT hard-code secrets in this file. Set them in
-//   Project Settings → Script Properties:
-//     GITHUB_TOKEN, TELEGRAM_TOKEN, TELEGRAM_CHAT
+// The Telegram CONTROL plane (/block /unblock /blocked commands and the
+// Approve / Reject / Undo / Block buttons) has MOVED to a Netlify Function
+// (netlify/functions/telegram.mjs) because Apps Script web apps return 302s
+// that Telegram rejects. There is no doPost / Web App deployment here anymore.
+//
+// The blocklist is owned by the Netlify function (Netlify Blobs); this script
+// reads it over HTTP in isBlocked_().
+//
+// SECURITY — set these in Project Settings → Script Properties (never hard-code):
+//   GITHUB_TOKEN, TELEGRAM_TOKEN, TELEGRAM_CHAT, BLOCKLIST_KEY
 // ═══════════════════════════════════════════════════════════════════════════
 
 // ─── CONFIG ────────────────────────────────────────────────────────────────
@@ -22,8 +28,9 @@ const REPO         = 'klassesfiles';
 const WORKFLOW     = 'timetable_automation.yml';
 const MANIFEST_URL = 'https://klassesfiles.netlify.app/manifest.json';
 
-// Only YOU can act on inline buttons / commands (your Telegram user id).
-const MY_TELEGRAM_USER_ID = 847736921;
+// Blocklist is served by the Netlify function (written by the Telegram webhook).
+const BLOCKLIST_URL = 'https://klassesfiles.netlify.app/.netlify/functions/blocklist';
+const BLOCKLIST_KEY = _PROPS.getProperty('BLOCKLIST_KEY') || '';
 
 // ─── STUDENT-ONLY GATE ───────────────────────────────────────────────────────
 // A valid submitter is a student: a numeric roll-number local part at the
@@ -49,7 +56,7 @@ function nowIST_() {
   return Utilities.formatDate(new Date(), 'Asia/Kolkata', "d MMM yyyy, h:mm a 'IST'");
 }
 
-// ─── TELEGRAM ─────────────────────────────────────────────────────────────────
+// ─── TELEGRAM (notifications only — no webhook here) ──────────────────────────
 // Plain text — safe for any content (used for raw logs/warnings).
 function tg(text) {
   try {
@@ -62,6 +69,7 @@ function tg(text) {
 }
 
 // Pretty card — HTML mode. title is plain; rows are [label, value] pairs (auto-escaped).
+// `buttons` is [{text, data}] — taps are handled by the Netlify webhook.
 function tgCard_(emoji, title, rows, buttons) {
   let body = `${emoji} <b>${esc_(title)}</b>\n━━━━━━━━━━━━━━━━━━\n`;
   (rows || []).forEach(function (r) { body += `<b>${esc_(r[0])}:</b> ${esc_(r[1])}\n`; });
@@ -77,6 +85,29 @@ function tgCard_(emoji, title, rows, buttons) {
   } catch (e) { Logger.log('tgCard error: ' + e); }
 }
 
+// ─── BLOCKLIST (read-only; owned by the Netlify webhook) ──────────────────────
+// Fails OPEN on any error: a transient network/auth hiccup must never block a
+// legitimate student upload. Blocking is a spam convenience, not a security gate.
+function isBlocked_(email) {
+  if (!BLOCKLIST_KEY) return false;
+  try {
+    const resp = UrlFetchApp.fetch(
+      BLOCKLIST_URL + '?key=' + encodeURIComponent(BLOCKLIST_KEY),
+      { muteHttpExceptions: true });
+    if (resp.getResponseCode() !== 200) return false;
+    const list = JSON.parse(resp.getContentText());
+    return Array.isArray(list) && list.indexOf(String(email).trim().toLowerCase()) !== -1;
+  } catch (e) {
+    Logger.log('isBlocked_ check failed: ' + e);
+    return false;
+  }
+}
+
+// Extract bare email from "Name <a@b.com>" or "a@b.com"
+function extractEmail_(from) {
+  const m = String(from).match(/<([^>]+)>/);
+  return (m ? m[1] : String(from)).trim().toLowerCase();
+}
 
 // ─── MANIFEST ─────────────────────────────────────────────────────────────────
 function getCohorts() {
@@ -379,7 +410,7 @@ function buildEmailHtml_(opts) {
 }
 
 // ─── RATE LIMIT (anti-spam) ───────────────────────────────────────────────────
-const MAX_PER_SENDER_PER_DAY = 1;   // tune as you like
+const MAX_PER_SENDER_PER_DAY = 2;   // tune as you like
 
 // Keyed on the bare email (stable) — consistent with the blocklist.
 function underRateLimit_(email) {
@@ -408,140 +439,5 @@ function debugCheck() {
     Logger.log(`From: ${m.getFrom()} | Unread: ${m.isUnread()} | Subject: ${m.getSubject()}`);
     m.getAttachments().forEach(a => Logger.log(`  File: ${a.getName()}`));
   });
-  tgCard_('✓', 'Debug Check', [['Status', 'Telegram working'], ['Time', nowIST_()]]);
-}
-
-// ─── TELEGRAM WEBHOOK: handle Approve / Reject / Undo button taps ──────────────
-function doPost(e) {
-  try {
-    const update = JSON.parse(e.postData.contents);
-    if (update.callback_query) handleCallback_(update.callback_query);
-    else if (update.message && update.message.text) handleCommand_(update.message);
-  } catch (err) {
-    Logger.log('doPost error: ' + err);
-  }
-  return ContentService.createTextOutput('ok');
-}
-
-
-function handleCallback_(cq) {
-  // Security: only act on taps from your own account.
-  if (String(cq.from && cq.from.id) !== String(MY_TELEGRAM_USER_ID)) {
-    answerCallback_(cq.id, 'Not authorized');
-    return;
-  }
-
-  const parts  = String(cq.data).split(':');
-  const action = parts[0];
-  let msg = 'Unknown action';
-
-  if (action === 'apprv') {
-    msg = mergePR_(parts[1]) ? `✓ PR #${parts[1]} merged — publishing now.`
-                             : `⚠️ Merge failed for PR #${parts[1]} (conflict?).`;
-  } else if (action === 'rejct') {
-    msg = closePR_(parts[1]) ? `✗ PR #${parts[1]} closed — change discarded.`
-                             : `⚠️ Could not close PR #${parts[1]}.`;
-  } else if (action === 'rbk') {
-    // rbk:<batch>:<file_type>:<file_name>
-    msg = dispatchRollback_(parts[1], parts[2], parts[3])
-            ? `↩️ Rollback started for ${parts[3]}.`
-            : `⚠️ Rollback dispatch failed.`;
-  } else if (action === 'block') {
-    const email = parts[1];          // emails contain no ':', so parts[1] is safe
-    blockEmail_(email);
-    msg = '🚫 Blocked ' + email + ' — their future uploads will be ignored.';
-  }
-
-
-  answerCallback_(cq.id, msg);
-  // Update the original message and strip the buttons so you can't double-tap.
-  if (cq.message) {
-    editMessage_(cq.message.chat.id, cq.message.message_id,
-                 (cq.message.text || '') + '\n\n' + msg);
-  }
-}
-
-// ── GitHub API ──
-function gh_(method, path, payload) {
-  const res = UrlFetchApp.fetch('https://api.github.com' + path, {
-    method: method, muteHttpExceptions: true,
-    headers: { Authorization: 'Bearer ' + GITHUB_TOKEN, Accept: 'application/vnd.github+json' },
-    contentType: 'application/json',
-    payload: payload ? JSON.stringify(payload) : null,
-  });
-  Logger.log(method + ' ' + path + ' -> ' + res.getResponseCode());
-  return res.getResponseCode();
-}
-function mergePR_(pr)  { return gh_('put',   `/repos/${OWNER}/${REPO}/pulls/${pr}/merge`, { merge_method: 'squash' }) === 200; }
-function closePR_(pr)  { return gh_('patch', `/repos/${OWNER}/${REPO}/pulls/${pr}`,       { state: 'closed' }) === 200; }
-function dispatchRollback_(batch, ftype, fname) {
-  return gh_('post', `/repos/${OWNER}/${REPO}/actions/workflows/rollback.yml/dispatches`,
-    { ref: 'master', inputs: { batch: String(batch), file_type: ftype, file_name: fname, commits_back: '1' } }) === 204;
-}
-
-// ── Telegram helpers ──
-function answerCallback_(id, text) {
-  UrlFetchApp.fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/answerCallbackQuery`,
-    { method: 'post', muteHttpExceptions: true, payload: { callback_query_id: id, text: text } });
-}
-function editMessage_(chatId, msgId, text) {
-  UrlFetchApp.fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/editMessageText`,
-    { method: 'post', muteHttpExceptions: true,
-      payload: { chat_id: String(chatId), message_id: String(msgId), text: text } });
-}
-
-// ─── COMMANDS: /block /unblock /blocked ───────────────────────────────────────
-function handleCommand_(m) {
-  if (String(m.from && m.from.id) !== String(MY_TELEGRAM_USER_ID)) return;
-  const chat = m.chat.id;
-  const text = (m.text || '').trim();
-  const cmd  = text.split(/\s+/)[0].toLowerCase();
-  const arg  = text.replace(/^\S+\s*/, '').trim().toLowerCase();
-
-  if (cmd === '/block') {
-    if (!arg) return sendMsg_(chat, 'Usage: /block someone@college.edu');
-    blockEmail_(arg);
-    sendMsg_(chat, '🚫 Blocked: ' + arg);
-  } else if (cmd === '/unblock') {
-    if (!arg) return sendMsg_(chat, 'Usage: /unblock someone@college.edu');
-    unblockEmail_(arg);
-    sendMsg_(chat, '✓ Unblocked: ' + arg);
-  } else if (cmd === '/blocked') {
-    const list = listBlocked_();
-    sendMsg_(chat, list.length ? '🚫 Blocked senders:\n' + list.join('\n') : 'No one is blocked.');
-  } else if (cmd === '/help' || cmd === '/start') {
-    sendMsg_(chat, 'Commands:\n/block <email>\n/unblock <email>\n/blocked');
-  }
-}
-
-// ─── BLOCKLIST (persisted in Script Properties) ───────────────────────────────
-function _getBlocklist() {
-  const raw = PropertiesService.getScriptProperties().getProperty('blocklist');
-  return raw ? JSON.parse(raw) : [];
-}
-function _saveBlocklist(arr) {
-  PropertiesService.getScriptProperties().setProperty('blocklist', JSON.stringify(arr));
-}
-function isBlocked_(email)   { return _getBlocklist().indexOf(email.toLowerCase()) !== -1; }
-function listBlocked_()      { return _getBlocklist(); }
-function blockEmail_(email)  {
-  email = email.toLowerCase();
-  const s = _getBlocklist();
-  if (s.indexOf(email) === -1) { s.push(email); _saveBlocklist(s); }
-}
-function unblockEmail_(email) {
-  email = email.toLowerCase();
-  _saveBlocklist(_getBlocklist().filter(x => x !== email));
-}
-
-// Extract bare email from "Name <a@b.com>" or "a@b.com"
-function extractEmail_(from) {
-  const m = String(from).match(/<([^>]+)>/);
-  return (m ? m[1] : String(from)).trim().toLowerCase();
-}
-
-// Reply to a specific chat (vs tg() which always posts to your main chat)
-function sendMsg_(chatId, text) {
-  UrlFetchApp.fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`,
-    { method: 'post', muteHttpExceptions: true, payload: { chat_id: String(chatId), text: text } });
+  tg('✓ Debug check OK — ' + nowIST_());
 }

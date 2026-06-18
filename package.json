@@ -1,0 +1,8 @@
+{
+  "name": "klassesfiles-functions",
+  "private": true,
+  "description": "Netlify Functions for the KampusVibes Telegram control plane.",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
