@@ -193,13 +193,13 @@ function processIncomingTimetables() {
           ], [
             { text: '🚫 Block sender', data: 'block:' + email },
           ]);
-          GmailApp.sendEmail(email, 'Timetable Upload Not Accepted — KampusVibes', '', {
+          GmailApp.sendEmail(email, 'Whoops, wrong email! — KampusVibes', '', {
             htmlBody: buildEmailHtml_({
               status: 'error',
-              title: "Couldn't Accept This Upload",
-              message: 'Timetable files can only be submitted from your official college ' +
-                       'student email (your roll number @ ' + COLLEGE_DOMAIN + '). ' +
-                       'Please resend from that address.',
+              title: "Whoops, wrong email!",
+              message: "We can only take timetables sent from your official student ID " +
+                       "(your roll number @ " + COLLEGE_DOMAIN + "). " +
+                       "Send it again from that address and we'll get it sorted!",
               rows: [['File', fname], ['Received At', when]],
             }),
             name: 'KampusVibes',
@@ -229,17 +229,17 @@ function processIncomingTimetables() {
           ]);
           const html = buildEmailHtml_({
             status: 'error',
-            title: "We Couldn't Match Your Batch",
-            message: "Your file was received, but your roll number doesn't match any " +
-                     'batch we currently track. If your batch should be supported, the ' +
-                     'KampusVibes team will take a look — no further action needed from you.',
+            title: "Hmm, unrecognized batch!",
+            message: "Your timetable landed safely, but your roll number isn't on our " +
+                     "tracked list yet. The KampusVibes team is on it — we'll check it out " +
+                     "and add your batch if we need to. Sit tight!",
             rows: [
               ['Email Subject', subject],
               ['File', fname],
               ['Received At', when],
             ],
           });
-          GmailApp.sendEmail(email, "Timetable Upload — Couldn't Match Your Batch", '', {
+          GmailApp.sendEmail(email, "Timetable Upload — Unmatched Batch", '', {
             htmlBody: html, name: 'KampusVibes',
           });
           return;
@@ -267,13 +267,13 @@ function processIncomingTimetables() {
           ], [
             { text: '🚫 Block sender', data: 'block:' + email },
           ]);
-          GmailApp.sendEmail(email, 'Timetable Upload — File Too Large', '', {
+          GmailApp.sendEmail(email, 'Whoa, that file is a unit! — KampusVibes', '', {
             htmlBody: buildEmailHtml_({
               status: 'error',
-              title: 'This File Was Too Large to Process',
-              message: 'We received your file but it was too large to process even after ' +
-                       'compression. Please contact KampusVibes (askkampusvibes@gmail.com) ' +
-                       'and we will sort it out.',
+              title: "Whoa, that file is a unit!",
+              message: "We got your timetable, but it's way too big for our auto-compiler to handle " +
+                       "(even after zipping it). Hit us up at askkampusvibes@gmail.com and " +
+                       "we'll process it manually for you.",
               rows: [['File', fname], ['Received At', when]],
             }),
             name: 'KampusVibes',
@@ -295,10 +295,12 @@ function processIncomingTimetables() {
           ]);
           const html = buildEmailHtml_({
             status: 'success',
-            title: 'Thank You!',
-            message: 'Your ' + cohort.label + ' timetable has been received and is ' +
-                     'being processed. Once reviewed and verified, it\'ll appear in the ' +
-                     'app automatically — no further action needed from you.',
+            title: "Got it! 🚀",
+            message: "Awesome, your " + cohort.label + " timetable is in the pipeline. " +
+                     "We're running some checks on it now. Once it's verified, it'll show up " +
+                     "in the app automatically. You're all set!",
+            note: "(Heads up: If it's not live in the app within 24 hours, it might have been " +
+                  "rejected due to conflicts. In that case, email us at askkampusvibes@gmail.com and we'll check it out!)",
             rows: [
               ['Cohort', cohort.label + ' (Batch ' + cohort.batch + ')'],
               ['Semester', 'Semester ' + cohort.semester],
@@ -307,7 +309,7 @@ function processIncomingTimetables() {
               ['Received At', when],
             ],
           });
-          GmailApp.sendEmail(sender, 'Timetable Received ✓ — KampusVibes', '', {
+          GmailApp.sendEmail(sender, 'Got your timetable! ✓ — KampusVibes', '', {
             htmlBody: html, name: 'KampusVibes',
           });
         } else {
@@ -319,16 +321,16 @@ function processIncomingTimetables() {
           ]);
           const html = buildEmailHtml_({
             status: 'error',
-            title: 'Something Went Wrong',
-            message: 'We hit an error (code ' + code + ') while processing your file. ' +
-                     'Please contact KampusVibes (askkampusvibes@gmail.com) directly.',
+            title: "Ah, something went sideways...",
+            message: "We hit a snag (error code " + code + ") while parsing your timetable. " +
+                     "Shoot us a line at askkampusvibes@gmail.com and we'll fix it.",
             rows: [
               ['Email Subject', subject],
               ['File', fname],
               ['Received At', when],
             ],
           });
-          GmailApp.sendEmail(sender, 'Timetable Upload Failed', '', {
+          GmailApp.sendEmail(sender, 'Oops, timetable upload failed — KampusVibes', '', {
             htmlBody: html, name: 'KampusVibes',
           });
         }
@@ -342,25 +344,20 @@ function processIncomingTimetables() {
 // ─── HTML EMAIL TEMPLATE (KampusVibes themed) ─────────────────────────────────
 function buildEmailHtml_(opts) {
   const isSuccess   = opts.status === 'success';
-  const accentStart = '#4F46E5';   // Indigo
-  const accentEnd   = '#00D4AA';   // Teal
-  const badgeColor  = isSuccess ? '#10B981' : '#EF4444';
-  const badgeText   = isSuccess ? 'RECEIVED ✓' : 'ACTION NEEDED';
-  // Pure CSS icon — avoids raw emoji which render as ? in many email clients.
-  const iconBg      = isSuccess ? '#D1FAE5' : '#FEE2E2';
-  const iconColor   = isSuccess ? '#059669' : '#DC2626';
-  const iconText    = isSuccess ? '&#10003;' : '&#33;';   // ✓ or !
+  const badgeBg     = isSuccess ? '#4ADE80' : '#F87171'; // Mint Green vs Soft Coral
+  const badgeText   = isSuccess ? 'GOT IT! 🎉' : 'WHOOPS! 💥';
 
   const rowsHtml = (opts.rows || []).map(function (r, i) {
-    const bg = i % 2 === 0 ? '#F9FAFB' : '#FFFFFF';
+    const borderBottom = i === opts.rows.length - 1 ? '' : 'border-bottom: 2px solid #1E293B;';
     return (
       '<tr>' +
-        '<td style="padding:12px 20px;background:' + bg + ';color:#6B7280;' +
-            'font-size:13px;font-weight:600;width:40%;border-bottom:1px solid #F3F4F6;">' +
+        '<td style="padding:12px 16px;background:#F8FAFC;color:#475569;' +
+            'font-size:11px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;width:35%;' +
+            'border-right:2px solid #1E293B;' + borderBottom + '">' +
             esc_(r[0]) +
         '</td>' +
-        '<td style="padding:12px 20px;background:' + bg + ';color:#111827;' +
-            'font-size:14px;font-weight:500;border-bottom:1px solid #F3F4F6;">' +
+        '<td style="padding:12px 16px;background:#FFFFFF;color:#1E293B;' +
+            'font-size:13px;font-weight:600;font-family:monospace;' + borderBottom + '">' +
             esc_(r[1]) +
         '</td>' +
       '</tr>'
@@ -369,49 +366,81 @@ function buildEmailHtml_(opts) {
 
   return (
 '<!DOCTYPE html><html><head><meta charset="utf-8">' +
-'<meta name="viewport" content="width=device-width,initial-scale=1.0"></head>' +
-'<body style="margin:0;padding:0;background:#F2F4F9;' +
-    'font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">' +
-'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F2F4F9;padding:24px 12px;">' +
+'<meta name="viewport" content="width=device-width,initial-scale=1.0">' +
+'<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">' +
+'</head>' +
+'<body style="margin:0;padding:0;background:#EEF2FF;' +
+    'font-family:\'Plus Jakarta Sans\',-apple-system,BlinkMacSystemFont,sans-serif;">' +
+'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#EEF2FF;padding:32px 12px;">' +
   '<tr><td align="center">' +
-    '<table role="presentation" width="600" cellpadding="0" cellspacing="0" ' +
-        'style="max-width:600px;width:100%;background:#FFFFFF;border-radius:20px;overflow:hidden;' +
-        'box-shadow:0 8px 30px rgba(17,24,39,0.08);">' +
-      '<tr><td bgcolor="' + accentStart + '" style="background:' + accentStart + ';' +
-          'background-image:linear-gradient(135deg,' + accentStart + ' 0%,' + accentEnd + ' 100%);' +
-          'padding:36px 32px 28px;text-align:center;">' +
-        '<div style="font-size:22px;font-weight:800;color:#FFFFFF;letter-spacing:-0.5px;">' +
-          'Kampus<span style="color:#C7F9EC;">Vibes</span></div>' +
-        '<div style="margin-top:6px;font-size:13px;color:rgba(255,255,255,0.85);">Timetable Service</div>' +
+    '<table role="presentation" width="550" cellpadding="0" cellspacing="0" ' +
+        'style="max-width:550px;width:100%;background:#FFFFFF;border:3px solid #1E293B;border-radius:16px;' +
+        'box-shadow:6px 6px 0px #1E293B;overflow:hidden;">' +
+      
+      '<!-- Top Banner/Header -->' +
+      '<tr><td style="padding:24px 32px;background:#F8FAFC;border-bottom:3px solid #1E293B;text-align:left;">' +
+        '<table role="presentation" width="100%" cellpadding="0" cellspacing="0">' +
+          '<tr>' +
+            '<td>' +
+              '<div style="display:inline-block;background:#FFE4E6;color:#E11D48;' +
+                  'border:2px solid #1E293B;font-family:\'Outfit\',sans-serif;font-weight:900;' +
+                  'font-size:14px;padding:4px 12px;border-radius:8px;box-shadow:2px 2px 0px #1E293B;">' +
+                'KampusVibes ⚡' +
+              '</div>' +
+            '</td>' +
+            '<td align="right">' +
+              '<div style="font-size:11px;font-weight:700;color:#64748B;letter-spacing:0.5px;">' +
+                'TIMETABLE BOT v2.1' +
+              '</div>' +
+            '</td>' +
+          '</tr>' +
+        '</table>' +
       '</td></tr>' +
-      '<tr><td style="padding:36px 32px 8px;text-align:center;">' +
-        '<div style="font-size:46px;line-height:1;margin-bottom:10px;">' +
-          '<span style="display:inline-flex;align-items:center;justify-content:center;' +
-          'width:72px;height:72px;border-radius:50%;background:' + iconBg + ';' +
-          'color:' + iconColor + ';font-size:36px;font-weight:700;">' +
-          iconText + '</span>' +
+
+      '<!-- Content Body -->' +
+      '<tr><td style="padding:36px 32px 20px;text-align:center;">' +
+        '<div style="margin-bottom:20px;">' +
+          '<div style="display:inline-block;background:' + badgeBg + ';color:#1E293B;' +
+              'border:2.5px solid #1E293B;font-family:\'Outfit\',sans-serif;font-weight:900;' +
+              'font-size:13px;letter-spacing:0.5px;padding:6px 16px;border-radius:8px;' +
+              'box-shadow:3px 3px 0px #1E293B;text-transform:uppercase;">' +
+              badgeText +
+          '</div>' +
         '</div>' +
-        '<span style="display:inline-block;background:' + badgeColor + '1A;color:' + badgeColor + ';' +
-            'font-size:12px;font-weight:700;letter-spacing:0.5px;padding:6px 14px;border-radius:999px;">' +
-            badgeText + '</span>' +
-        '<h1 style="margin:18px 0 6px;font-size:24px;color:#111827;font-weight:800;">' + esc_(opts.title) + '</h1>' +
-        '<p style="margin:0 auto;max-width:420px;font-size:15px;line-height:1.6;color:#4B5563;">' +
-            esc_(opts.message) + '</p>' +
+        '<h1 style="margin:20px 0 10px;font-family:\'Outfit\',sans-serif;font-size:26px;color:#1E293B;font-weight:900;letter-spacing:-0.5px;">' +
+          esc_(opts.title) +
+        '</h1>' +
+        '<p style="margin:0 auto;max-width:440px;font-size:15px;line-height:1.6;color:#475569;font-weight:600;">' +
+          esc_(opts.message) +
+        '</p>' +
       '</td></tr>' +
+
+      '<!-- Dynamic Data Table -->' +
       (rowsHtml ?
-      '<tr><td style="padding:24px 32px 8px;">' +
+      '<tr><td style="padding:10px 32px 20px;">' +
         '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" ' +
-            'style="border:1px solid #F3F4F6;border-radius:12px;overflow:hidden;">' +
+            'style="border:2.5px solid #1E293B;border-radius:10px;overflow:hidden;box-shadow:3px 3px 0px rgba(30,41,59,0.15);">' +
             rowsHtml +
         '</table>' +
       '</td></tr>' : '') +
-      '<tr><td style="padding:28px 32px 36px;text-align:center;">' +
-        '<div style="height:1px;background:#F3F4F6;margin-bottom:20px;"></div>' +
-        '<p style="margin:0;font-size:12px;color:#9CA3AF;line-height:1.6;">' +
-          'This is an automated message from the KampusVibes timetable system.<br>' +
-          'Need help? Just reply to this email.' +
+
+      '<!-- Note below table -->' +
+      (opts.note ?
+      '<tr><td style="padding:0px 32px 10px;text-align:center;">' +
+        '<p style="margin:0 auto;max-width:440px;font-size:12px;line-height:1.5;color:#64748B;font-weight:600;font-style:italic;">' +
+          esc_(opts.note) +
+        '</p>' +
+      '</td></tr>' : '') +
+
+      '<!-- Lined Paper Style Footer decoration -->' +
+      '<tr><td style="padding:20px 32px 28px;text-align:center;">' +
+        '<div style="border-top:2px dashed #CBD5E1;margin-bottom:20px;"></div>' +
+        '<p style="margin:0;font-size:11px;color:#64748B;font-weight:600;line-height:1.6;">' +
+          'Catch you in class! 📚<br>' +
+          'Made with 💻 by KampusVibes devs. Hit a snag? Email us at askkampusvibes@gmail.com.' +
         '</p>' +
       '</td></tr>' +
+
     '</table>' +
   '</td></tr>' +
 '</table></body></html>'

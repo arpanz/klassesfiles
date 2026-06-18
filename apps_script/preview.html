@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KampusVibes — Dorm Room Previewer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --panel-bg: #1e293b;
+            --border-color: #0f172a;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --primary-accent: #f43f5e;
+            /* Rose */
+            --yellow-sticker: #fde047;
+            --green-sticker: #4ade80;
+            --purple-sticker: #c084fc;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-display: 'Outfit', sans-serif;
+            --font-sticker: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-image:
+                radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: #1e293b;
+            border-bottom: 3.5px solid #000000;
+            z-index: 10;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        .logo span {
+            background: var(--yellow-sticker);
+            color: #000;
+            padding: 2px 8px;
+            border: 2px solid #000;
+            border-radius: 6px;
+            font-weight: 900;
+            transform: rotate(-1.5deg);
+            display: inline-block;
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .badge {
+            background: var(--purple-sticker);
+            border: 2px solid #000;
+            color: #000;
+            font-family: var(--font-sticker);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 8px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 2px 2px 0px #000;
+            transform: rotate(1deg);
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn {
+            background: var(--yellow-sticker);
+            color: #000;
+            border: 2.5px solid #000;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: var(--font-sticker);
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.1s ease;
+            box-shadow: 3px 3px 0px #000;
+        }
+
+        .btn:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0px #000;
+            background: #fef08a;
+        }
+
+        .btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #000;
+        }
+
+        .btn-secondary {
+            background: #ffffff;
+            color: #000;
+        }
+
+        .btn-secondary:hover {
+            background: #f1f5f9;
+        }
+
+        /* Workspace Grid */
+        .workspace {
+            display: grid;
+            grid-template-columns: 370px 1fr;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Editor/Controls Panel */
+        .controls-panel {
+            background: #1e293b;
+            border-right: 3.5px solid #000;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 24px;
+            gap: 24px;
+        }
+
+        .section-title {
+            font-family: var(--font-sticker);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #000;
+            margin-bottom: 12px;
+            display: inline-block;
+            background: var(--purple-sticker);
+            padding: 4px 10px;
+            border: 2px solid #000;
+            border-radius: 6px;
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .section-title.accent-green {
+            background: var(--green-sticker);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            background: #0f172a;
+            border: 2.5px solid #000;
+            border-radius: 8px;
+            color: #ffffff;
+            padding: 10px 12px;
+            font-family: var(--font-sans);
+            font-size: 13px;
+            transition: all 0.1s ease;
+            box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        input[type="text"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary-accent);
+            box-shadow: 3px 3px 0px #000;
+            background: #0f172a;
+        }
+
+        .status-toggle {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            background: #0f172a;
+            padding: 4px;
+            border-radius: 8px;
+            border: 2.5px solid #000;
+        }
+
+        .status-option {
+            padding: 8px;
+            text-align: center;
+            font-family: var(--font-sticker);
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.1s ease;
+        }
+
+        .status-option.active[data-status="success"] {
+            background: var(--green-sticker);
+            color: #000;
+            border: 2px solid #000;
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .status-option.active[data-status="error"] {
+            background: #f87171;
+            color: #000;
+            border: 2px solid #000;
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .status-option:not(.active) {
+            color: var(--text-secondary);
+        }
+
+        .status-option:not(.active):hover {
+            color: var(--text-primary);
+        }
+
+        /* Rows configuration */
+        .rows-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .row-item {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr auto;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .row-item input {
+            padding: 6px 8px;
+            font-size: 12px;
+            border: 2px solid #000;
+        }
+
+        .btn-remove-row {
+            background: #f87171;
+            border: 2px solid #000;
+            color: #000;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .btn-remove-row:hover {
+            background: #ef4444;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px #000;
+        }
+
+        .btn-remove-row:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0px #000;
+        }
+
+        /* Preview Area */
+        .preview-area {
+            display: flex;
+            flex-direction: column;
+            background: #0f172a;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .preview-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            background: #1e293b;
+            border-bottom: 3px solid #000000;
+        }
+
+        .viewport-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .viewport-btn {
+            background: #ffffff;
+            border: 2px solid #000;
+            color: #000;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-family: var(--font-sticker);
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .viewport-btn.active {
+            background: var(--yellow-sticker);
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .viewport-btn:hover:not(.active) {
+            background: #f1f5f9;
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px #000;
+        }
+
+        /* Preview Container */
+        .iframe-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        iframe {
+            background: white;
+            border-radius: 16px;
+            border: 3px solid #000000;
+            box-shadow: 8px 8px 0px #000000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            height: 100%;
+            max-width: 600px;
+        }
+
+        iframe.mobile {
+            width: 375px;
+            height: 667px;
+            max-width: 375px;
+        }
+
+        /* Toast notifications */
+        .toast {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            background: var(--green-sticker);
+            color: #000;
+            border: 2.5px solid #000;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: var(--font-sticker);
+            font-weight: 700;
+            font-size: 13px;
+            box-shadow: 4px 4px 0px #000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+
+    <!-- 1) Mock Google Apps Script Global Environment -->
+    <script>
+        window.PropertiesService = {
+            getScriptProperties: function () {
+                return {
+                    getProperty: function (key) {
+                        return 'MOCK_' + key;
+                    }
+                };
+            }
+        };
+
+        window.Utilities = {
+            formatDate: function (date, tz, format) {
+                const options = { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' };
+                return date.toLocaleDateString('en-US', options) + ' (IST)';
+            },
+            gzip: function (blob) { return blob; },
+            base64Encode: function (bytes) { return bytes; }
+        };
+
+        window.GmailApp = {};
+        window.UrlFetchApp = {};
+        window.Logger = {
+            log: function (msg) { console.log('[AppsScript]', msg); }
+        };
+    </script>
+
+    <!-- 2) Import the actual Apps Script code -->
+    <script src="Code.gs"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo">KampusVibes <span>Dorm Room</span></div>
+            <div class="badge">Vibe Check ⚡</div>
+        </div>
+        <div class="actions">
+            <button class="btn btn-secondary" onclick="reloadTemplate()" title="Reload Code.gs to pick up code changes">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+                </svg>
+                🔄 Fetch fresh Code.gs
+            </button>
+        </div>
+    </header>
+
+    <div class="workspace">
+        <!-- Controls Panel (Left) -->
+        <div class="controls-panel">
+            <div>
+                <div class="section-title">🚦 Vibe Check</div>
+                <div style="position: relative; margin-top: 4px;">
+                    <select id="stateSelect" onchange="applyPresetState(this.value)"
+                        style="width: 100%; border: 2.5px solid #000; border-radius: 8px; background: #0f172a; color: #fff; font-family: var(--font-sticker); font-weight: 700; padding: 10px 12px; font-size: 13px; box-shadow: 3px 3px 0px #000; cursor: pointer; appearance: none;">
+                        <option value="success_dispatched">🟢 Got it! (Success)</option>
+                        <option value="error_wrong_email">🔴 Whoops, wrong email! (Reject)</option>
+                        <option value="error_unrecognized_batch">🔴 Hmm, unrecognized batch!</option>
+                        <option value="error_file_too_large">🔴 Whoa, that file is a unit!</option>
+                        <option value="error_dispatch_failed">🔴 Something went sideways...</option>
+                    </select>
+                    <div
+                        style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #fff; font-weight: 900; font-size: 11px;">
+                        ▼</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="section-title accent-green">✍️ What's the tea?</div>
+                <label for="emailTitle">Subject Banner</label>
+                <input type="text" id="emailTitle" value="Got it! 🚀" oninput="updatePreview()">
+            </div>
+
+            <div class="form-group">
+                <label for="emailMessage">Message content</label>
+                <textarea id="emailMessage" rows="4"
+                    oninput="updatePreview()">Awesome, your CSE Sec-A timetable is in the pipeline. We're running some checks on it now. Once it's verified, it'll show up in the app automatically. You're all set!</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="emailNote">Below Table Note (Optional)</label>
+                <textarea id="emailNote" rows="3"
+                    oninput="updatePreview()">(Heads up: If it's not live in the app within 24 hours, it might have been rejected due to conflicts. In that case, email us at askkampusvibes@gmail.com and we'll check it out!)</textarea>
+            </div>
+
+            <div>
+                <div class="section-title"
+                    style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <span>📊 The Specs</span>
+                    <button class="btn btn-secondary" style="padding: 2px 8px; font-size: 11px; border-width: 2px;"
+                        onclick="addNewRow()">+ Add row</button>
+                </div>
+                <div class="rows-list" id="rowsContainer">
+                    <!-- Dynamic Rows here -->
+                </div>
+            </div>
+
+            <div
+                style="margin-top: auto; padding-top: 16px; border-top: 2.5px solid #000; font-size: 11.5px; color: #94a3b8; line-height: 1.5;">
+                <p>👩‍💻 <strong>How to hack on the HTML:</strong> Open <code>apps_script/Code.gs</code> and find
+                    <code>buildEmailHtml_</code> near line 343.
+                </p>
+                <p style="margin-top: 6px;">Once you save `Code.gs`, slap that <strong>"Fetch fresh Code.gs"</strong>
+                    button at the top to sync instantly!</p>
+            </div>
+        </div>
+
+        <!-- Preview Area (Right) -->
+        <div class="preview-area">
+            <div class="preview-toolbar">
+                <div class="viewport-controls">
+                    <button class="viewport-btn active" id="viewDesktop" onclick="setViewport('desktop')">💻
+                        Laptop</button>
+                    <button class="viewport-btn" id="viewMobile" onclick="setViewport('mobile')">📱 Phone</button>
+                </div>
+                <div style="font-family: var(--font-sticker); font-size: 12px; color: #94a3b8; font-weight: 700;">
+                    LIVE PREVIEW
+                </div>
+            </div>
+
+            <div class="iframe-container">
+                <iframe id="previewFrame"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Synced with Code.gs! 🚀</div>
+
+    <script>
+        let currentStatus = 'success';
+
+        const presetStates = {
+            success_dispatched: {
+                status: 'success',
+                title: "Got it! 🚀",
+                message: "Awesome, your CSE Sec-A timetable is in the pipeline. We're running some checks on it now. Once it's verified, it'll show up in the app automatically. You're all set!",
+                note: "(Heads up: If it's not live in the app within 24 hours, it might have been rejected due to conflicts. In that case, email us at askkampusvibes@gmail.com and we'll check it out!)",
+                rows: [
+                    ['Cohort', 'CSE Sec-A (Batch 2023)'],
+                    ['Semester', 'Semester 5'],
+                    ['File', 'timetable_5th_sem.xls'],
+                    ['Received At', '18 Jun 2026, 5:40 PM IST']
+                ]
+            },
+            error_wrong_email: {
+                status: 'error',
+                title: "Whoops, wrong email!",
+                message: "We can only take timetables sent from your official student ID (your roll number @ kiit.ac.in). Send it again from that address and we'll get it sorted!",
+                note: "",
+                rows: [
+                    ['File', 'timetable_draft.xlsx'],
+                    ['Received At', '18 Jun 2026, 5:42 PM IST']
+                ]
+            },
+            error_unrecognized_batch: {
+                status: 'error',
+                title: "Hmm, unrecognized batch!",
+                message: "Your timetable landed safely, but your roll number isn't on our tracked list yet. The KampusVibes team is on it — we'll check it out and add your batch if we need to. Sit tight!",
+                note: "",
+                rows: [
+                    ['Email Subject', 'Timetable for 4th Semester Civil'],
+                    ['File', 'timetable_civil.csv'],
+                    ['Received At', '18 Jun 2026, 5:45 PM IST']
+                ]
+            },
+            error_file_too_large: {
+                status: 'error',
+                title: "Whoa, that file is a unit!",
+                message: "We got your timetable, but it's way too big for our auto-compiler to handle (even after zipping it). Hit us up at askkampusvibes@gmail.com and we'll process it manually for you.",
+                note: "",
+                rows: [
+                    ['File', 'huge_timetable_all_branches.xlsx'],
+                    ['Received At', '18 Jun 2026, 5:48 PM IST']
+                ]
+            },
+            error_dispatch_failed: {
+                status: 'error',
+                title: "Ah, something went sideways...",
+                message: "We hit a snag (error code 401) while parsing your timetable. Shoot us a line at askkampusvibes@gmail.com and we'll fix it.",
+                note: "",
+                rows: [
+                    ['Email Subject', 'Timetable update'],
+                    ['File', 'timetable.xlsx'],
+                    ['Received At', '18 Jun 2026, 5:50 PM IST']
+                ]
+            }
+        };
+
+        // Initialize rows
+        let metadataRows = [...presetStates.success_dispatched.rows];
+
+        function applyPresetState(presetKey) {
+            const preset = presetStates[presetKey];
+            if (!preset) return;
+
+            currentStatus = preset.status;
+            document.getElementById('emailTitle').value = preset.title;
+            document.getElementById('emailMessage').value = preset.message;
+            document.getElementById('emailNote').value = preset.note || '';
+            metadataRows = JSON.parse(JSON.stringify(preset.rows)); // Deep copy
+
+            renderRowsList();
+            updatePreview();
+        }
+
+        function renderRowsList() {
+            const container = document.getElementById('rowsContainer');
+            container.innerHTML = '';
+
+            metadataRows.forEach((row, index) => {
+                const item = document.createElement('div');
+                item.className = 'row-item';
+                item.innerHTML = `
+                    <input type="text" value="${escapeHtml(row[0])}" placeholder="Label" oninput="updateRow(${index}, 0, this.value)">
+                    <input type="text" value="${escapeHtml(row[1])}" placeholder="Value" oninput="updateRow(${index}, 1, this.value)">
+                    <button class="btn-remove-row" onclick="deleteRow(${index})" title="Delete row">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                    </button>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function updateRow(index, col, val) {
+            metadataRows[index][col] = val;
+            updatePreview();
+        }
+
+        function addNewRow() {
+            metadataRows.push(['New Label', 'Value']);
+            renderRowsList();
+            updatePreview();
+        }
+
+        function deleteRow(index) {
+            metadataRows.splice(index, 1);
+            renderRowsList();
+            updatePreview();
+        }
+
+        function setViewport(type) {
+            const iframe = document.getElementById('previewFrame');
+            const btnDesktop = document.getElementById('viewDesktop');
+            const btnMobile = document.getElementById('viewMobile');
+
+            if (type === 'mobile') {
+                iframe.classList.add('mobile');
+                btnMobile.classList.add('active');
+                btnDesktop.classList.remove('active');
+            } else {
+                iframe.classList.remove('mobile');
+                btnDesktop.classList.add('active');
+                btnMobile.classList.remove('active');
+            }
+        }
+
+        function updatePreview() {
+            const iframe = document.getElementById('previewFrame');
+            if (typeof buildEmailHtml_ !== 'function') {
+                iframe.srcdoc = `
+                    <div style="font-family: sans-serif; padding: 40px; text-align: center; color: #ef4444;">
+                        <h3>Error: buildEmailHtml_ function not found!</h3>
+                        <p>Make sure Code.gs is loaded correctly. Try serving this folder via a local server.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const title = document.getElementById('emailTitle').value;
+            const message = document.getElementById('emailMessage').value;
+            const note = document.getElementById('emailNote').value;
+
+            try {
+                const htmlOutput = buildEmailHtml_({
+                    status: currentStatus,
+                    title: title,
+                    message: message,
+                    note: note,
+                    rows: metadataRows
+                });
+
+                iframe.srcdoc = htmlOutput;
+            } catch (err) {
+                iframe.srcdoc = `
+                    <div style="font-family: sans-serif; padding: 40px; color: #ef4444;">
+                        <h3>Runtime Error during rendering:</h3>
+                        <pre style="background: #fee2e2; padding: 12px; border-radius: 6px; overflow: auto;">${err.message}\n${err.stack}</pre>
+                    </div>
+                `;
+            }
+        }
+
+        function reloadTemplate() {
+            // Remove existing script tag
+            const oldScript = document.querySelector('script[src="Code.gs"]');
+            if (oldScript) {
+                oldScript.remove();
+            }
+
+            // Append new script tag with cache-buster to force reload
+            const newScript = document.createElement('script');
+            newScript.src = 'Code.gs?cb=' + Date.now();
+            newScript.onload = function () {
+                showToast();
+                updatePreview();
+            };
+            newScript.onerror = function () {
+                alert('Failed to load Code.gs. Make sure you are running a local web server (e.g. python -m http.server) and accessing this page through http://localhost.');
+            };
+            document.head.appendChild(newScript);
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        function escapeHtml(string) {
+            return String(string)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        // Initial render
+        window.addEventListener('load', () => {
+            renderRowsList();
+            setTimeout(updatePreview, 300); // Give Code.gs half a second to initialize
+        });
+    </script>
+</body>
+
+</html>
