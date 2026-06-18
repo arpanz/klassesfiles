@@ -60,11 +60,14 @@ def check_is(label, cond):
 # 1. normalize_section
 # ═══════════════════════════════════════════════════════════════════════════════
 print("\n── normalize_section ──────────────────────────────────────────────────")
-check("cse-1  → cse-01",  normalize_section("cse-1"),   "cse-01")
-check("cse-01 → cse-01",  normalize_section("cse-01"),  "cse-01")
-check("it-3   → it-03",   normalize_section("it-3"),    "it-03")
-check("csse-1 → csse-01", normalize_section("csse-1"),  "csse-01")
-check("empty  → ''",      normalize_section(""),        "")
+# Master upgraded normalize_section to uppercase and handle elective key format
+check("cse-1  → CSE-01",    normalize_section("cse-1"),     "CSE-01")
+check("cse-01 → CSE-01",    normalize_section("cse-01"),    "CSE-01")
+check("it-3   → IT-03",     normalize_section("it-3"),      "IT-03")
+check("csse-1 → CSSE-01",   normalize_section("csse-1"),    "CSSE-01")
+check("empty  → ''",        normalize_section(""),          "")
+check("AI_IT-1 → AI_IT-01", normalize_section("AI_IT-1"),   "AI_IT-01")
+check("CC_CSE-01 unchanged", normalize_section("CC_CSE-01"),"CC_CSE-01")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

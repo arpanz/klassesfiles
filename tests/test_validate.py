@@ -86,7 +86,22 @@ ok, out = run_validate({"CSE-01": {"Monday": {"8-9": {"subject": "PE-III"}}}})
 check("unresolved PE-III placeholder rejected", ok, False)
 
 ok, out = run_validate({"CSE-01": {"Monday": {"8-9": {"subject": "CC|SPM|NLP"}}}})
-check("pipe-separated (unresolved) subject rejected", ok, False)
+check("pipe-separated passes without --pe3 (expected — pipes only flagged in pe3 mode)", ok, True)
+
+# Pipe-separated IS rejected when --pe3 mode is active
+def run_validate_pe3(data):
+    import io
+    from contextlib import redirect_stdout
+    buf = io.StringIO()
+    try:
+        with redirect_stdout(buf):
+            V.validate(data, argparse.Namespace(batch=2023, semester=6, pe3=True))
+        return True, buf.getvalue()
+    except SystemExit:
+        return False, buf.getvalue()
+
+ok_pe3, _ = run_validate_pe3({"CSE-01": {"Monday": {"8-9": {"subject": "CC|SPM|NLP"}}}})
+check("pipe-separated rejected when --pe3 is active", ok_pe3, False)
 
 ok, out = run_validate({"CSE-01": {"Monday": {}}})
 check("section with no days rejected", ok, False)
