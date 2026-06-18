@@ -516,11 +516,36 @@ function handleCommand_(m) {
 
 // ─── BLOCKLIST (persisted in Script Properties) ───────────────────────────────
 function _getBlocklist() {
-  const raw = PropertiesService.getScriptProperties().getProperty('blocklist');
-  return raw ? JSON.parse(raw) : [];
+  try {
+    const raw = PropertiesService.getScriptProperties().getProperty('blocklist');
+    if (!raw) return [];
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr : [];
+  } catch (e) {
+    // A corrupt / non-JSON value must NEVER throw here: this runs inside
+    // doPost's try/catch, so a throw is swallowed and /block, /blocked, etc.
+    // silently stop replying. Fail safe to an empty list instead.
+    Logger.log('Blocklist property corrupt, treating as empty: ' + e);
+    return [];
+  }
 }
 function _saveBlocklist(arr) {
-  PropertiesService.getScriptProperties().setProperty('blocklist', JSON.stringify(arr));
+  // Always persist a valid JSON string (setProperty rejects non-strings with
+  // "Invalid argument: value"). Guard against undefined / non-array input.
+  const safe = Array.isArray(arr) ? arr : [];
+  PropertiesService.getScriptProperties().setProperty('blocklist', JSON.stringify(safe));
+}
+
+// Run once from the editor if the blocklist ever gets into a bad state.
+function resetBlocklist() {
+  PropertiesService.getScriptProperties().setProperty('blocklist', '[]');
+  Logger.log('Blocklist reset to [].');
+}
+// Run from the editor to inspect what's actually stored.
+function debugBlocklist() {
+  const raw = PropertiesService.getScriptProperties().getProperty('blocklist');
+  Logger.log('raw blocklist property: ' + raw);
+  Logger.log('parsed blocklist: ' + JSON.stringify(listBlocked_()));
 }
 function isBlocked_(email)   { return _getBlocklist().indexOf(email.toLowerCase()) !== -1; }
 function listBlocked_()      { return _getBlocklist(); }
