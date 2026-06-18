@@ -247,14 +247,36 @@ function processIncomingTimetables() {
 
         // ── Compress + dispatch ──
         // University files arrive as legacy .xls (~128 KB), but GitHub caps
-        // workflow_dispatch inputs at 65,535 chars — a raw .xls is ~170 KB once
-        // base64-encoded, so the dispatch fails with HTTP 422 before the Action
-        // even runs. We gzip the bytes first (built-in Utilities.gzip; needs no
-        // extra services or re-auth): ~128 KB → ~30 KB → ~41 KB base64. The Action
-        // auto-detects the gzip header and decompresses before parsing.
-        // Students keep emailing .xls; the compression happens here, invisibly.
-        const gzipped   = Utilities.gzip(att.copyBlob());
-        const base64File = Utilities.base64Encode(gzipped.getBytes());
+        // workflow_dispatch inputs at 65,535 chars. To ensure large files fit,
+        // we convert Excel sheets (.xls/.xlsx) to light CSVs via our Netlify function.
+        // If it's already a CSV, we just gzip locally.
+        let base64File;
+        
+        if (/\.(xlsx|xls)$/i.test(fname)) {
+          const convertUrl = BLOCKLIST_URL.replace('/blocklist', '/convert') + '?key=' + encodeURIComponent(BLOCKLIST_KEY);
+          try {
+            const resp = UrlFetchApp.fetch(convertUrl, {
+              method: 'post',
+              contentType: 'application/octet-stream',
+              payload: att.getBytes(),
+              muteHttpExceptions: true
+            });
+            
+            if (resp.getResponseCode() !== 200) {
+              throw new Error('HTTP ' + resp.getResponseCode() + ': ' + resp.getContentText());
+            }
+            
+            const result = JSON.parse(resp.getContentText());
+            base64File = result.base64;
+          } catch (e) {
+            tg('⚠️ Apps Script Excel-to-CSV convert error: ' + e.message + '. Falling back to raw Excel compression.');
+            const gzipped = Utilities.gzip(att.copyBlob());
+            base64File = Utilities.base64Encode(gzipped.getBytes());
+          }
+        } else {
+          const gzipped = Utilities.gzip(att.copyBlob());
+          base64File = Utilities.base64Encode(gzipped.getBytes());
+        }
 
         // Safety guard: never attempt a dispatch we know GitHub will reject (422).
         if (base64File.length > 60000) {
@@ -295,7 +317,7 @@ function processIncomingTimetables() {
           ]);
           const html = buildEmailHtml_({
             status: 'success',
-            title: "Got it! 🚀",
+            title: "Got it! \uD83D\uDE80",
             message: "Awesome, your " + cohort.label + " timetable is in the pipeline. " +
                      "We're running some checks on it now. Once it's verified, it'll show up " +
                      "in the app automatically. You're all set!",
@@ -309,7 +331,7 @@ function processIncomingTimetables() {
               ['Received At', when],
             ],
           });
-          GmailApp.sendEmail(sender, 'Got your timetable! ✓ — KampusVibes', '', {
+          GmailApp.sendEmail(sender, 'Got your timetable! \u2713 — KampusVibes', '', {
             htmlBody: html, name: 'KampusVibes',
           });
         } else {
@@ -345,7 +367,7 @@ function processIncomingTimetables() {
 function buildEmailHtml_(opts) {
   const isSuccess   = opts.status === 'success';
   const badgeBg     = isSuccess ? '#4ADE80' : '#F87171'; // Mint Green vs Soft Coral
-  const badgeText   = isSuccess ? 'GOT IT! 🎉' : 'WHOOPS! 💥';
+  const badgeText   = isSuccess ? 'GOT IT! \uD83C\uDF89' : 'WHOOPS! \uD83D\uDCA5';
 
   const rowsHtml = (opts.rows || []).map(function (r, i) {
     const borderBottom = i === opts.rows.length - 1 ? '' : 'border-bottom: 2px solid #1E293B;';
@@ -385,7 +407,7 @@ function buildEmailHtml_(opts) {
               '<div style="display:inline-block;background:#FFE4E6;color:#E11D48;' +
                   'border:2px solid #1E293B;font-family:\'Outfit\',sans-serif;font-weight:900;' +
                   'font-size:14px;padding:4px 12px;border-radius:8px;box-shadow:2px 2px 0px #1E293B;">' +
-                'KampusVibes ⚡' +
+                'KampusVibes \u26A1' +
               '</div>' +
             '</td>' +
             '<td align="right">' +
@@ -436,8 +458,8 @@ function buildEmailHtml_(opts) {
       '<tr><td style="padding:20px 32px 28px;text-align:center;">' +
         '<div style="border-top:2px dashed #CBD5E1;margin-bottom:20px;"></div>' +
         '<p style="margin:0;font-size:11px;color:#64748B;font-weight:600;line-height:1.6;">' +
-          'Catch you in class! 📚<br>' +
-          'Made with 💻 by KampusVibes devs. Hit a snag? Email us at askkampusvibes@gmail.com.' +
+          'Catch you in class! \uD83D\uDCDA<br>' +
+          'Made with \uD83D\uDCBB by KampusVibes devs. Hit a snag? Email us at askkampusvibes@gmail.com.' +
         '</p>' +
       '</td></tr>' +
 
