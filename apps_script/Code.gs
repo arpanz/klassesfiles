@@ -374,12 +374,12 @@ function buildEmailHtml_(opts) {
     const borderBottom = i === opts.rows.length - 1 ? '' : 'border-bottom: 2px solid #1E293B;';
     return (
       '<tr>' +
-        '<td style="padding:12px 16px;background:#F8FAFC;color:#475569;' +
+        '<td class="row-label" style="padding:12px 16px;background:#F8FAFC;color:#475569;' +
             'font-size:11px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;width:35%;' +
             'border-right:2px solid #1E293B;' + borderBottom + '">' +
             esc_(r[0]) +
         '</td>' +
-        '<td style="padding:12px 16px;background:#FFFFFF;color:#1E293B;' +
+        '<td class="row-value" style="padding:12px 16px;background:#FFFFFF;color:#1E293B;' +
             'font-size:13px;font-weight:600;font-family:monospace;' + borderBottom + '">' +
             esc_(r[1]) +
         '</td>' +
@@ -391,28 +391,49 @@ function buildEmailHtml_(opts) {
 '<!DOCTYPE html><html><head><meta charset="utf-8">' +
 '<meta name="viewport" content="width=device-width,initial-scale=1.0">' +
 '<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">' +
+'<style>' +
+  '@media only screen and (max-width: 480px) {' +
+    '.outer-wrap { padding: 16px 6px !important; }' +
+    '.card { border-radius: 12px !important; box-shadow: 4px 4px 0px #1E293B !important; border-width: 2px !important; }' +
+    '.header-cell { padding: 16px 16px !important; }' +
+    '.brand-pill { font-size: 12px !important; padding: 3px 10px !important; }' +
+    '.bot-version { font-size: 10px !important; }' +
+    '.body-cell { padding: 24px 16px 16px !important; }' +
+    '.status-badge { font-size: 11px !important; padding: 5px 12px !important; box-shadow: 2px 2px 0px #1E293B !important; }' +
+    '.title-h1 { font-size: 20px !important; margin: 14px 0 8px !important; }' +
+    '.body-text { font-size: 14px !important; }' +
+    '.table-cell { padding: 8px 16px 16px !important; }' +
+    '.data-table { box-shadow: 2px 2px 0px rgba(30,41,59,0.15) !important; border-width: 2px !important; }' +
+    '.row-label { padding: 8px 10px !important; font-size: 10px !important; width: 30% !important; }' +
+    '.row-value { padding: 8px 10px !important; font-size: 12px !important; word-break: break-all !important; }' +
+    '.note-cell { padding: 0px 16px 8px !important; }' +
+    '.note-text { font-size: 11px !important; }' +
+    '.footer-cell { padding: 16px 16px 20px !important; }' +
+    '.footer-text { font-size: 10px !important; }' +
+  '}' +
+'</style>' +
 '</head>' +
 '<body style="margin:0;padding:0;background:#EEF2FF;' +
     'font-family:\'Plus Jakarta Sans\',-apple-system,BlinkMacSystemFont,sans-serif;">' +
-'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#EEF2FF;padding:32px 12px;">' +
+'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="outer-wrap" style="background:#EEF2FF;padding:32px 12px;">' +
   '<tr><td align="center">' +
-    '<table role="presentation" width="550" cellpadding="0" cellspacing="0" ' +
+    '<table role="presentation" width="550" cellpadding="0" cellspacing="0" class="card" ' +
         'style="max-width:550px;width:100%;background:#FFFFFF;border:3px solid #1E293B;border-radius:16px;' +
         'box-shadow:6px 6px 0px #1E293B;overflow:hidden;">' +
       
       '<!-- Top Banner/Header -->' +
-      '<tr><td style="padding:24px 32px;background:#F8FAFC;border-bottom:3px solid #1E293B;text-align:left;">' +
+      '<tr><td class="header-cell" style="padding:24px 32px;background:#F8FAFC;border-bottom:3px solid #1E293B;text-align:left;">' +
         '<table role="presentation" width="100%" cellpadding="0" cellspacing="0">' +
           '<tr>' +
             '<td>' +
-              '<div style="display:inline-block;background:#FFE4E6;color:#E11D48;' +
+              '<div class="brand-pill" style="display:inline-block;background:#FFE4E6;color:#E11D48;' +
                   'border:2px solid #1E293B;font-family:\'Outfit\',sans-serif;font-weight:900;' +
                   'font-size:14px;padding:4px 12px;border-radius:8px;box-shadow:2px 2px 0px #1E293B;">' +
                 'KampusVibes &#x26A1;' +
               '</div>' +
             '</td>' +
             '<td align="right">' +
-              '<div style="font-size:11px;font-weight:700;color:#64748B;letter-spacing:0.5px;">' +
+              '<div class="bot-version" style="font-size:11px;font-weight:700;color:#64748B;letter-spacing:0.5px;">' +
                 'TIMETABLE BOT v2.1' +
               '</div>' +
             '</td>' +
@@ -421,27 +442,27 @@ function buildEmailHtml_(opts) {
       '</td></tr>' +
 
       '<!-- Content Body -->' +
-      '<tr><td style="padding:36px 32px 20px;text-align:center;">' +
+      '<tr><td class="body-cell" style="padding:36px 32px 20px;text-align:center;">' +
         '<div style="margin-bottom:20px;">' +
-          '<div style="display:inline-block;background:' + badgeBg + ';color:#1E293B;' +
+          '<div class="status-badge" style="display:inline-block;background:' + badgeBg + ';color:#1E293B;' +
               'border:2.5px solid #1E293B;font-family:\'Outfit\',sans-serif;font-weight:900;' +
               'font-size:13px;letter-spacing:0.5px;padding:6px 16px;border-radius:8px;' +
               'box-shadow:3px 3px 0px #1E293B;text-transform:uppercase;">' +
               badgeText +
           '</div>' +
         '</div>' +
-        '<h1 style="margin:20px 0 10px;font-family:\'Outfit\',sans-serif;font-size:26px;color:#1E293B;font-weight:900;letter-spacing:-0.5px;">' +
+        '<h1 class="title-h1" style="margin:20px 0 10px;font-family:\'Outfit\',sans-serif;font-size:26px;color:#1E293B;font-weight:900;letter-spacing:-0.5px;">' +
           esc_(opts.title) + (opts.titleEmoji ? ' ' + opts.titleEmoji : '') +
         '</h1>' +
-        '<p style="margin:0 auto;max-width:440px;font-size:15px;line-height:1.6;color:#475569;font-weight:600;">' +
+        '<p class="body-text" style="margin:0 auto;max-width:440px;font-size:15px;line-height:1.6;color:#475569;font-weight:600;">' +
           esc_(opts.message) +
         '</p>' +
       '</td></tr>' +
 
       '<!-- Dynamic Data Table -->' +
       (rowsHtml ?
-      '<tr><td style="padding:10px 32px 20px;">' +
-        '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" ' +
+      '<tr><td class="table-cell" style="padding:10px 32px 20px;">' +
+        '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="data-table" ' +
             'style="border:2.5px solid #1E293B;border-radius:10px;overflow:hidden;box-shadow:3px 3px 0px rgba(30,41,59,0.15);">' +
             rowsHtml +
         '</table>' +
@@ -449,16 +470,16 @@ function buildEmailHtml_(opts) {
 
       '<!-- Note below table -->' +
       (opts.note ?
-      '<tr><td style="padding:0px 32px 10px;text-align:center;">' +
-        '<p style="margin:0 auto;max-width:440px;font-size:12px;line-height:1.5;color:#64748B;font-weight:600;font-style:italic;">' +
+      '<tr><td class="note-cell" style="padding:0px 32px 10px;text-align:center;">' +
+        '<p class="note-text" style="margin:0 auto;max-width:440px;font-size:12px;line-height:1.5;color:#64748B;font-weight:600;font-style:italic;">' +
           esc_(opts.note) +
         '</p>' +
       '</td></tr>' : '') +
 
       '<!-- Lined Paper Style Footer decoration -->' +
-      '<tr><td style="padding:20px 32px 28px;text-align:center;">' +
+      '<tr><td class="footer-cell" style="padding:20px 32px 28px;text-align:center;">' +
         '<div style="border-top:2px dashed #CBD5E1;margin-bottom:20px;"></div>' +
-        '<p style="margin:0;font-size:11px;color:#64748B;font-weight:600;line-height:1.6;">' +
+        '<p class="footer-text" style="margin:0;font-size:11px;color:#64748B;font-weight:600;line-height:1.6;">' +
           'Catch you in class! &#x1F4DA;<br>' +
           'Made with &#x1F4BB; by KampusVibes devs. Hit a snag? Email us at askkampusvibes@gmail.com.' +
         '</p>' +
@@ -468,6 +489,7 @@ function buildEmailHtml_(opts) {
   '</td></tr>' +
 '</table></body></html>'
   );
+
 }
 
 // ─── RATE LIMIT (anti-spam) ───────────────────────────────────────────────────
