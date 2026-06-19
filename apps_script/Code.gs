@@ -317,7 +317,8 @@ function processIncomingTimetables() {
           ]);
           const html = buildEmailHtml_({
             status: 'success',
-            title: "Got it! \uD83D\uDE80",
+            title: "Got it!",
+            titleEmoji: "&#x1F680;",
             message: "Awesome, your " + cohort.label + " timetable is in the pipeline. " +
                      "We're running some checks on it now. Once it's verified, it'll show up " +
                      "in the app automatically. You're all set!",
@@ -367,7 +368,7 @@ function processIncomingTimetables() {
 function buildEmailHtml_(opts) {
   const isSuccess   = opts.status === 'success';
   const badgeBg     = isSuccess ? '#4ADE80' : '#F87171'; // Mint Green vs Soft Coral
-  const badgeText   = isSuccess ? 'GOT IT! \uD83C\uDF89' : 'WHOOPS! \uD83D\uDCA5';
+  const badgeText   = isSuccess ? 'GOT IT! &#x1F389;' : 'WHOOPS! &#x1F4A5;';
 
   const rowsHtml = (opts.rows || []).map(function (r, i) {
     const borderBottom = i === opts.rows.length - 1 ? '' : 'border-bottom: 2px solid #1E293B;';
@@ -407,7 +408,7 @@ function buildEmailHtml_(opts) {
               '<div style="display:inline-block;background:#FFE4E6;color:#E11D48;' +
                   'border:2px solid #1E293B;font-family:\'Outfit\',sans-serif;font-weight:900;' +
                   'font-size:14px;padding:4px 12px;border-radius:8px;box-shadow:2px 2px 0px #1E293B;">' +
-                'KampusVibes \u26A1' +
+                'KampusVibes &#x26A1;' +
               '</div>' +
             '</td>' +
             '<td align="right">' +
@@ -430,7 +431,7 @@ function buildEmailHtml_(opts) {
           '</div>' +
         '</div>' +
         '<h1 style="margin:20px 0 10px;font-family:\'Outfit\',sans-serif;font-size:26px;color:#1E293B;font-weight:900;letter-spacing:-0.5px;">' +
-          esc_(opts.title) +
+          esc_(opts.title) + (opts.titleEmoji ? ' ' + opts.titleEmoji : '') +
         '</h1>' +
         '<p style="margin:0 auto;max-width:440px;font-size:15px;line-height:1.6;color:#475569;font-weight:600;">' +
           esc_(opts.message) +
@@ -458,8 +459,8 @@ function buildEmailHtml_(opts) {
       '<tr><td style="padding:20px 32px 28px;text-align:center;">' +
         '<div style="border-top:2px dashed #CBD5E1;margin-bottom:20px;"></div>' +
         '<p style="margin:0;font-size:11px;color:#64748B;font-weight:600;line-height:1.6;">' +
-          'Catch you in class! \uD83D\uDCDA<br>' +
-          'Made with \uD83D\uDCBB by KampusVibes devs. Hit a snag? Email us at askkampusvibes@gmail.com.' +
+          'Catch you in class! &#x1F4DA;<br>' +
+          'Made with &#x1F4BB; by KampusVibes devs. Hit a snag? Email us at askkampusvibes@gmail.com.' +
         '</p>' +
       '</td></tr>' +
 
