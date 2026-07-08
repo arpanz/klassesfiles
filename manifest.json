@@ -1,6 +1,6 @@
 {
-  "manifestVersion": 16,
-  "updatedAt": "2026-07-08T20:03:01.599472Z",
+  "manifestVersion": 17,
+  "updatedAt": "2026-07-08T20:09:47.000000Z",
   "cohorts": [
     {
       "batch": 2023,
@@ -8,6 +8,7 @@
       "semester": 7,
       "label": "7th Sem",
       "pe3": false,
+      "hasElectives": false,
       "timetable": {
         "name": "timetable_2023_s7.json",
         "version": 13
@@ -23,6 +24,7 @@
       "semester": 5,
       "label": "5th Sem",
       "pe3": false,
+      "hasElectives": true,
       "timetable": {
         "name": "timetable_2024_s5.json",
         "version": 3
