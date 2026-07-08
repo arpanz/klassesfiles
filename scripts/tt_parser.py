@@ -82,19 +82,22 @@ def load_data(path: str) -> pd.DataFrame:
 SECTION_REGEX = re.compile(r"^([A-Z]+)(?:-?)(\d+)$", re.I)
 
 
-def normalize_section(section: str) -> str:
+def normalize_section(section: str, is_elective: bool = False) -> str:
     """Normalize and pad section numbers: 'cse-1' -> 'CSE-01', 'IT02' -> 'IT-02', 'AI_IT-1' -> 'AI_IT-01'."""
     if not section:
         return section
     section = section.strip()
     if "_" in section:
         parts = section.split("_", 1)
-        return f"{parts[0].upper()}_{normalize_section(parts[1])}"
+        return f"{parts[0].upper()}_{normalize_section(parts[1], is_elective=True)}"
     m = SECTION_REGEX.match(section.replace(" ", ""))
     if not m:
         return section.upper()
     prefix, num = m.groups()
-    return f"{prefix.upper()}-{int(num):02d}"
+    prefix_upper = prefix.upper()
+    if prefix_upper == "CS" and not is_elective:
+        prefix_upper = "CSE"
+    return f"{prefix_upper}-{int(num):02d}"
 
 
 def build_json(df: pd.DataFrame) -> dict:

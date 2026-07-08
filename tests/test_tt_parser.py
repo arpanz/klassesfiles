@@ -64,6 +64,9 @@ check("cse-01 -> CSE-01",  normalize_section("cse-01"),  "CSE-01")
 check("it-3   -> IT-03",   normalize_section("it-3"),    "IT-03")
 check("csse-1 -> CSSE-01", normalize_section("csse-1"),  "CSSE-01")
 check("empty  -> ''",      normalize_section(""),        "")
+check("cs-1   -> CSE-01",  normalize_section("cs-1"),    "CSE-01")
+check("CS 02  -> CSE-02",  normalize_section("CS 02"),   "CSE-02")
+check("HPC_CS-1 -> HPC_CS-01", normalize_section("HPC_CS-1"), "HPC_CS-01")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
