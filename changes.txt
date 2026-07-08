@@ -1,25 +1,20 @@
-FLAGGED AS BIG CHANGE: 6 section(s) removed; 59 sections changed; 1009 existing slots overwritten; 1471 existing slot(s) deleted
+ROLL NUMBER UPDATE (held for approval)
 
-Sections removed (6): CSE-49, CSE-50, CSE-51, CSE-52, CSE-53, CSE-54
-Sections modified (59): CSCE-01, CSCE-02, CSCE-03, CSE-01, CSE-02, CSE-03, CSE-04, CSE-05, CSE-06, CSE-07, CSE-08, CSE-09, CSE-10, CSE-11, CSE-12, CSE-13, CSE-14, CSE-15, CSE-16, CSE-17, CSE-18, CSE-19, CSE-20, CSE-21, CSE-22, CSE-23, CSE-24, CSE-25, CSE-26, CSE-27, CSE-28, CSE-29, CSE-30, CSE-31, CSE-32, CSE-33, CSE-34, CSE-35, CSE-36, CSE-37, CSE-38, CSE-39, CSE-40, CSE-41, CSE-42, CSE-43, CSE-44, CSE-45, CSE-46, CSE-47, CSE-48, CSSE-01, CSSE-02, CSSE-03, IT-01, IT-02, IT-03, IT-04, IT-05
-- CSCE-01 Friday 1-2: removed
-~ CSCE-01 Friday 10-11: SE @ C25-B-109 -> BC|ASD @ C25-A-115
-~ CSCE-01 Friday 11-12: IND4 @ A-LH-201 -> UHV @ C25-B-110
-~ CSCE-01 Friday 12-1: DS @ A-LH-201 -> WMC @ C25-B-110
-- CSCE-01 Friday 3-4: removed
-- CSCE-01 Friday 3.15-4.15: removed
-- CSCE-01 Friday 4-5: removed
-- CSCE-01 Friday 4.15-5.15: removed
-- CSCE-01 Friday 8-9: removed
-~ CSCE-01 Friday 9-10: DAA @ C25-B-109 -> CC @ C25-A-115
-- CSCE-01 Monday 1-2: removed
-~ CSCE-01 Monday 10-11: DAA(L) @ C25-B-204 -> WCN(L) @ C12-WCN(Lab)
-~ CSCE-01 Monday 11-12: STW @ C25-B-101 -> UHV @ C12-A-17
-- CSCE-01 Monday 12-1: removed
-- CSCE-01 Monday 3.15-4.15: removed
-- CSCE-01 Monday 4.15-5.15: removed
-~ CSCE-01 Monday 8-9: OB @ C25-A-018 -> WMC @ C12-WCN(Lab)
-~ CSCE-01 Monday 9-10: DAA(L) @ C25-B-204 -> WCN(L) @ C12-WCN(Lab)
-- CSCE-01 Saturday 10-11: removed
-- CSCE-01 Thursday 1-2: removed
-...and 2460 more slot changes
+Rolls added: 1
+Rolls reassigned: 4128
+~ 2105103: CSE-44 -> CSE-01
+~ 21051397: CSE-36 -> CSE-01
+~ 21051761: CSE-25 -> CSE-02
+~ 21052185: CSE-12 -> CSE-29
+~ 2105609: CSE-22 -> CSE-34
+~ 2106216: IT-01 -> IT-04
+~ 22051607: CSE-25 -> CSE-02
+~ 22051830: CSE-28 -> CSE-03
+~ 22051886: CSE-30 -> CSE-14
+~ 22052022: CSE-44 -> CSE-03
+~ 22052292: CSE-11 -> CSE-04
+~ 22053526: CSE-12 -> CSE-25
+~ 22053718: CSE-25 -> CSE-04
+~ 22053865: CSE-12 -> CSE-05
+~ 22054056: CSE-08 -> CSE-18
+...and 4114 more

@@ -47,8 +47,21 @@ def find_roll_col(df: pd.DataFrame) -> str:
 
 def find_section_col(df: pd.DataFrame) -> str:
     """Return the name of the section column."""
+    # 1. Exact match fallback
     for col in df.columns:
-        if "section" in col.lower():
+        c_low = str(col).strip().lower()
+        if c_low == 'section' or c_low == 'branch':
+            return col
+            
+    # 2. Contains 'section' but not 'id' or 'group'
+    for col in df.columns:
+        c_low = str(col).strip().lower()
+        if 'section' in c_low and 'id' not in c_low and 'group' not in c_low:
+            return col
+            
+    # 3. Fallback to any containing 'section'
+    for col in df.columns:
+        if "section" in str(col).lower():
             return col
     raise ValueError(f"No 'Section' column found. Columns: {list(df.columns)}")
 
