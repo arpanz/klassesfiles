@@ -12,6 +12,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'scripts'))
 from tt_parser import (
     deep_merge, classify_change, _slot_diff_stats,
     normalize_section, compute_changes, parse_combined_cell,
+    normalize_room,
     MAX_NEW_SECTIONS, MAX_TOUCHED_SECTIONS, MAX_OVERWRITTEN_SLOTS,
 )
 
@@ -68,6 +69,18 @@ check("cs-1   -> CSE-01",  normalize_section("cs-1"),    "CSE-01")
 check("CS 02  -> CSE-02",  normalize_section("CS 02"),   "CSE-02")
 check("HPC_CS-1 -> HPC_CS-01", normalize_section("HPC_CS-1"), "HPC_CS-01")
 check("Sem 7 | CS-S7 | CS1 -> CSE-01", normalize_section("Sem 7 | CS-S7 | CS1"), "CSE-01")
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# 1a. normalize_room
+# ═══════════════════════════════════════════════════════════════════════════════
+print("\n== normalize_room =====================================================")
+check("C25-A308 -> C25-A-308", normalize_room("C25-A308"), "C25-A-308")
+check("C25-B110 -> C25-B-110", normalize_room("C25-B110"), "C25-B-110")
+check("C25-B-018(L) -> C25-B-018(L) (unchanged)", normalize_room("C25-B-018(L)"), "C25-B-018(L)")
+check("C25-A-201 -> C25-A-201 (unchanged)", normalize_room("C25-A-201"), "C25-A-201")
+check("C25-b006 -> C25-B-006", normalize_room("C25-b006"), "C25-B-006")
+check("C25-B018(L) -> C25-B-018(L)", normalize_room("C25-B018(L)"), "C25-B-018(L)")
+check("empty -> empty", normalize_room(""), "")
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # 1b. parse_combined_cell

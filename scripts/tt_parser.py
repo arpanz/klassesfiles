@@ -128,6 +128,18 @@ def normalize_section(section: str, is_elective: bool = False) -> str:
     return f"{prefix_upper}-{int(num):02d}"
 
 
+def normalize_room(room: str) -> str:
+    """Normalize room names: C25-A308 -> C25-A-308, C25-B110 -> C25-B-110."""
+    if not room:
+        return room
+    room = room.strip()
+    m = re.match(r'^C25-([A-Z])(\d+)(.*)$', room, re.I)
+    if m:
+        block, num, suffix = m.groups()
+        return f"C25-{block.upper()}-{num}{suffix}"
+    return room
+
+
 def parse_combined_cell(cell_value: str):
     """
     Parses a cell containing subject, faculty, and room separated by newlines.
@@ -258,6 +270,7 @@ def build_json(df: pd.DataFrame) -> dict:
                     continue
                 use_room = room
 
+            use_room = normalize_room(use_room)
             entry = {"subject": subject}
             if use_room:
                 entry["room"] = use_room
