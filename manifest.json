@@ -7,14 +7,14 @@
       "rollPrefix": "23",
       "semester": 7,
       "label": "7th Sem",
-      "pe3": true,
+      "pe3": false,
       "timetable": {
         "name": "timetable_2023_s7.json",
-        "version": 12
+        "version": 13
       },
       "roll": {
         "name": "rollno_2023.json",
-        "version": 1
+        "version": 2
       }
     },
     {
