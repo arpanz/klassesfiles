@@ -1,6 +1,6 @@
 {
-  "manifestVersion": 15,
-  "updatedAt": "2026-07-08T19:21:07.726327Z",
+  "manifestVersion": 16,
+  "updatedAt": "2026-07-08T20:03:01.599472Z",
   "cohorts": [
     {
       "batch": 2023,
@@ -29,7 +29,7 @@
       },
       "roll": {
         "name": "rollno_2024.json",
-        "version": 1
+        "version": 2
       }
     },
     {

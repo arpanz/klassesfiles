@@ -50,20 +50,47 @@ def find_section_col(df: pd.DataFrame) -> str:
     # 1. Exact match fallback
     for col in df.columns:
         c_low = str(col).strip().lower()
-        if c_low == 'section' or c_low == 'branch':
+        if c_low == 'section' or c_low == 'branch' or c_low == 'sec':
             return col
             
-    # 2. Contains 'section' but not 'id' or 'group'
+    # 2. Contains 'section' or 'sec' but not 'id' or 'group'
     for col in df.columns:
         c_low = str(col).strip().lower()
-        if 'section' in c_low and 'id' not in c_low and 'group' not in c_low:
+        if ('section' in c_low or 'sec' in c_low) and 'id' not in c_low and 'group' not in c_low:
             return col
             
-    # 3. Fallback to any containing 'section'
+    # 3. Fallback to any containing 'section' or 'sec'
     for col in df.columns:
-        if "section" in str(col).lower():
+        c_low = str(col).strip().lower()
+        if "section" in c_low or "sec" in c_low:
             return col
     raise ValueError(f"No 'Section' column found. Columns: {list(df.columns)}")
+
+
+def find_all_section_cols(df: pd.DataFrame) -> list:
+    """Return all columns that look like section columns."""
+    cols = []
+    # 1. Exact matches first
+    for col in df.columns:
+        c_low = str(col).strip().lower()
+        if c_low in ['section', 'branch', 'sec']:
+            cols.append(col)
+    
+    if not cols:
+        # 2. Contains 'section' or 'sec' but not 'id' or 'group'
+        for col in df.columns:
+            c_low = str(col).strip().lower()
+            if ('section' in c_low or 'sec' in c_low) and 'id' not in c_low and 'group' not in c_low:
+                cols.append(col)
+                
+    if not cols:
+        # 3. Fallback to any containing 'section' or 'sec'
+        for col in df.columns:
+            c_low = str(col).strip().lower()
+            if "section" in c_low or "sec" in c_low:
+                cols.append(col)
+                
+    return cols
 
 
 SECTION_REGEX = re.compile(r"^([A-Z]+)(?:-?)(\d+)$", re.I)
@@ -159,9 +186,24 @@ def build_json(xl: pd.ExcelFile) -> dict:
     # With electives — list format.
     elec_maps = []
     for sheet in elective_sheets:
-        m = parse_sheet(load_sheet(xl, sheet))
-        elec_maps.append(m)
-        print(f"Parsed {len(m)} entries from elective sheet '{sheet}'.")
+        df = load_sheet(xl, sheet)
+        # Find all section columns in this sheet
+        sec_cols = find_all_section_cols(df)
+        roll_col = find_roll_col(df)
+        
+        print(f"Sheet '{sheet}' has section columns: {sec_cols}")
+        for sec_col in sec_cols:
+            m = {}
+            for _, row in df.iterrows():
+                roll = str(row[roll_col]).strip().replace(".0", "")
+                section = normalize_section(str(row[sec_col]).strip())
+                if not roll or roll.lower() == "nan":
+                    continue
+                if not section or section.lower() == "nan":
+                    continue
+                m[roll] = section
+            elec_maps.append(m)
+            print(f"Parsed {len(m)} entries from elective sheet '{sheet}' column '{sec_col}'.")
 
     result = {}
     all_rolls = set(core_map.keys())
