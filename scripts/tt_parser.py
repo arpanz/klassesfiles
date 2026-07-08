@@ -35,6 +35,22 @@ BLANK = {"", "X", "---", "nan", "NaN", "HSE"}
 day_map = {
     'MON': 'Monday', 'TUE': 'Tuesday', 'WED': 'Wednesday',
     'THU': 'Thursday', 'FRI': 'Friday', 'SAT': 'Saturday',
+    'MONDAY': 'Monday', 'TUESDAY': 'Tuesday', 'WEDNESDAY': 'Wednesday',
+    'THURSDAY': 'Thursday', 'FRIDAY': 'Friday', 'SATURDAY': 'Saturday',
+}
+
+# Mapping for newer period formats (e.g. P1\n08:00 -> 8-9)
+PERIOD_MAP = {
+    'P1': '8-9',
+    'P2': '9-10',
+    'P3': '10-11',
+    'P4': '11-12',
+    'P5': '12-1',
+    'P6': '1-2',
+    'P7': '2-3',
+    'P8': '3-4',
+    'P9': '4-5',
+    'P10': '5-6',
 }
 
 # Superset of all time-slot header variants seen across sems. Harmless to include all;
@@ -70,9 +86,19 @@ def clean_header_rows(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def load_data(path: str) -> pd.DataFrame:
-    """Try Excel first, fall back to CSV regardless of extension."""
+    """Try Excel first (picking the correct sheet if multiple exist), fall back to CSV."""
     try:
-        df = pd.read_excel(path)
+        xl = pd.ExcelFile(path)
+        sheet_name = xl.sheet_names[0]
+        # Search for a sheet that looks like it has the grid / timetable data
+        for name in xl.sheet_names:
+            name_low = name.lower()
+            if "grid" in name_low or "timetable" in name_low or "schedule" in name_low or "section" in name_low or "class" in name_low:
+                if "summary" not in name_low:
+                    sheet_name = name
+                    break
+        print(f"Reading sheet: '{sheet_name}'")
+        df = xl.parse(sheet_name)
     except Exception:
         print("Excel read failed, trying CSV...")
         df = pd.read_csv(path)
@@ -87,6 +113,8 @@ def normalize_section(section: str, is_elective: bool = False) -> str:
     if not section:
         return section
     section = section.strip()
+    if "|" in section:
+        section = section.split("|")[-1].strip()
     if "_" in section:
         parts = section.split("_", 1)
         return f"{parts[0].upper()}_{normalize_section(parts[1], is_elective=True)}"
@@ -100,18 +128,65 @@ def normalize_section(section: str, is_elective: bool = False) -> str:
     return f"{prefix_upper}-{int(num):02d}"
 
 
+def parse_combined_cell(cell_value: str):
+    """
+    Parses a cell containing subject, faculty, and room separated by newlines.
+    Returns (subject, room).
+    """
+    if not cell_value or str(cell_value).lower() == 'nan':
+        return "", ""
+    lines = [line.strip() for line in str(cell_value).split('\n') if line.strip()]
+    if not lines:
+        return "", ""
+    
+    subject = lines[0]
+    room = ""
+    
+    if len(lines) >= 3:
+        # Format: Subject \n Faculty \n Room
+        room = lines[2]
+    elif len(lines) == 2:
+        # Format: Subject \n Room (or Subject \n Faculty)
+        second = lines[1]
+        if any(p in second.upper() for p in ["C25", "ROOM", "LAB", "HALL", "C-"]) or re.search(r'\d', second):
+            room = second
+            
+    return subject, room
+
+
 def build_json(df: pd.DataFrame) -> dict:
     timetable = {}
 
-    # Dynamically pair each time-slot column with the most recent ROOM* column.
-    time_to_room_map = []
-    current_room_col = None
+    # Rename columns like P1\n08:00 -> 8-9 based on PERIOD_MAP
+    renamed_cols = {}
     for col in df.columns:
         col_str = str(col).strip()
-        if "ROOM" in col_str.upper():
-            current_room_col = col_str
-        elif col_str in TIME_SLOTS and current_room_col:
-            time_to_room_map.append((col_str, current_room_col))
+        parts = col_str.split('\n')
+        p_part = parts[0].upper().strip()
+        if p_part in PERIOD_MAP:
+            renamed_cols[col] = PERIOD_MAP[p_part]
+    if renamed_cols:
+        df = df.rename(columns=renamed_cols)
+
+    # Check if there is any ROOM column
+    has_room_cols = any("ROOM" in str(col).upper() for col in df.columns)
+
+    # Dynamically pair each time-slot column with the most recent ROOM* column.
+    time_to_room_map = []
+    if has_room_cols:
+        current_room_col = None
+        for col in df.columns:
+            col_str = str(col).strip()
+            if "ROOM" in col_str.upper():
+                current_room_col = col_str
+            elif col_str in TIME_SLOTS and current_room_col:
+                time_to_room_map.append((col_str, current_room_col))
+    else:
+        # No separate ROOM columns - slot columns themselves contain room info
+        for col in df.columns:
+            col_str = str(col).strip()
+            if col_str in TIME_SLOTS:
+                time_to_room_map.append((col_str, None))
 
     # Find the section and day columns case-insensitively with fallback
     section_col = None
@@ -158,20 +233,30 @@ def build_json(df: pd.DataFrame) -> dict:
         last_room = None
 
         for slot, room_col in time_to_room_map:
-            subject = str(row.get(slot, "")).strip()
-            room = str(row.get(room_col, "")).strip()
+            if room_col:
+                subject = str(row.get(slot, "")).strip()
+                room = str(row.get(room_col, "")).strip()
 
-            if subject.lower() == 'nan':
-                subject = ""
-            if room.lower() == 'nan':
-                room = ""
+                if subject.lower() == 'nan':
+                    subject = ""
+                if room.lower() == 'nan':
+                    room = ""
 
-            if subject in BLANK:
-                continue
+                if subject in BLANK:
+                    continue
 
-            if room not in BLANK:
-                last_room = room
-            use_room = last_room if room in BLANK else room
+                if room not in BLANK:
+                    last_room = room
+                use_room = last_room if room in BLANK else room
+            else:
+                # Combined cell
+                cell_val = str(row.get(slot, "")).strip()
+                if not cell_val or cell_val.lower() == 'nan' or cell_val in BLANK:
+                    continue
+                subject, room = parse_combined_cell(cell_val)
+                if not subject or subject in BLANK:
+                    continue
+                use_room = room
 
             entry = {"subject": subject}
             if use_room:

@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'scripts'))
 
 from tt_parser import (
     deep_merge, classify_change, _slot_diff_stats,
-    normalize_section, compute_changes,
+    normalize_section, compute_changes, parse_combined_cell,
     MAX_NEW_SECTIONS, MAX_TOUCHED_SECTIONS, MAX_OVERWRITTEN_SLOTS,
 )
 
@@ -67,6 +67,17 @@ check("empty  -> ''",      normalize_section(""),        "")
 check("cs-1   -> CSE-01",  normalize_section("cs-1"),    "CSE-01")
 check("CS 02  -> CSE-02",  normalize_section("CS 02"),   "CSE-02")
 check("HPC_CS-1 -> HPC_CS-01", normalize_section("HPC_CS-1"), "HPC_CS-01")
+check("Sem 7 | CS-S7 | CS1 -> CSE-01", normalize_section("Sem 7 | CS-S7 | CS1"), "CSE-01")
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# 1b. parse_combined_cell
+# ═══════════════════════════════════════════════════════════════════════════════
+print("\n== parse_combined_cell ================================================")
+check("Subject\\nFaculty\\nRoom", parse_combined_cell("DL\nDr. Subhadip Pramanik\nC25-B110"), ("DL", "C25-B110"))
+check("Subject\\nRoom", parse_combined_cell("DL\nC25-B110"), ("DL", "C25-B110"))
+check("Subject\\nFaculty (no room)", parse_combined_cell("DL\nDr. Subhadip Pramanik"), ("DL", ""))
+check("Subject only", parse_combined_cell("DL"), ("DL", ""))
+check("empty/nan", parse_combined_cell("nan"), ("", ""))
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

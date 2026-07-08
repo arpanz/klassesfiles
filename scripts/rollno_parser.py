@@ -74,6 +74,8 @@ def normalize_section(section: str, is_elective: bool = False) -> str:
     if not section:
         return section
     section = section.strip()
+    if "|" in section:
+        section = section.split("|")[-1].strip()
     if "_" in section:
         parts = section.split("_", 1)
         return f"{parts[0].upper()}_{normalize_section(parts[1], is_elective=True)}"
