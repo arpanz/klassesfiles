@@ -1,6 +1,6 @@
 {
-  "manifestVersion": 19,
-  "updatedAt": "2026-07-08T20:52:51.335925Z",
+  "manifestVersion": 21,
+  "updatedAt": "2026-07-12T16:58:38.195444Z",
   "cohorts": [
     {
       "batch": 2023,
@@ -11,7 +11,7 @@
       "hasElectives": false,
       "timetable": {
         "name": "timetable_2023_s7.json",
-        "version": 14
+        "version": 15
       },
       "roll": {
         "name": "rollno_2023.json",
@@ -27,7 +27,7 @@
       "hasElectives": true,
       "timetable": {
         "name": "timetable_2024_s5.json",
-        "version": 4
+        "version": 5
       },
       "roll": {
         "name": "rollno_2024.json",

@@ -1,29 +1,29 @@
 {
     "CSE-01": {
         "Monday": {
-            "8-9": {
-                "subject": "EPP",
-                "room": "C25-B-110"
-            },
             "9-10": {
                 "subject": "DL",
-                "room": "C25-B-110"
+                "room": "C25-B-119"
+            },
+            "10-11": {
+                "subject": "EPP",
+                "room": "C25-B-119"
             }
         },
         "Tuesday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-006"
+                "room": "C25-A-113"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-006"
+                "room": "C25-A-113"
             }
         },
         "Thursday": {
             "9-10": {
                 "subject": "DL",
-                "room": "C25-A-308"
+                "room": "C25-B-109"
             }
         }
     },
@@ -31,27 +31,27 @@
         "Monday": {
             "3-4": {
                 "subject": "DL",
-                "room": "C25-A-006"
+                "room": "C25-A-018"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-006"
+                "room": "C25-A-018"
             }
         },
         "Tuesday": {
             "4-5": {
                 "subject": "DL",
-                "room": "C25-A-109"
+                "room": "C25-A-206"
             }
         },
         "Wednesday": {
             "2-3": {
                 "subject": "DL",
-                "room": "C25-A-006"
+                "room": "C25-A-016"
             },
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-006"
+                "room": "C25-A-016"
             }
         }
     },
@@ -59,27 +59,27 @@
         "Wednesday": {
             "9-10": {
                 "subject": "DL",
-                "room": "C25-A-307"
+                "room": "C25-A-318"
             }
         },
         "Thursday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-020"
+                "room": "C25-A-106"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-020"
+                "room": "C25-A-106"
             }
         },
         "Friday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-108"
+                "room": "C25-A-107"
             },
             "9-10": {
                 "subject": "DL",
-                "room": "C25-B-108"
+                "room": "C25-A-107"
             }
         }
     },
@@ -87,27 +87,27 @@
         "Tuesday": {
             "3-4": {
                 "subject": "DL",
-                "room": "C25-A-006"
+                "room": "C25-A-016"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-006"
+                "room": "C25-A-016"
             }
         },
         "Thursday": {
             "3-4": {
                 "subject": "DL",
-                "room": "C25-A-106"
+                "room": "C25-A-114"
             }
         },
         "Friday": {
             "2-3": {
                 "subject": "EPP",
-                "room": "C25-A-006"
+                "room": "C25-A-014"
             },
             "3-4": {
                 "subject": "DL",
-                "room": "C25-A-006"
+                "room": "C25-A-014"
             }
         }
     },
@@ -115,27 +115,27 @@
         "Monday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-113"
+                "room": "C25-A-115"
             },
             "9-10": {
                 "subject": "DL",
-                "room": "C25-B-113"
+                "room": "C25-A-115"
             }
         },
         "Tuesday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-007"
+                "room": "C25-A-114"
             },
             "9-10": {
                 "subject": "DL",
-                "room": "C25-B-007"
+                "room": "C25-A-114"
             }
         },
         "Wednesday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-201"
+                "room": "C25-B-120"
             }
         }
     },
@@ -143,27 +143,27 @@
         "Wednesday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-108"
+                "room": "C25-A-016"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-108"
+                "room": "C25-A-016"
             }
         },
         "Thursday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-A-109"
+                "room": "C25-B-115"
             }
         },
         "Friday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-109"
+                "room": "C25-A-108"
             },
             "9-10": {
                 "subject": "DL",
-                "room": "C25-B-109"
+                "room": "C25-A-108"
             }
         }
     },
@@ -171,27 +171,27 @@
         "Tuesday": {
             "3-4": {
                 "subject": "DL",
-                "room": "C25-A-007"
+                "room": "C25-A-018"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-007"
+                "room": "C25-A-018"
             }
         },
         "Thursday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-006"
+                "room": "C25-A-010"
             },
             "4-5": {
                 "subject": "DL",
-                "room": "C25-A-006"
+                "room": "C25-A-010"
             }
         },
         "Friday": {
             "2-3": {
                 "subject": "DL",
-                "room": "C25-A-015"
+                "room": "C25-A-006"
             }
         }
     },
@@ -199,27 +199,27 @@
         "Monday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-007"
+                "room": "C25-A-101"
             },
             "4-5": {
                 "subject": "DL",
-                "room": "C25-A-007"
+                "room": "C25-A-101"
             }
         },
         "Thursday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-007"
+                "room": "C25-A-011"
             },
             "4-5": {
                 "subject": "DL",
-                "room": "C25-A-007"
+                "room": "C25-A-011"
             }
         },
         "Friday": {
             "2-3": {
                 "subject": "DL",
-                "room": "C25-A-016"
+                "room": "C25-A-007"
             }
         }
     },
@@ -227,27 +227,27 @@
         "Monday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-115"
+                "room": "C25-A-116"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-115"
+                "room": "C25-A-116"
             }
         },
         "Tuesday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-113"
+                "room": "C25-A-115"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-113"
+                "room": "C25-A-115"
             }
         },
         "Wednesday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-206"
+                "room": "C25-B-122"
             }
         }
     },
@@ -255,27 +255,27 @@
         "Monday": {
             "3-4": {
                 "subject": "DL",
-                "room": "C25-A-008"
+                "room": "C25-A-106"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-008"
+                "room": "C25-A-106"
             }
         },
         "Wednesday": {
             "2-3": {
                 "subject": "DL",
-                "room": "C25-A-007"
+                "room": "C25-A-006"
             }
         },
         "Thursday": {
             "3-4": {
                 "subject": "DL",
-                "room": "C25-A-008"
+                "room": "C25-A-014"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-008"
+                "room": "C25-A-014"
             }
         }
     },
@@ -283,27 +283,27 @@
         "Wednesday": {
             "9-10": {
                 "subject": "DL",
-                "room": "C25-A-308"
+                "room": "C25-B-206"
+            },
+            "10-11": {
+                "subject": "EPP",
+                "room": "C25-B-206"
             }
         },
         "Thursday": {
-            "8-9": {
-                "subject": "EPP",
-                "room": "C25-B-022"
-            },
             "9-10": {
                 "subject": "DL",
-                "room": "C25-B-022"
+                "room": "C25-B-110"
             }
         },
         "Friday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-110"
+                "room": "C25-A-109"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-110"
+                "room": "C25-A-109"
             }
         }
     },
@@ -311,11 +311,11 @@
         "Wednesday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-109"
+                "room": "C25-A-018"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-109"
+                "room": "C25-A-018"
             }
         },
         "Thursday": {
@@ -327,11 +327,11 @@
         "Friday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-113"
+                "room": "C25-A-110"
             },
             "9-10": {
                 "subject": "DL",
-                "room": "C25-B-113"
+                "room": "C25-A-110"
             }
         }
     },
@@ -339,27 +339,27 @@
         "Wednesday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-110"
+                "room": "C25-A-106"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-110"
+                "room": "C25-A-106"
             }
         },
         "Thursday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-101"
+                "room": "C25-A-107"
             },
             "9-10": {
                 "subject": "DL",
-                "room": "C25-B-101"
+                "room": "C25-A-107"
             }
         },
         "Friday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-120"
+                "room": "C25-B-110"
             }
         }
     },
@@ -367,27 +367,27 @@
         "Monday": {
             "3-4": {
                 "subject": "DL",
-                "room": "C25-A-009"
+                "room": "C25-A-107"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-009"
+                "room": "C25-A-107"
             }
         },
         "Tuesday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-008"
+                "room": "C25-A-101"
             },
             "4-5": {
                 "subject": "DL",
-                "room": "C25-A-008"
+                "room": "C25-A-101"
             }
         },
         "Wednesday": {
             "2-3": {
                 "subject": "DL",
-                "room": "C25-A-008"
+                "room": "C25-A-007"
             }
         }
     },
@@ -395,27 +395,27 @@
         "Tuesday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-122"
+                "room": "C25-B-006"
             }
         },
         "Wednesday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-113"
+                "room": "C25-A-107"
             },
             "9-10": {
                 "subject": "DL",
-                "room": "C25-B-113"
+                "room": "C25-A-107"
             }
         },
         "Friday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-115"
+                "room": "C25-A-111"
             },
             "9-10": {
                 "subject": "DL",
-                "room": "C25-B-115"
+                "room": "C25-A-111"
             }
         }
     },
@@ -423,27 +423,27 @@
         "Tuesday": {
             "3-4": {
                 "subject": "DL",
-                "room": "C25-A-009"
+                "room": "C25-A-106"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-009"
+                "room": "C25-A-106"
             }
         },
         "Thursday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-009"
+                "room": "C25-A-015"
             },
             "4-5": {
                 "subject": "DL",
-                "room": "C25-A-009"
+                "room": "C25-A-015"
             }
         },
         "Friday": {
             "2-3": {
                 "subject": "DL",
-                "room": "C25-A-018"
+                "room": "C25-A-008"
             }
         }
     },
@@ -451,27 +451,27 @@
         "Monday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-116"
+                "room": "C25-A-216"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-116"
+                "room": "C25-A-216"
             }
         },
         "Tuesday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-201"
+                "room": "C25-B-008"
             }
         },
         "Wednesday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-115"
+                "room": "C25-A-108"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-115"
+                "room": "C25-A-108"
             }
         }
     },
@@ -479,27 +479,27 @@
         "Monday": {
             "3-4": {
                 "subject": "DL",
-                "room": "C25-A-010"
+                "room": "C25-A-108"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-010"
+                "room": "C25-A-108"
             }
         },
         "Tuesday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-010"
+                "room": "C25-A-107"
             },
             "4-5": {
                 "subject": "DL",
-                "room": "C25-A-010"
+                "room": "C25-A-107"
             }
         },
         "Wednesday": {
             "2-3": {
                 "subject": "DL",
-                "room": "C25-A-009"
+                "room": "C25-A-008"
             }
         }
     },
@@ -507,27 +507,27 @@
         "Wednesday": {
             "9-10": {
                 "subject": "DL",
-                "room": "C25-A-309"
+                "room": "C25-B-001"
             }
         },
         "Thursday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-106"
+                "room": "C25-A-108"
             },
             "9-10": {
                 "subject": "DL",
-                "room": "C25-B-106"
+                "room": "C25-A-108"
             }
         },
         "Friday": {
             "9-10": {
-                "subject": "DL",
-                "room": "C25-A-306"
+                "subject": "EPP",
+                "room": "C25-B-015"
             },
             "10-11": {
-                "subject": "EPP",
-                "room": "C25-A-306"
+                "subject": "DL",
+                "room": "C25-B-015"
             }
         }
     },
@@ -535,27 +535,27 @@
         "Tuesday": {
             "3-4": {
                 "subject": "DL",
-                "room": "C25-A-011"
+                "room": "C25-A-108"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-011"
+                "room": "C25-A-108"
             }
         },
         "Thursday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-010"
+                "room": "C25-A-016"
             },
             "4-5": {
                 "subject": "DL",
-                "room": "C25-A-010"
+                "room": "C25-A-016"
             }
         },
         "Friday": {
             "2-3": {
                 "subject": "DL",
-                "room": "C25-A-101"
+                "room": "C25-A-009"
             }
         }
     },
@@ -563,27 +563,27 @@
         "Monday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-201"
+                "room": "C25-B-001"
             }
         },
         "Tuesday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-115"
+                "room": "C25-B-116"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-115"
+                "room": "C25-B-116"
             }
         },
         "Wednesday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-116"
+                "room": "C25-A-111"
             },
             "9-10": {
                 "subject": "DL",
-                "room": "C25-B-116"
+                "room": "C25-A-111"
             }
         }
     },
@@ -591,55 +591,55 @@
         "Monday": {
             "3-4": {
                 "subject": "DL",
-                "room": "C25-A-011"
+                "room": "C25-A-109"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-011"
+                "room": "C25-A-109"
             }
         },
         "Tuesday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-014"
+                "room": "C25-A-109"
             },
             "4-5": {
                 "subject": "DL",
-                "room": "C25-A-014"
+                "room": "C25-A-109"
             }
         },
         "Wednesday": {
             "2-3": {
                 "subject": "DL",
-                "room": "C25-A-010"
+                "room": "C25-A-009"
             }
         }
     },
     "CSE-23": {
         "Wednesday": {
-            "8-9": {
-                "subject": "HCI",
-                "room": "C25-B-117"
-            },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-117"
+                "room": "C25-B-208"
+            },
+            "10-11": {
+                "subject": "HCI",
+                "room": "C25-B-208"
             }
         },
         "Thursday": {
             "8-9": {
                 "subject": "HCI",
-                "room": "C25-B-107"
+                "room": "C25-A-109"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-107"
+                "room": "C25-A-109"
             }
         },
         "Friday": {
             "8-9": {
                 "subject": "HCI",
-                "room": "C25-B-122"
+                "room": "C25-B-113"
             }
         }
     },
@@ -647,55 +647,55 @@
         "Monday": {
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-A-309"
+                "room": "C25-B-120"
             },
             "10-11": {
                 "subject": "HCI",
-                "room": "C25-A-309"
+                "room": "C25-B-120"
             }
         },
         "Tuesday": {
             "8-9": {
                 "subject": "HCI",
-                "room": "C25-B-206"
+                "room": "C25-B-117"
             }
         },
         "Thursday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-108"
+                "room": "C25-A-110"
             },
             "9-10": {
                 "subject": "HCI",
-                "room": "C25-B-108"
+                "room": "C25-A-110"
             }
         }
     },
     "CSE-25": {
         "Monday": {
-            "8-9": {
-                "subject": "HCI",
-                "room": "C25-B-117"
-            },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-117"
+                "room": "C25-B-122"
+            },
+            "10-11": {
+                "subject": "HCI",
+                "room": "C25-B-122"
             }
         },
         "Tuesday": {
             "9-10": {
                 "subject": "HCI",
-                "room": "C25-A-311"
+                "room": "C25-B-207"
             }
         },
         "Wednesday": {
-            "8-9": {
-                "subject": "EPP",
-                "room": "C25-B-119"
-            },
             "9-10": {
                 "subject": "HCI",
-                "room": "C25-B-119"
+                "room": "C25-B-209"
+            },
+            "10-11": {
+                "subject": "EPP",
+                "room": "C25-B-209"
             }
         }
     },
@@ -703,27 +703,27 @@
         "Monday": {
             "3-4": {
                 "subject": "NCS",
-                "room": "C25-A-014"
+                "room": "C25-A-110"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-014"
+                "room": "C25-A-110"
             }
         },
         "Tuesday": {
             "3-4": {
                 "subject": "NCS",
-                "room": "C25-A-015"
+                "room": "C25-A-110"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-015"
+                "room": "C25-A-110"
             }
         },
         "Wednesday": {
             "2-3": {
                 "subject": "NCS",
-                "room": "C25-A-011"
+                "room": "C25-A-010"
             }
         }
     },
@@ -731,27 +731,27 @@
         "Monday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-015"
+                "room": "C25-A-111"
             },
             "4-5": {
                 "subject": "NCS",
-                "room": "C25-A-015"
+                "room": "C25-A-111"
             }
         },
         "Tuesday": {
             "3-4": {
                 "subject": "NCS",
-                "room": "C25-A-016"
+                "room": "C25-A-111"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-016"
+                "room": "C25-A-111"
             }
         },
         "Wednesday": {
             "2-3": {
                 "subject": "NCS",
-                "room": "C25-A-014"
+                "room": "C25-A-011"
             }
         }
     },
@@ -759,55 +759,55 @@
         "Tuesday": {
             "10-11": {
                 "subject": "NCS",
-                "room": "C25-A-309"
+                "room": "C25-B-122"
             }
         },
         "Wednesday": {
             "8-9": {
                 "subject": "NCS",
-                "room": "C25-B-120"
+                "room": "C25-A-113"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-120"
+                "room": "C25-A-113"
             }
         },
         "Friday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-116"
+                "room": "C25-A-115"
             },
             "9-10": {
                 "subject": "NCS",
-                "room": "C25-B-116"
+                "room": "C25-A-115"
             }
         }
     },
     "CSE-29": {
         "Tuesday": {
-            "8-9": {
-                "subject": "EPP",
-                "room": "C25-B-116"
-            },
             "9-10": {
                 "subject": "NCS",
-                "room": "C25-B-116"
+                "room": "C25-B-119"
+            },
+            "10-11": {
+                "subject": "EPP",
+                "room": "C25-B-119"
             }
         },
         "Wednesday": {
             "9-10": {
                 "subject": "NCS",
-                "room": "C25-A-310"
+                "room": "C25-B-006"
             }
         },
         "Thursday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-109"
+                "room": "C25-A-116"
             },
             "9-10": {
                 "subject": "NCS",
-                "room": "C25-B-109"
+                "room": "C25-A-116"
             }
         }
     },
@@ -815,27 +815,27 @@
         "Monday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-016"
+                "room": "C25-A-113"
             },
             "4-5": {
                 "subject": "NCS",
-                "room": "C25-A-016"
+                "room": "C25-A-113"
             }
         },
         "Tuesday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-018"
+                "room": "C25-A-113"
             },
             "4-5": {
                 "subject": "NCS",
-                "room": "C25-A-018"
+                "room": "C25-A-113"
             }
         },
         "Wednesday": {
             "2-3": {
                 "subject": "NCS",
-                "room": "C25-A-015"
+                "room": "C25-A-014"
             }
         }
     },
@@ -843,27 +843,27 @@
         "Wednesday": {
             "8-9": {
                 "subject": "NCS",
-                "room": "C25-B-122"
+                "room": "C25-A-114"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-122"
+                "room": "C25-A-114"
             }
         },
         "Thursday": {
-            "8-9": {
-                "subject": "EPP",
-                "room": "C25-B-110"
-            },
             "9-10": {
                 "subject": "NCS",
-                "room": "C25-B-110"
+                "room": "C25-B-113"
             }
         },
         "Friday": {
-            "8-9": {
+            "9-10": {
                 "subject": "NCS",
-                "room": "C25-B-201"
+                "room": "C25-B-016"
+            },
+            "10-11": {
+                "subject": "EPP",
+                "room": "C25-B-016"
             }
         }
     },
@@ -871,27 +871,27 @@
         "Wednesday": {
             "3-4": {
                 "subject": "NCS",
-                "room": "C25-A-007"
+                "room": "C25-A-101"
             }
         },
         "Thursday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-011"
+                "room": "C25-A-018"
             },
             "4-5": {
                 "subject": "NCS",
-                "room": "C25-A-011"
+                "room": "C25-A-018"
             }
         },
         "Friday": {
             "2-3": {
                 "subject": "EPP",
-                "room": "C25-A-007"
+                "room": "C25-A-015"
             },
             "3-4": {
                 "subject": "NCS",
-                "room": "C25-A-007"
+                "room": "C25-A-015"
             }
         }
     },
@@ -899,27 +899,27 @@
         "Wednesday": {
             "3-4": {
                 "subject": "NCS",
-                "room": "C25-A-008"
+                "room": "C25-A-106"
             }
         },
         "Thursday": {
             "3-4": {
                 "subject": "NCS",
-                "room": "C25-A-014"
+                "room": "C25-A-101"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-014"
+                "room": "C25-A-101"
             }
         },
         "Friday": {
             "2-3": {
                 "subject": "NCS",
-                "room": "C25-A-008"
+                "room": "C25-A-016"
             },
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-008"
+                "room": "C25-A-016"
             }
         }
     },
@@ -927,27 +927,27 @@
         "Tuesday": {
             "3-4": {
                 "subject": "NCS",
-                "room": "C25-A-109"
+                "room": "C25-A-206"
             }
         },
         "Thursday": {
             "3-4": {
                 "subject": "NCS",
-                "room": "C25-A-015"
+                "room": "C25-A-106"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-015"
+                "room": "C25-A-106"
             }
         },
         "Friday": {
             "2-3": {
                 "subject": "NCS",
-                "room": "C25-A-009"
+                "room": "C25-A-018"
             },
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-009"
+                "room": "C25-A-018"
             }
         }
     },
@@ -955,27 +955,27 @@
         "Wednesday": {
             "9-10": {
                 "subject": "NCS",
-                "room": "C25-A-311"
+                "room": "C25-B-016"
             }
         },
         "Thursday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-113"
+                "room": "C25-A-118"
             },
             "9-10": {
                 "subject": "NCS",
-                "room": "C25-B-113"
+                "room": "C25-A-118"
             }
         },
         "Friday": {
             "8-9": {
                 "subject": "NCS",
-                "room": "C25-B-117"
+                "room": "C25-B-001"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-117"
+                "room": "C25-B-001"
             }
         }
     },
@@ -983,27 +983,27 @@
         "Monday": {
             "3-4": {
                 "subject": "NCS",
-                "room": "C25-A-018"
+                "room": "C25-A-114"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-018"
+                "room": "C25-A-114"
             }
         },
         "Tuesday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-101"
+                "room": "C25-A-114"
             },
             "4-5": {
                 "subject": "NCS",
-                "room": "C25-A-101"
+                "room": "C25-A-114"
             }
         },
         "Wednesday": {
             "2-3": {
                 "subject": "NCS",
-                "room": "C25-A-016"
+                "room": "C25-A-015"
             }
         }
     },
@@ -1011,27 +1011,27 @@
         "Monday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-119"
+                "room": "C25-B-113"
             },
             "9-10": {
                 "subject": "TSF",
-                "room": "C25-B-119"
+                "room": "C25-B-113"
             }
         },
         "Tuesday": {
             "8-9": {
                 "subject": "TSF",
-                "room": "C25-B-117"
+                "room": "C25-B-120"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-117"
+                "room": "C25-B-120"
             }
         },
         "Wednesday": {
             "8-9": {
                 "subject": "TSF",
-                "room": "C25-B-207"
+                "room": "C25-B-201"
             }
         }
     },
@@ -1039,21 +1039,21 @@
         "Monday": {
             "3-4": {
                 "subject": "TSF",
-                "room": "C25-A-101"
+                "room": "C25-A-115"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-101"
+                "room": "C25-A-115"
             }
         },
         "Tuesday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-106"
+                "room": "C25-A-115"
             },
             "4-5": {
                 "subject": "TSF",
-                "room": "C25-A-106"
+                "room": "C25-A-115"
             }
         },
         "Wednesday": {
@@ -1067,21 +1067,21 @@
         "Monday": {
             "3-4": {
                 "subject": "IPA",
-                "room": "C25-A-106"
+                "room": "C25-A-116"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-106"
+                "room": "C25-A-116"
             }
         },
         "Tuesday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-107"
+                "room": "C25-A-116"
             },
             "4-5": {
                 "subject": "IPA",
-                "room": "C25-A-107"
+                "room": "C25-A-116"
             }
         },
         "Wednesday": {
@@ -1095,27 +1095,27 @@
         "Wednesday": {
             "9-10": {
                 "subject": "SPM",
-                "room": "C25-A-313"
+                "room": "C25-B-022"
             }
         },
         "Thursday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-115"
+                "room": "C25-A-206"
             },
             "9-10": {
                 "subject": "SPM",
-                "room": "C25-B-115"
+                "room": "C25-A-206"
             }
         },
         "Friday": {
             "8-9": {
                 "subject": "SPM",
-                "room": "C25-B-119"
+                "room": "C25-B-009"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-119"
+                "room": "C25-B-009"
             }
         }
     },
@@ -1123,27 +1123,27 @@
         "Monday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-120"
+                "room": "C25-B-201"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-120"
+                "room": "C25-B-201"
             }
         },
         "Tuesday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-119"
+                "room": "C25-B-122"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-119"
+                "room": "C25-B-122"
             }
         },
         "Wednesday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-208"
+                "room": "C25-B-206"
             }
         }
     },
@@ -1151,27 +1151,27 @@
         "Wednesday": {
             "3-4": {
                 "subject": "DSA",
-                "room": "C25-A-009"
+                "room": "C25-A-107"
             }
         },
         "Thursday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-016"
+                "room": "C25-A-107"
             },
             "4-5": {
                 "subject": "DSA",
-                "room": "C25-A-016"
+                "room": "C25-A-107"
             }
         },
         "Friday": {
             "2-3": {
                 "subject": "DSA",
-                "room": "C25-A-010"
+                "room": "C25-A-101"
             },
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-010"
+                "room": "C25-A-101"
             }
         }
     },
@@ -1179,27 +1179,27 @@
         "Monday": {
             "8-9": {
                 "subject": "EPP",
-                "room": "C25-B-122"
+                "room": "C25-B-206"
             },
             "9-10": {
                 "subject": "DL",
-                "room": "C25-B-122"
+                "room": "C25-B-206"
             }
         },
         "Tuesday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-120"
+                "room": "C25-B-201"
             },
             "9-10": {
                 "subject": "EPP",
-                "room": "C25-B-120"
+                "room": "C25-B-201"
             }
         },
         "Wednesday": {
             "8-9": {
                 "subject": "DL",
-                "room": "C25-B-209"
+                "room": "C25-B-207"
             }
         }
     },
@@ -1207,21 +1207,21 @@
         "Monday": {
             "3-4": {
                 "subject": "DL",
-                "room": "C25-A-107"
+                "room": "C25-A-118"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-107"
+                "room": "C25-A-118"
             }
         },
         "Tuesday": {
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-108"
+                "room": "C25-A-118"
             },
             "4-5": {
                 "subject": "DL",
-                "room": "C25-A-108"
+                "room": "C25-A-118"
             }
         },
         "Wednesday": {
@@ -1235,27 +1235,27 @@
         "Wednesday": {
             "3-4": {
                 "subject": "MC",
-                "room": "C25-A-010"
+                "room": "C25-A-108"
             }
         },
         "Thursday": {
             "3-4": {
                 "subject": "MC",
-                "room": "C25-A-018"
+                "room": "C25-A-108"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-018"
+                "room": "C25-A-108"
             }
         },
         "Friday": {
             "2-3": {
                 "subject": "MC",
-                "room": "C25-A-011"
+                "room": "C25-A-106"
             },
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-011"
+                "room": "C25-A-106"
             }
         }
     },
@@ -1263,27 +1263,27 @@
         "Wednesday": {
             "3-4": {
                 "subject": "MC",
-                "room": "C25-A-011"
+                "room": "C25-A-109"
             }
         },
         "Thursday": {
             "3-4": {
                 "subject": "MC",
-                "room": "C25-A-101"
+                "room": "C25-A-109"
             },
             "4-5": {
                 "subject": "EPP",
-                "room": "C25-A-101"
+                "room": "C25-A-109"
             }
         },
         "Friday": {
             "2-3": {
                 "subject": "MC",
-                "room": "C25-A-014"
+                "room": "C25-A-107"
             },
             "3-4": {
                 "subject": "EPP",
-                "room": "C25-A-014"
+                "room": "C25-A-107"
             }
         }
     }

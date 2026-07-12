@@ -173,7 +173,7 @@ def build_json(df: pd.DataFrame) -> dict:
     renamed_cols = {}
     for col in df.columns:
         col_str = str(col).strip()
-        parts = col_str.split('\n')
+        parts = re.split(r'[\n\s(]', col_str)
         p_part = parts[0].upper().strip()
         if p_part in PERIOD_MAP:
             renamed_cols[col] = PERIOD_MAP[p_part]
